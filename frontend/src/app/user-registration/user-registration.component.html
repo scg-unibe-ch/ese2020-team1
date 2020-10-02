@@ -1,0 +1,49 @@
+<mat-card>
+  <div>
+    <p>
+      <!-- Todo: Check if user name is already taken -->
+      <mat-form-field>
+        <input matInput placeholder="User Name" [(ngModel)]="userName" name="userName" required>
+      </mat-form-field>
+    </p>
+    <p>
+    <!--Todo: Check if e-mail is already used-->  
+      <mat-form-field>
+        <input matInput placeholder="E-Mail" [(ngModel)]="email" name="email" type="email" required email/>
+      </mat-form-field>
+    </p>  
+    <p>
+      <mat-form-field>
+        <input matInput placeholder="First Name" [(ngModel)]="firstName" name="firstName" required/>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Last Name" [(ngModel)]="lastName" name="lastName" required/>
+      </mat-form-field>
+    </p>
+
+    <p>
+      The password has to be at least 7 characters, contain capital and small letters, numbers and a special character.
+    </p>
+    <p>
+      <mat-form-field>
+        <input matInput placeholder="Password" [(ngModel)]="password" name="password" type="password" required>
+      </mat-form-field>
+    
+    </p>
+      <div *ngIf="password != ''">        
+        <mat-password-strength #passwordComponent
+                         (onStrengthChanged)="onStrengthChanged($event)"
+                         [min]="7"
+                         [enableDigitRule]="true"
+                         [password]="password">
+        </mat-password-strength>
+        <mat-password-strength-info [passwordComponent]="passwordComponent">
+        </mat-password-strength-info>
+      </div>
+
+
+
+    <!--Todo: Register Button only enabled when e-mail and username fullfill criteria -->
+    <button mat-flat-button color="primary" (click)="register()" [disabled]="userName === '' || email === '' || firstName === '' || lastName === '' || passwordStrength < 100">Register</button>
+  </div>
