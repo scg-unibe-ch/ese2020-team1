@@ -1,49 +1,126 @@
-<mat-card>
-  <div>
-    <p>
-      <!-- Todo: Check if user name is already taken -->
-      <mat-form-field>
-        <input matInput placeholder="User Name" [(ngModel)]="userName" name="userName" required>
-      </mat-form-field>
-    </p>
-    <p>
-    <!--Todo: Check if e-mail is already used-->  
-      <mat-form-field>
-        <input matInput placeholder="E-Mail" [(ngModel)]="email" name="email" type="email" required email/>
-      </mat-form-field>
-    </p>  
-    <p>
-      <mat-form-field>
-        <input matInput placeholder="First Name" [(ngModel)]="firstName" name="firstName" required/>
-      </mat-form-field>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h2 class="section-title">User details</h2>
+      <form [formGroup]="userDetailsForm" (ngSubmit)="onSubmitUserDetails(userDetailsForm.value)">        
 
-      <mat-form-field>
-        <input matInput placeholder="Last Name" [(ngModel)]="lastName" name="lastName" required/>
-      </mat-form-field>
-    </p>
+        <mat-form-field class="full-width">
+          <input matInput maxlength="25" placeholder="Username" formControlName="username" required>
+          <mat-error *ngFor="let validation of validation_messages.username">
+            <mat-error class="error-message" *ngIf="userDetailsForm.get('username').hasError(validation.type) && (userDetailsForm.get('username').dirty || userDetailsForm.get('username').touched)">{{validation.message}}</mat-error>
+          </mat-error>
+        </mat-form-field>
 
-    <p>
-      The password has to be at least 7 characters, contain capital and small letters, numbers and a special character.
-    </p>
-    <p>
-      <mat-form-field>
-        <input matInput placeholder="Password" [(ngModel)]="password" name="password" type="password" required>
-      </mat-form-field>
-    
-    </p>
-      <div *ngIf="password != ''">        
-        <mat-password-strength #passwordComponent
-                         (onStrengthChanged)="onStrengthChanged($event)"
-                         [min]="7"
-                         [enableDigitRule]="true"
-                         [password]="password">
-        </mat-password-strength>
-        <mat-password-strength-info [passwordComponent]="passwordComponent">
-        </mat-password-strength-info>
-      </div>
+        <mat-form-field class="full-width">
+          <input matInput type="email" placeholder="Email" formControlName="email" required>
+          <mat-error *ngFor="let validation of validation_messages.email">
+            <mat-error class="error-message" *ngIf="userDetailsForm.get('email').hasError(validation.type) && (userDetailsForm.get('email').dirty || userDetailsForm.get('email').touched)">{{validation.message}}</mat-error>
+          </mat-error>
+        </mat-form-field>
+
+        <br>
 
 
+        <mat-form-field class="full-width">
+          <input matInput placeholder="First Name" formControlName="firstName" required>
+          <mat-error *ngFor="let validation of validation_messages.firstName">
+            <mat-error class="error-message" *ngIf="userDetailsForm.get('firstName').hasError(validation.type) && (userDetailsForm.get('firstName').dirty || userDetailsForm.get('firstName').touched)">{{validation.message}}</mat-error>
+          </mat-error>
+        </mat-form-field>
 
-    <!--Todo: Register Button only enabled when e-mail and username fullfill criteria -->
-    <button mat-flat-button color="primary" (click)="register()" [disabled]="userName === '' || email === '' || firstName === '' || lastName === '' || passwordStrength < 100">Register</button>
+        
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Last Name" formControlName="lastName" required>
+          <mat-error *ngFor="let validation of validation_messages.lastName">
+            <mat-error class="error-message" *ngIf="userDetailsForm.get('lastName').hasError(validation.type) && (userDetailsForm.get('lastName').dirty || userDetailsForm.get('lastName').touched)">{{validation.message}}</mat-error>
+          </mat-error>
+        </mat-form-field>
+
+        <br>
+
+        <mat-form-field class="full-width">
+          <input matInput [matDatepicker]="picker" placeholder="Your birthday" formControlName="birthday" required>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error *ngFor="let validation of validation_messages.birthday">
+            <mat-error class="error-message" *ngIf="userDetailsForm.get('birthday').hasError(validation.type) && (userDetailsForm.get('birthday').dirty || userDetailsForm.get('birthday').touched)">{{validation.message}}</mat-error>
+          </mat-error>
+        </mat-form-field>
+
+
+        <mat-form-field class="full-width">
+          <mat-select placeholder="Gender">
+            <mat-option *ngFor="let gender of genders" [value]="gender">
+              {{ gender }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngFor="let validation of validation_messages.gender">
+            <mat-error class="error-message" *ngIf="userDetailsForm.get('gender').hasError(validation.type) && (userDetailsForm.get('gender').dirty || userDetailsForm.get('gender').touched)">{{validation.message}}</mat-error>
+          </mat-error>
+        </mat-form-field>
+
+        <br>
+
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Street" formControlName="street" required>
+          <mat-error *ngFor="let validation of validation_messages.street">
+            <mat-error class="error-message" *ngIf="userDetailsForm.get('street').hasError(validation.type) && (userDetailsForm.get('street').dirty || userDetailsForm.get('street').touched)">{{validation.message}}</mat-error>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <input matInput placeholder="ZIP Code" formControlName="zipCode" required>
+          <mat-error *ngFor="let validation of validation_messages.zipCode">
+            <mat-error class="error-message" *ngIf="userDetailsForm.get('zipCode').hasError(validation.type) && (userDetailsForm.get('zipCode').dirty || userDetailsForm.get('zipCode').touched)">{{validation.message}}</mat-error>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <input matInput placeholder="City" formControlName="city" required>
+          <mat-error *ngFor="let validation of validation_messages.city">
+            <mat-error class="error-message" *ngIf="userDetailsForm.get('city').hasError(validation.type) && (userDetailsForm.get('city').dirty || userDetailsForm.get('city').touched)">{{validation.message}}</mat-error>
+          </mat-error>
+        </mat-form-field>
+
+        <br>
+
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Country" formControlName="country" required>
+          <mat-error *ngFor="let validation of validation_messages.country">
+            <mat-error class="error-message" *ngIf="userDetailsForm.get('country').hasError(validation.type) && (userDetailsForm.get('country').dirty || userDetailsForm.get('country').touched)">{{validation.message}}</mat-error>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Phone" formControlName="phone" required>
+          <mat-error *ngFor="let validation of validation_messages.phone">
+            <mat-error class="error-message" *ngIf="userDetailsForm.get('phone').hasError(validation.type) && (userDetailsForm.get('phone').dirty || userDetailsForm.get('phone').touched)">{{validation.message}}</mat-error>
+          </mat-error>
+        </mat-form-field>
+
+        <br>
+        
+        <div formGroupName="matching_passwords">
+          <mat-form-field class="full-width">
+            <input matInput type="password" placeholder="Password" formControlName="password" required>
+            <mat-error *ngFor="let validation of validation_messages.password">
+              <mat-error class="error-message" *ngIf="userDetailsForm.get('matching_passwords').get('password').hasError(validation.type) && (userDetailsForm.get('matching_passwords').get('password').dirty || userDetailsForm.get('matching_passwords').get('password').touched)">{{validation.message}}</mat-error>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <input matInput type="password" placeholder="Confirm Password" formControlName="confirm_password"  [errorStateMatcher]="parentErrorStateMatcher" required>
+            <mat-error *ngFor="let validation of validation_messages.confirm_password">
+              <mat-error class="error-message" *ngIf="(userDetailsForm.get('matching_passwords').get('confirm_password').hasError(validation.type)|| userDetailsForm.get('matching_passwords').hasError(validation.type)) && (userDetailsForm.get('matching_passwords').get('confirm_password').dirty || userDetailsForm.get('matching_passwords').get('confirm_password').touched)">{{validation.message}}</mat-error>
+            </mat-error>
+          </mat-form-field>
+
+        </div>
+
+        <button class="submit-btn" color="primary" mat-raised-button type="submit" [disabled]="!userDetailsForm.valid">
+          Register
+        </button>
+      </form>
+    </div>
   </div>
+</div>
