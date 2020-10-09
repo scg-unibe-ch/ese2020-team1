@@ -8,19 +8,19 @@
 
 <mat-tab-group animationDuration="800ms">
 
-<!--  <mat-tab label="Todo List Example">
+<!--<mat-tab label="todo list example">
     <mat-card>
       <mat-form-field>
-        <input matInput placeholder="List Name" [(ngModel)]="newTodoListName" name="name">
+        <input matinput placeholder="list name" [(ngmodel)]="newtodolistname" name="name">
       </mat-form-field>
-      <button mat-flat-button color="primary" (click)="onListCreate()" [disabled]="newTodoListName === ''">Create new list</button>
+      <button mat-flat-button color="primary" (click)="onlistcreate()" [disabled]="newtodolistname === ''">create new list</button>
     </mat-card>
 
-    <app-todo-list
-      *ngFor="let todoList of todoLists" [todoList]="todoList"
-      (update)="onListUpdate($event)"
-      (delete)="onListDelete($event)"
-    ></app-todo-list>
+    <app-todo-list>
+      *ngfor="let todolist of todolists" [todolist]="todolist"
+      (update)="onlistupdate($event)"
+      (delete)="onlistdelete($event)"
+    </app-todo-list>
   </mat-tab>-->
 
 

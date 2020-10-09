@@ -29,6 +29,14 @@ export class UserService {
         .catch(err => Promise.reject({ message: err }));
     }
 
+    // public checkUsername(userName: String): Promise<boolean> {
+    //    return User.findOne({
+    //        where: {
+    //            userName: userName
+    //        }
+    //    })
+    // }
+
     public getAll(): Promise<User[]> {
         return User.findAll();
     }
