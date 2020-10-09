@@ -147,9 +147,21 @@ export class UserRegistrationComponent implements OnInit {
 
   onSubmitUserDetails(value): void {
     console.log(this.userDetailsForm.get('username').value + this.matching_passwords_group.get('password').value);
+
     this.httpClient.post(environment.endpointURL + 'user/register', {
       userName: this.userDetailsForm.get('username').value,
-      password: this.matching_passwords_group.get('password').value
+      password: this.matching_passwords_group.get('password').value,
+      email: this.userDetailsForm.get('email').value,
+      firstName: this.userDetailsForm.get('firstName').value,
+      lastName: this.userDetailsForm.get('lastName').value,
+      birthday: this.userDetailsForm.get('birthday').value,
+      gender: this.userDetailsForm.get('gender').value,
+      street: this.userDetailsForm.get('street').value,
+      zip: this.userDetailsForm.get('zipCode').value,
+      city: this.userDetailsForm.get('city').value,
+      country: this.userDetailsForm.get('country').value,
+      phone: this.userDetailsForm.get('phone').value
+
     }).subscribe((res: any) => {
       // Set user data in local storage
       //localStorage.setItem('userToken', res.token);
