@@ -4,6 +4,7 @@ export class TodoItem {
     public itemId: number,
     public listId: number,
     public name: string,
-    public done: boolean
+    public done: boolean,
+    public price: number
   ) {}
 }
