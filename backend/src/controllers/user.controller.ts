@@ -8,7 +8,7 @@ const userService = new UserService();
 
 userController.post('/register',
     (req: Request, res: Response) => {
-        userService.register(req.body).then(registered => res.send(registered)).catch(err => res.status(501).send(err));
+        userService.register(req.body).then(registered => res.send(registered)).catch(err => res.status(500).send(err));
     }
 );
 
@@ -23,5 +23,12 @@ userController.get('/', verifyToken, // you can add middleware on specific reque
         userService.getAll().then(users => res.send(users)).catch(err => res.status(500).send(err));
     }
 );
+
+ userController.get('/isUsernameFree',
+    (req: Request, res: Response) => {
+        userService.isUsernameFree(req.body).then(free => res.send(free)).catch(err => res.status(500).send(err));
+    }
+ );
+
 
 export const UserController: Router = userController;
