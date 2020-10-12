@@ -15,7 +15,7 @@ export class UserLoginComponent implements OnInit {
 
   userName = '';
   password = '';
-  checkStatus = false;
+  checkStatus = '';
 
   userToken: string;
   loggedIn = false;
@@ -51,8 +51,8 @@ export class UserLoginComponent implements OnInit {
     });
   }
   // Function for checking in the login page if the UserName is valid
-  validateUserName(): void{
-    this.httpClient.get(environment.endpointURL + 'user/isUsernameFree'); //we have function for checking if username is free but we need to use it here
+  validateUserName(uN: string): void{
+    //this.httpClient.get(environment.endpointURL + 'user/isUsernameFree').pipe(this.checkStatus) //we have function for checking if username is free but we need to use it here
   }
 
   logout(): void {
