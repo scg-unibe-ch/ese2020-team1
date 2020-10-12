@@ -15,12 +15,13 @@ export class UserLoginComponent implements OnInit {
 
   userName = '';
   password = '';
-  checkStatus = '';
 
   userToken: string;
   loggedIn = false;
 
+  //data for showing the response
   secureEndpointResponse = '';
+  checkStatus = '';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -49,10 +50,6 @@ export class UserLoginComponent implements OnInit {
 
       this.checkUserStatus();
     });
-  }
-  // Function for checking in the login page if the UserName is valid
-  validateUserName(uN: string): void{
-    //this.httpClient.get(environment.endpointURL + 'user/isUsernameFree').pipe(this.checkStatus) //we have function for checking if username is free but we need to use it here
   }
 
   logout(): void {
