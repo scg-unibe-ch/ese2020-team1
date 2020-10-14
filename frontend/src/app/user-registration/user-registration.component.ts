@@ -21,6 +21,7 @@ export class UserRegistrationComponent implements OnInit {
 
   matching_passwords_group: FormGroup;
   //country_phone_group: FormGroup;
+  result: Boolean;
 
   parentErrorStateMatcher = new ParentErrorStateMatcher();
 
@@ -88,7 +89,7 @@ export class UserRegistrationComponent implements OnInit {
     ]
   }
 
-  constructor(private fb: FormBuilder, private httpClient: HttpClient) { }
+  constructor(private fb: FormBuilder, private httpClient: HttpClient, public usernameValidator: UsernameValidator) { }
 
   ngOnInit() {
     this.createForms();
@@ -109,13 +110,14 @@ export class UserRegistrationComponent implements OnInit {
 
     // user details form validations
     this.userDetailsForm = this.fb.group({
-      username: new FormControl('', Validators.compose([
-        UsernameValidator.validUsername,
+      username: ['', Validators.compose([
         Validators.maxLength(25),
         Validators.minLength(5),
         Validators.pattern('^[a-zA-Z0-9]+$'),
         Validators.required
-      ])),
+      ]),
+        this.usernameValidator.checkUsername.bind(this.usernameValidator)
+      ],
       email: new FormControl('', Validators.compose([
         Validators.required,
         Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
@@ -159,4 +161,10 @@ export class UserRegistrationComponent implements OnInit {
     });
   }
 
-}
+
+  validateUsername(username) {
+    return this.httpClient.post(environment + 'user/isUsernameFree/', { username });
+
+    };
+  }
+

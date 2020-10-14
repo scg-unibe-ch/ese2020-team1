@@ -29,6 +29,18 @@ export class UserService {
         .catch(err => Promise.reject({ message: err }));
     }
 
+    public isUsernameFree(userName: string): Promise<boolean> {
+        return User.findOne({
+            where: {
+                userName: userName
+            }
+        })
+            .then(user => {
+                return Promise.resolve(user === null);
+            });
+
+    }
+
     public getAll(): Promise<User[]> {
         return User.findAll();
     }

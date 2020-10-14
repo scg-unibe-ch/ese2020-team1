@@ -32,6 +32,7 @@ export class UserLoginComponent implements OnInit {
     this.loggedIn = !!(this.userToken);
   }
 
+
   login(): void {
     this.httpClient.post(environment.endpointURL + 'user/login', {
       userName: this.userName,
@@ -44,10 +45,6 @@ export class UserLoginComponent implements OnInit {
       this.checkUserStatus();
     });
   }
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 
   logout(): void {
     // Remove user data from local storage

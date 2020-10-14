@@ -24,4 +24,10 @@ userController.get('/', verifyToken, // you can add middleware on specific reque
     }
 );
 
+userController.get('/isUsernameFree',
+    (req: Request, res: Response) => {
+        userService.isUsernameFree(req.body).then(free => res.send(free)).catch(err => res.status(400).send(err));
+    }
+);
+
 export const UserController: Router = userController;
