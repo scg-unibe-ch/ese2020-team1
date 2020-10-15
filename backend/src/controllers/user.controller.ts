@@ -24,9 +24,9 @@ userController.get('/', verifyToken, // you can add middleware on specific reque
     }
 );
 
-userController.get('/isUsernameFree',
+userController.get('/is-username-free/:username',
     (req: Request, res: Response) => {
-        userService.isUsernameFree(req.body).then(free => res.send(free)).catch(err => res.status(400).send(err));
+        userService.isUsernameFree(req.params.username).then(free => res.send(free)).catch(err => res.status(400).send(err));
     }
 );
 

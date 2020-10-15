@@ -7,13 +7,14 @@ import {
   UsernameValidator,
   PasswordValidator,
   ParentErrorStateMatcher,
-} from '../validators';
+} from './validators';
 
 
 @Component({
   selector: 'app-user-registration',
   templateUrl: './user-registration.component.html',
   styleUrls: ['./user-registration.component.css'],
+  providers: [UsernameValidator]
 })
 export class UserRegistrationComponent implements OnInit {
 
@@ -69,10 +70,9 @@ export class UserRegistrationComponent implements OnInit {
     ],
     'username': [
       { type: 'required', message: 'Username is required' },
-      { type: 'minlength', message: 'Username must be at least 5 characters long' },
+      { type: 'minlength', message: 'Username must be at least 4 characters long' },
       { type: 'maxlength', message: 'Username cannot be more than 25 characters long' },
       { type: 'pattern', message: 'Your username must contain only numbers and letters' },
-      { type: 'validUsername', message: 'Your username has already been taken' }
     ],
     'email': [
       { type: 'required', message: 'Email is required' },
@@ -85,11 +85,11 @@ export class UserRegistrationComponent implements OnInit {
     'password': [
       { type: 'required', message: 'Password is required' },
       { type: 'minlength', message: 'Password must be at least 7 characters long' },
-      { type: 'pattern', message: 'Your password must contain at least one uppercase, one lowercase, one number and one special character' }
+      { type: 'pattern', message: 'Invalid password' }
     ]
   }
 
-  constructor(private fb: FormBuilder, private httpClient: HttpClient, public usernameValidator: UsernameValidator) { }
+  constructor(private fb: FormBuilder, private httpClient: HttpClient, private usernameValidator: UsernameValidator) { }
 
   ngOnInit() {
     this.createForms();
@@ -112,9 +112,9 @@ export class UserRegistrationComponent implements OnInit {
     this.userDetailsForm = this.fb.group({
       username: ['', Validators.compose([
         Validators.maxLength(25),
-        Validators.minLength(5),
+        Validators.minLength(4),
         Validators.pattern('^[a-zA-Z0-9]+$'),
-        Validators.required
+        Validators.required,
       ]),
         this.usernameValidator.checkUsername.bind(this.usernameValidator)
       ],
@@ -160,11 +160,6 @@ export class UserRegistrationComponent implements OnInit {
       //this.checkUserStatus();
     });
   }
-
-
-  validateUsername(username) {
-    return this.httpClient.post(environment + 'user/isUsernameFree/', { username });
-
-    };
   }
+
 

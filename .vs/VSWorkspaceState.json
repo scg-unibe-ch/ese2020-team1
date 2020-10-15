@@ -1,23 +1,16 @@
 {
   "ExpandedNodes": [
     "",
-<<<<<<< Updated upstream
+    "\\backend",
+    "\\backend\\src\\controllers",
+    "\\backend\\src\\models",
+    "\\backend\\src\\services",
     "\\frontend",
     "\\frontend\\src",
     "\\frontend\\src\\app",
     "\\frontend\\src\\app\\user-registration",
     "\\frontend\\src\\app\\validators"
   ],
-  "SelectedNode": "\\frontend\\src\\app\\user-registration\\user-registration.component.ts",
-=======
-    "\\backend\\src",
-    "\\backend\\src\\models",
-    "\\backend\\src\\services",
-    "\\frontend\\src\\app",
-    "\\frontend\\src\\assets",
-    "\\frontend\\src\\environments"
-  ],
-  "SelectedNode": "\\frontend",
->>>>>>> Stashed changes
+  "SelectedNode": "\\frontend\\src\\app\\app.module.ts",
   "PreviewInSolutionExplorer": false
 }

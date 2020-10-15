@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { UserRegistrationComponent } from '../user-registration/user-registration.component';
+import { UsernameCheckerService } from './username-checker.service';
 
 @Injectable()
 export class UsernameValidator {
 
   debouncer: any;
 
-  constructor(public UserRegistrationComponent: UserRegistrationComponent) {
+  constructor(public UsernameCheckerService: UsernameCheckerService) {
 
   }
 
@@ -19,9 +19,11 @@ export class UsernameValidator {
 
       this.debouncer = setTimeout(() => {
 
-        this.UserRegistrationComponent.validateUsername(control.value).subscribe((res) => {
+        this.UsernameCheckerService.validateUsername(control.value).subscribe((res) => {
           if (res) {
             resolve(null);
+          } else if (!res) {
+            resolve({ 'usernameInUse': true });
           }
         }, (err) => {
           resolve({ 'usernameInUse': true });

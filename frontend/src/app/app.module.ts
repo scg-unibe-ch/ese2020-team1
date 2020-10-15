@@ -21,7 +21,7 @@ import { MatPasswordStrengthModule } from '@angular-material-extensions/password
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSelectModule } from '@angular/material/select';
 import { MatNativeDateModule } from '@angular/material/core';
-import { UsernameValidator } from './validators/username.validator';
+import { UsernameValidator } from './user-registration/validators/username.validator.service';
 
 @NgModule({
   declarations: [
