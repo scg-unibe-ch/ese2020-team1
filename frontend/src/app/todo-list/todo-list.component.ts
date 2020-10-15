@@ -21,6 +21,7 @@ export class TodoListComponent {
   delete = new EventEmitter<TodoList>();
 
   newTodoItemName = '';
+  newTodoItemPrice = '';
 
   constructor(private httpClient: HttpClient) {}
 
@@ -38,10 +39,11 @@ export class TodoListComponent {
   onItemCreate(): void {
     this.httpClient.post(environment.endpointURL + 'todoitem', {
       name: this.newTodoItemName,
+      price: this.newTodoItemPrice,
       done: false,
       todoListId: this.todoList.listId
     }).subscribe((item: any) => {
-      this.todoList.todoItems.push(new TodoItem(item.todoItemId, item.todoListId, item.name, item.done));
+      this.todoList.todoItems.push(new TodoItem(item.todoItemId, item.todoListId, item.name, item.done, item.price));
       this.newTodoItemName = '';
     });
   }

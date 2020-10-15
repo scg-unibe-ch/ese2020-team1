@@ -1,12 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Directive, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
+import { UsernameValidator } from '../validators';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-user-login',
   templateUrl: './user-login.component.html',
   styleUrls: ['./user-login.component.css']
 })
+
+
 export class UserLoginComponent implements OnInit {
 
   userName = '';
@@ -15,7 +19,9 @@ export class UserLoginComponent implements OnInit {
   userToken: string;
   loggedIn = false;
 
+  //data for showing the response
   secureEndpointResponse = '';
+  checkStatus = '';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -34,6 +40,7 @@ export class UserLoginComponent implements OnInit {
 
 
   login(): void {
+    //If the username is valid we can continue to the login form
     this.httpClient.post(environment.endpointURL + 'user/login', {
       userName: this.userName,
       password: this.password
@@ -53,6 +60,7 @@ export class UserLoginComponent implements OnInit {
 
     this.checkUserStatus();
   }
+
 
   /**
    * Function to access a secure endpoint that can only be accessed by logged in users by providing their token.
