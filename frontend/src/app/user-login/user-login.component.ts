@@ -1,7 +1,6 @@
 import { Component, Directive, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { UsernameValidator } from '../validators';
 import { Observable } from 'rxjs';
 
 @Component({
