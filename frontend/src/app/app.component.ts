@@ -31,7 +31,7 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.httpClient.get(environment.endpointURL + 'todolist').subscribe((instances: any) => {
       this.todoLists = instances.map((instance: any) => {
-        const todoItems = instance.todoItems.map((item: any) => new TodoItem(item.todoItemId, item.todoListId, item.name, item.done, item.price));
+        const todoItems = instance.todoItems.map((item: any) => new TodoItem(item.todoItemId, item.todoListId, item.name, item.done));
 
         return new TodoList(instance.todoListId, instance.name, todoItems);
       });

@@ -1,7 +1,6 @@
-<mat-toolbar class="toolbarClass">
+<mat-toolbar color="primary">
   <mat-toolbar-row>
-    <img src="../assets/Logo.png" class="LogoImage">
-    <span class="CartsLetters">ARTs</span>
+    <span>ESE-2020 Frontend Scaffolding</span>
   </mat-toolbar-row>
 </mat-toolbar>
 
@@ -9,19 +8,19 @@
 
 <mat-tab-group animationDuration="800ms">
 
-<!--<mat-tab label="Todo List Example">
+<!--  <mat-tab label="Todo List Example">
     <mat-card>
       <mat-form-field>
-        <input matinput placeholder="List Name" [(ngModel)]="newTodoListName" name="name">
+        <input matInput placeholder="List Name" [(ngModel)]="newTodoListName" name="name">
       </mat-form-field>
-      <button mat-flat-button color="primary" (click)="onListCreate()" [disabled]="newTodoListName === ''">Create New List</button>
+      <button mat-flat-button color="primary" (click)="onListCreate()" [disabled]="newTodoListName === ''">Create new list</button>
     </mat-card>
 
-    <app-todo-list>
-      *ngFor="let todolist of todolists" [todolist]="todolist"
+    <app-todo-list
+      *ngFor="let todoList of todoLists" [todoList]="todoList"
       (update)="onListUpdate($event)"
       (delete)="onListDelete($event)"
-    </app-todo-list>
+    ></app-todo-list>
   </mat-tab>-->
 
 

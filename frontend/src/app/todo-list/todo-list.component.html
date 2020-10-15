@@ -14,9 +14,6 @@
   <mat-form-field>
     <input matInput placeholder="Item Name" [(ngModel)]="newTodoItemName" name="name">
   </mat-form-field>
-  <mat-form-field>
-    <input matInput placeholder="Price" [(ngModel)] ="newTodoItemPrice" name="price">
-  </mat-form-field>
   <!-- Button to create item -->
   <button mat-flat-button color="primary" (click)="onItemCreate()" [disabled]="newTodoItemName === ''">Create new item</button>
 

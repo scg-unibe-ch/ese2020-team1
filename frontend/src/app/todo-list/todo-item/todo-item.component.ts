@@ -9,7 +9,7 @@ import { TodoItem } from '../../models/todo-item.model';
 export class TodoItemComponent {
 
   @Input()
-  todoItem: TodoItem = new TodoItem(null, null, '', null,0);
+  todoItem: TodoItem = new TodoItem(null, null, '', null);
 
   @Output()
   update = new EventEmitter<TodoItem>();

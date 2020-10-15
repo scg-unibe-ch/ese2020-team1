@@ -1,16 +1,14 @@
 {
   "ExpandedNodes": [
     "",
-    "\\backend",
+    "\\backend\\src",
+    "\\backend\\src\\controllers",
     "\\backend\\src\\services",
     "\\frontend",
     "\\frontend\\src",
     "\\frontend\\src\\app",
-    "\\frontend\\src\\app\\todo-list\\todo-item",
-    "\\frontend\\src\\app\\user-login",
-    "\\frontend\\src\\app\\user-registration",
-    "\\frontend\\src\\app\\validators"
+    "\\frontend\\src\\app\\user-login"
   ],
-  "SelectedNode": "\\frontend\\src\\app\\validators\\username.validator.ts",
+  "SelectedNode": "\\frontend\\src\\app\\user-login\\user-login.component.ts",
   "PreviewInSolutionExplorer": false
 }

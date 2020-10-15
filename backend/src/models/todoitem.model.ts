@@ -6,7 +6,6 @@ export interface TodoItemAttributes {
     name: string;
     done: boolean;
     todoListId: number;
-    price: number;
 }
 
 // tells sequelize that todoItemId is not a required field
@@ -18,7 +17,6 @@ export class TodoItem extends Model<TodoItemAttributes, TodoItemCreationAttribut
     name!: string;
     done!: boolean;
     todoListId!: number;
-    price!: number;
 
 
     public static initialize(sequelize: Sequelize) { // definition for database
@@ -37,10 +35,6 @@ export class TodoItem extends Model<TodoItemAttributes, TodoItemCreationAttribut
                 allowNull: false
             },
             todoListId: {
-                type: DataTypes.INTEGER,
-                allowNull: false
-            },
-            price: {
                 type: DataTypes.INTEGER,
                 allowNull: false
             }
