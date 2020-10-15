@@ -38,6 +38,7 @@ export class UserLoginComponent implements OnInit {
     this.loggedIn = !!(this.userToken);
   }
 
+
   login(): void {
     //If the username is valid we can continue to the login form
     this.httpClient.post(environment.endpointURL + 'user/login', {

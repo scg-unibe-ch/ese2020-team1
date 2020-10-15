@@ -1,14 +1,19 @@
 {
   "ExpandedNodes": [
     "",
+
     "\\backend\\src",
+    "\\backend",
     "\\backend\\src\\controllers",
+    "\\backend\\src\\models",
+
     "\\backend\\src\\services",
     "\\frontend",
     "\\frontend\\src",
     "\\frontend\\src\\app",
     "\\frontend\\src\\app\\user-login"
   ],
-  "SelectedNode": "\\frontend\\src\\app\\user-login\\user-login.component.ts",
+
+  "SelectedNode": "\\frontend\\src\\app\\app.module.ts",
   "PreviewInSolutionExplorer": false
 }

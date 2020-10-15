@@ -21,6 +21,7 @@ import { MatPasswordStrengthModule } from '@angular-material-extensions/password
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSelectModule } from '@angular/material/select';
 import { MatNativeDateModule } from '@angular/material/core';
+import { UsernameValidator } from './user-registration/validators/username.validator.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     TodoListComponent,
     TodoItemComponent,
     UserLoginComponent,
-    UserRegistrationComponent
+    UserRegistrationComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,13 +47,14 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatPasswordStrengthModule.forRoot(),
     MatDatepickerModule,
     MatSelectModule,
-    MatNativeDateModule
+    MatNativeDateModule,
   ],
   providers: [
+    UsernameValidator,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
-      multi: true
+      multi: true,
     }
   ],
   bootstrap: [

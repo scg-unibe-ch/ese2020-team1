@@ -41,8 +41,6 @@ export class UserService {
 
      }
 
-
-
     public getAll(): Promise<User[]> {
         return User.findAll();
     }
