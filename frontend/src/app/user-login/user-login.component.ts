@@ -1,7 +1,6 @@
 import { Component, Directive, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { UsernameValidator } from '../validators';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -37,6 +36,7 @@ export class UserLoginComponent implements OnInit {
     // Set boolean whether a user is logged in or not
     this.loggedIn = !!(this.userToken);
   }
+
 
   login(): void {
     //If the username is valid we can continue to the login form

@@ -9,6 +9,7 @@
           <mat-error *ngFor="let validation of validation_messages.username">
             <mat-error class="error-message" *ngIf="userDetailsForm.get('username').hasError(validation.type) && (userDetailsForm.get('username').dirty || userDetailsForm.get('username').touched)">{{validation.message}}</mat-error>
           </mat-error>
+          <mat-error class="error-message" *ngIf="userDetailsForm.get('username').errors?.usernameInUse && (userDetailsForm.get('username').dirty || userDetailsForm.get('username').touched)">Username has already been taken</mat-error>
         </mat-form-field>
 
         <mat-form-field class="full-width">
@@ -99,6 +100,8 @@
         </mat-form-field>
 
         <br>
+
+          <p>Your password must contain at least one uppercase, one lowercase, one number and one special character (@$!%*?&+).</p>
         
         <div formGroupName="matching_passwords">
           <mat-form-field class="full-width">
