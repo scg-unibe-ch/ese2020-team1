@@ -3,13 +3,14 @@
     "",
     "\\backend",
     "\\backend\\src",
-    "\\backend\\src\\controllers",
     "\\backend\\src\\models",
     "\\backend\\src\\services",
     "\\frontend",
     "\\frontend\\src",
-    "\\frontend\\src\\app"
+    "\\frontend\\src\\app",
+    "\\frontend\\src\\app\\product-registration",
+    "\\frontend\\src\\app\\user-registration"
   ],
-  "SelectedNode": "\\backend\\src\\models\\user.model.ts",
+  "SelectedNode": "\\frontend\\src\\app\\product-registration\\product-registration.component.ts",
   "PreviewInSolutionExplorer": false
 }

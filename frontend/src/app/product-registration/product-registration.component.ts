@@ -2,6 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { environment } from '../../environments/environment';
+import { ParentErrorStateMatcher } from '../user-registration/validators';
 @Component({
   selector: 'app-product-registration',
   templateUrl: './product-registration.component.html',
@@ -10,26 +11,30 @@ import { environment } from '../../environments/environment';
 export class ProductRegistrationComponent implements OnInit {
 
   productDetailsForm: FormGroup;
+  parentErrorStateMatcher = new ParentErrorStateMatcher();
+
   types = [
     "Product",
     "Service"
   ];
+
   paymentTypes = [
     "Sell",
     "Lend"
-  ]
+  ];
+
   paymentBases = [
     "Unique",
     "Hourly",
     "Daily"
-  ]
+  ];
+
   statuses = [
     "available",
     "sold"
-  ]
+  ];
 
-
-  constructor(private fb: FormBuilder, private httpClient: HttpClient) { }
+ constructor(private fb: FormBuilder, private httpClient: HttpClient) { }
 
   ngOnInit(): void {
     this.createForms();
@@ -45,16 +50,19 @@ export class ProductRegistrationComponent implements OnInit {
       ])),
       paymentType: new FormControl(this.paymentTypes[0], Validators.required),
       paymentBasis: new FormControl(this.paymentBases[0], Validators.required),
-      description: ['', Validators.required],
+      description: new FormControl('', Validators.compose([
+        Validators.maxLength(300),
+        Validators.required
+      ])),
       location: ['', Validators.required],
       status: new FormControl(this.statuses[0], Validators.required),
-      delivery: ['', Validators.required]
+      delivery: new FormControl(false, Validators.nullValidator)
     })
   }
 
-  onSubmitProductDetails(value): void {
+  onSubmitProductDetails(value): void { 
 
-    this.httpClient.post(environment.endpointURL + 'user/register', {
+    this.httpClient.post(environment.endpointURL + 'product/register', {
       type: this.productDetailsForm.get('type').value,
       name: this.productDetailsForm.get('name').value,
       price: this.productDetailsForm.get('price').value,

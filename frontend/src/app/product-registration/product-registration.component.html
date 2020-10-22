@@ -7,24 +7,44 @@
 
             <form [formGroup]="productDetailsForm" (ngSubmit)="onSubmitProductDetails(productDetailsForm.value)">
 
+              <p> Are you offering a product or a service?</p>
               <mat-form-field>
-                <mat-select placeholder="Type">
+                <mat-select placeholder="" [(value)]="types[0]">
                   <mat-option *ngFor="let type of types" [value]="type">
                     {{type}}
                   </mat-option>
                 </mat-select>
               </mat-form-field>
 
+              <br >
+
+              <p>Product / Service Specification</p>
+                
+
               <mat-form-field class="full-width">
-                  <input matInput placeholder="Product / Service" formControlName="name" required>
+                  <input matInput placeholder="Product / Service Name" formControlName="name" required>
                 </mat-form-field>
+
+                <mat-form-field class="full-width">
+                  <input matInput placeholder="Location" formControlName="location" required>
+                </mat-form-field>
+                <br>
+
+                <mat-form-field class="textbox-full-width">
+                  <textarea matInput placeholder="Description" formControlName="description" required></textarea>
+                </mat-form-field>
+
+              <br>
+
+              <p>Payment Details</p>
+                
               
                 <mat-form-field class="full-width">
-                  <input matInput placeholder="Price" formControlName="price" required>
+                  <input matInput type="number" placeholder="Price" formControlName="price" required>
                 </mat-form-field>
 
                 <mat-form-field>
-                  <mat-select placeholder="Payment type">
+                  <mat-select placeholder="Payment Type" [(value)]="paymentTypes[0]">
                     <mat-option *ngFor="let paymentType of paymentTypes" [value]="paymentType">
                       {{paymentType}}
                     </mat-option>
@@ -32,33 +52,29 @@
                 </mat-form-field>
 
                 <mat-form-field>
-                  <mat-select placeholder="Payment Bases">
+                  <mat-select placeholder="Payment Basis" [(value)]="paymentBases[0]">
                     <mat-option *ngFor="let paymentBasis of paymentBases" [value]="paymentBasis">
                       {{paymentBasis}}
                     </mat-option>
                   </mat-select>
                 </mat-form-field>
 
+              <br>
 
+                <p>Delivery</p>
+                
 
-                <mat-form-field class="full-width">
-                  <input matInput placeholder="Description" formControlName="description" required>
-                </mat-form-field>
+                <mat-checkbox>
+                  Delivery possible
+                </mat-checkbox>
 
-                <mat-form-field class="full-width">
-                  <input matInput placeholder="Location" formControlName="location" required>
-                </mat-form-field>
-
-<!--                <mat-form-field class="full-width">
-                  <mat-checkbox>
-                    Delivery possible
-                  </mat-checkbox>
-                </mat-form-field>-->
+              <br>
 
 
                 <button class="submit-btn" color="primary" mat-raised-button type="submit" [disabled]="!productDetailsForm.valid">
                   Register Product/Service
                 </button>
+
             </form>
         </div>
     </div>
