@@ -13,6 +13,8 @@ export class ProductRegistrationComponent implements OnInit {
   productDetailsForm: FormGroup;
   parentErrorStateMatcher = new ParentErrorStateMatcher();
 
+  user: String;
+
   types = [
     "Product",
     "Service"
@@ -60,9 +62,12 @@ export class ProductRegistrationComponent implements OnInit {
     })
   }
 
-  onSubmitProductDetails(value): void { 
+  onSubmitProductDetails(value): void {
+
+    this.user = localStorage.getItem('userName');
 
     this.httpClient.post(environment.endpointURL + 'product/register', {
+      userName: this.user,
       type: this.productDetailsForm.get('type').value,
       name: this.productDetailsForm.get('name').value,
       price: this.productDetailsForm.get('price').value,
