@@ -39,7 +39,6 @@ export class UserLoginComponent implements OnInit {
 
 
   login(): void {
-    //If the username is valid we can continue to the login form
     this.httpClient.post(environment.endpointURL + 'user/login', {
       userName: this.userName,
       password: this.password
