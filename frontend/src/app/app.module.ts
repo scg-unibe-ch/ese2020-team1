@@ -22,6 +22,14 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSelectModule } from '@angular/material/select';
 import { MatNativeDateModule } from '@angular/material/core';
 import { UsernameValidator } from './user-registration/validators/username.validator.service';
+import { NavbarComponent } from './navbar/navbar.component';
+import{Routes, RouterModule} from '@angular/router';
+
+const appRoutes:Routes=[
+  { path: 'user-login', 
+  component: UserLoginComponent},
+  { path: 'user-registration', component: UserRegistrationComponent}
+];
 
 @NgModule({
   declarations: [
@@ -30,6 +38,7 @@ import { UsernameValidator } from './user-registration/validators/username.valid
     TodoItemComponent,
     UserLoginComponent,
     UserRegistrationComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,6 +57,7 @@ import { UsernameValidator } from './user-registration/validators/username.valid
     MatDatepickerModule,
     MatSelectModule,
     MatNativeDateModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [
     UsernameValidator,
