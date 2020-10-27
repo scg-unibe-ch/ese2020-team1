@@ -10,87 +10,64 @@
     font-family: Roboto,Helvetica Neue Light,Helvetica Neue,Helvetica,Arial,Lucida Grande,sans-serif;
 }
 
-.CartsLetters{
-    position: absolute;
-    padding-left: 750px;
-}
-
 .LogoImage{
-     padding-left: 700px;
-
-
+     padding-left: 450px;
 }
-.profile{
-    position: absolute;
-    padding-left: 1415px;
-    font-size: x-small;
-    padding-top: 30px;
-    font-family: "Roboto";
-}
-
 .ProfileImage{
-    position: absolute;
-    padding-left: 1415px;
-    padding-bottom: 15px;
-    
+    /*position: absolute;*/
+   padding-left: 15px;
+    /*padding-bottom: 15px;*/
+    padding-top: 6px;
+    font-family: "Roboto";
+    font-size: x-small;
+    line-height: 150%;
 }
 
 .CartImage{
-    position: absolute;
-    padding-left: 1465px;
-    padding-bottom: 15px;
-}
-.cart{
-    position: absolute;
-    padding-left: 1465px;
+    /*position: absolute;*/
+    /*padding-left: 1465px;*/
+    
+    padding-left: 15px;
     font-size: x-small;
-    padding-top: 30px;
+    padding-top: 6px;
     font-family: "Roboto";
+    line-height: 150%;
 }
+
 .search{
-    position:absolute;
-    padding-left:1165px;
-    padding-right: 50px;
-    margin: unset;
+   /* position:absolute;*/
+    padding-left:340px;
     padding-top: 23px;
 }
-.SearchImage{
-    position: absolute;
-    padding-left: 1338px;
-    padding-bottom: 2px;
-    margin: unset;
-    
+
+.input-group{
+    width:230px;
 }
 .SearchButton{
     background-color:rgb(252, 243, 207);
+    padding:unset;
 }
 
-.form-control{
-    padding: 0px;
-    padding-top: 0px;
-    padding-right: 0px;
-    padding-bottom: 0px;
-    padding-left: 0px;
-}
+
 .MenuItem1{
-    position: absolute;
-    /*padding-left: 95px;*/
+   /* position: absolute;*/
     color: black;
     font-family: "Roboto";
     font-size:medium;
     padding-top: 4px;
+  
 }
 .MenuItem2{
-    position: absolute;
-    padding-left: 65px;
+   /* position: absolute;*/
+    padding-left: 15px;
     color: black;
     font-family: "Roboto";
     font-size:medium;
     padding-top: 4px;
 }
 .MenuItem3{
-    position: absolute;
-    padding-left: 145px;
+    /*position: absolute;*/
+    padding-left: 15px;
     color: black;
     font-family: "Roboto";
     font-size:medium;

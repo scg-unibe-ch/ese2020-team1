@@ -31,6 +31,7 @@ const appRoutes: Routes = [
   { path: 'user-login', component: UserLoginComponent},
   { path: 'user-registration', component: UserRegistrationComponent },
   { path: 'browse', component: BrowseComponent},
+  { path: "product-registration", component:ProductRegistrationComponent},
   { path: '', redirectTo: 'browse', pathMatch: 'full'}
 ];
 
