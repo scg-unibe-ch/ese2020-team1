@@ -25,10 +25,19 @@ import { UsernameValidator } from './user-registration/validators/username.valid
 import { NavbarComponent } from './navbar/navbar.component';
 import{Routes, RouterModule} from '@angular/router';
 
+<<<<<<< Updated upstream
 const appRoutes:Routes=[
   { path: 'user-login', 
   component: UserLoginComponent},
   { path: 'user-registration', component: UserRegistrationComponent}
+=======
+const appRoutes: Routes = [
+  { path: 'user-login', component: UserLoginComponent},
+  { path: 'user-registration', component: UserRegistrationComponent },
+  { path: 'browse', component: BrowseComponent},
+  { path: 'product-registration', component: ProductRegistrationComponent},
+  { path: '', redirectTo: 'bro, wse', pathMatch: 'full'}
+>>>>>>> Stashed changes
 ];
 
 @NgModule({
