@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { environment } from '../../environments/environment';
 import { ParentErrorStateMatcher } from '../user-registration/validators';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-product-registration',
   templateUrl: './product-registration.component.html',
@@ -30,7 +32,7 @@ export class ProductRegistrationComponent implements OnInit {
     "Daily"
   ];
 
- constructor(private fb: FormBuilder, private httpClient: HttpClient) { }
+ constructor(private fb: FormBuilder, private httpClient: HttpClient, private router: Router) { }
 
   ngOnInit(): void {
     this.createForms();
@@ -56,7 +58,6 @@ export class ProductRegistrationComponent implements OnInit {
 
   onSubmitProductDetails(value): void {
 
-
     this.user = localStorage.getItem('userName');
     this.httpClient.post(environment.endpointURL + 'product/register', {
       userName: this.user,
@@ -72,6 +73,10 @@ export class ProductRegistrationComponent implements OnInit {
     }).subscribe((res: any) => {
       this.alert = true;
       this.productDetailsForm.reset({});
+      setTimeout(() => {
+        this.router.navigate(['/browse']);
+      }, 3000);
+
     });
   }
   closeAlert() {
