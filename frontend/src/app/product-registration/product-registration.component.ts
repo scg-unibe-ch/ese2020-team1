@@ -12,28 +12,22 @@ export class ProductRegistrationComponent implements OnInit {
 
   productDetailsForm: FormGroup;
   parentErrorStateMatcher = new ParentErrorStateMatcher();
-
+  alert: boolean = false;
   user: String;
 
   types = [
-    "Product",
+    "",
+    "Product (sell)",
+    "Product (lend)",
     "Service"
   ];
 
-  paymentTypes = [
-    "Sell",
-    "Lend"
-  ];
 
   paymentBases = [
+    "",
     "Unique",
     "Hourly",
     "Daily"
-  ];
-
-  statuses = [
-    "available",
-    "sold"
   ];
 
  constructor(private fb: FormBuilder, private httpClient: HttpClient) { }
@@ -50,36 +44,37 @@ export class ProductRegistrationComponent implements OnInit {
         Validators.pattern(/^[0-9]\d*$/),
         Validators.required
       ])),
-      paymentType: new FormControl(this.paymentTypes[0], Validators.required),
       paymentBasis: new FormControl(this.paymentBases[0], Validators.required),
       description: new FormControl('', Validators.compose([
         Validators.maxLength(300),
         Validators.required
       ])),
       location: ['', Validators.required],
-      status: new FormControl(this.statuses[0], Validators.required),
       delivery: new FormControl(false, Validators.nullValidator)
     })
   }
 
   onSubmitProductDetails(value): void {
 
-    this.user = localStorage.getItem('userName');
 
+    this.user = localStorage.getItem('userName');
     this.httpClient.post(environment.endpointURL + 'product/register', {
       userName: this.user,
-      type: this.productDetailsForm.get('type').value,
-      name: this.productDetailsForm.get('name').value,
+      productType: this.productDetailsForm.get('type').value,
+      title: this.productDetailsForm.get('name').value,
       price: this.productDetailsForm.get('price').value,
-      paymentType: this.productDetailsForm.get('paymentType').value,
-      paymentBasis: this.productDetailsForm.get('paymentBasis').value,
+      payFreq: this.productDetailsForm.get('paymentBasis').value,
       description: this.productDetailsForm.get('description').value,
       location: this.productDetailsForm.get('location').value,
-      status: this.productDetailsForm.get('status').value,
+      status: "availabe",
       delivery: this.productDetailsForm.get('delivery').value,
 
     }).subscribe((res: any) => {
-      //Add functionality for confirmation window
+      this.alert = true;
+      this.productDetailsForm.reset({});
     });
+  }
+  closeAlert() {
+    this.alert = false;
   }
 }

@@ -1,16 +1,16 @@
 {
   "ExpandedNodes": [
     "",
-    "\\backend\\postman_collection",
     "\\backend\\src",
     "\\backend\\src\\controllers",
     "\\backend\\src\\middlewares",
+    "\\backend\\src\\models",
     "\\frontend",
     "\\frontend\\src",
     "\\frontend\\src\\app",
     "\\frontend\\src\\app\\product-registration",
     "\\frontend\\src\\app\\user-login"
   ],
-  "SelectedNode": "\\frontend\\src\\app\\user-login\\user-login.component.ts",
+  "SelectedNode": "\\frontend\\src\\app\\product-registration\\product-registration.component.ts",
   "PreviewInSolutionExplorer": false
 }

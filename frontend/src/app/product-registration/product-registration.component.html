@@ -3,13 +3,18 @@
         <div class="col">
             <h2 class="section-title">Product/Service Registration</h2>
 
-
+            <div *ngIf="alert" class="alert alert-success alert-dismissible fade show" role="alert">
+              Your product was registered successfully!
+              <button (click)="closeAlert()" type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
 
             <form [formGroup]="productDetailsForm" (ngSubmit)="onSubmitProductDetails(productDetailsForm.value)">
 
               <p> Are you offering a product or a service?</p>
               <mat-form-field>
-                <mat-select placeholder="" [(value)]="types[0]">
+                <mat-select placeholder="" formControlName ="type">
                   <mat-option *ngFor="let type of types" [value]="type">
                     {{type}}
                   </mat-option>
@@ -44,15 +49,7 @@
                 </mat-form-field>
 
                 <mat-form-field>
-                  <mat-select placeholder="Payment Type" [(value)]="paymentTypes[0]">
-                    <mat-option *ngFor="let paymentType of paymentTypes" [value]="paymentType">
-                      {{paymentType}}
-                    </mat-option>
-                  </mat-select>
-                </mat-form-field>
-
-                <mat-form-field>
-                  <mat-select placeholder="Payment Basis" [(value)]="paymentBases[0]">
+                  <mat-select placeholder="Payment Basis" formControlName ="paymentBasis">
                     <mat-option *ngFor="let paymentBasis of paymentBases" [value]="paymentBasis">
                       {{paymentBasis}}
                     </mat-option>
