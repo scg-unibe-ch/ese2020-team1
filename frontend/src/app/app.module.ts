@@ -23,12 +23,14 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatNativeDateModule } from '@angular/material/core';
 import { UsernameValidator } from './user-registration/validators/username.validator.service';
 import { NavbarComponent } from './navbar/navbar.component';
-import{Routes, RouterModule} from '@angular/router';
+import { Routes, RouterModule, ActivatedRoute } from '@angular/router';
+import { BrowseComponent } from './browse/browse.component';
 
-const appRoutes:Routes=[
-  { path: 'user-login', 
-  component: UserLoginComponent},
-  { path: 'user-registration', component: UserRegistrationComponent}
+const appRoutes: Routes = [
+  { path: 'user-login', component: UserLoginComponent},
+  { path: 'user-registration', component: UserRegistrationComponent },
+  { path: 'browse', component: BrowseComponent},
+  { path: '', redirectTo: 'browse', pathMatch: 'full'}
 ];
 
 @NgModule({
@@ -39,6 +41,7 @@ const appRoutes:Routes=[
     UserLoginComponent,
     UserRegistrationComponent,
     NavbarComponent,
+    BrowseComponent,
   ],
   imports: [
     BrowserModule,
