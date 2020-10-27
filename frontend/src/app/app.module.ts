@@ -24,10 +24,11 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { UsernameValidator } from './user-registration/validators/username.validator.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import{Routes, RouterModule} from '@angular/router';
+import { AppRoutingModule } from './app-routing.module';
 
 <<<<<<< Updated upstream
 const appRoutes:Routes=[
-  { path: 'user-login', 
+  { path: 'app-user-login', 
   component: UserLoginComponent},
   { path: 'user-registration', component: UserRegistrationComponent}
 =======
@@ -66,7 +67,8 @@ const appRoutes: Routes = [
     MatDatepickerModule,
     MatSelectModule,
     MatNativeDateModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    AppRoutingModule
   ],
   providers: [
     UsernameValidator,
@@ -78,6 +80,6 @@ const appRoutes: Routes = [
   ],
   bootstrap: [
     AppComponent
-  ]
+  ],
 })
 export class AppModule { }
