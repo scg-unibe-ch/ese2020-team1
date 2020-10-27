@@ -30,6 +30,7 @@ import { BrowseComponent } from './browse/browse.component';
 const appRoutes: Routes = [
   { path: 'user-login', component: UserLoginComponent},
   { path: 'user-registration', component: UserRegistrationComponent },
+  { path: 'product-registration' , component: ProductRegistrationComponent},
   { path: 'browse', component: BrowseComponent},
   { path: '', redirectTo: 'browse', pathMatch: 'full'}
 ];
