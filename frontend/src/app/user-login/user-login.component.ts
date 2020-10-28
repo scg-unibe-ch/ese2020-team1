@@ -2,6 +2,9 @@ import { Component, Directive, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
+
+import { LoggedInCheckerService } from '../auth/logged-in-checker.service';
 
 @Component({
   selector: 'app-user-login',
@@ -22,7 +25,7 @@ export class UserLoginComponent implements OnInit {
   secureEndpointResponse = '';
   checkStatus = '';
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private LoggedInCheckerService: LoggedInCheckerService, private router: Router) { }
 
   ngOnInit(): void {
     this.checkUserStatus();
@@ -48,7 +51,12 @@ export class UserLoginComponent implements OnInit {
       localStorage.setItem('userName', res.user.userName);
 
       this.checkUserStatus();
+
     });
+
+    setTimeout(() => {
+      this.router.navigateByUrl('/');
+    }, 2000);
   }
 
   logout(): void {
