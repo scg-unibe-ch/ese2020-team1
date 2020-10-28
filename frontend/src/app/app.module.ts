@@ -23,6 +23,22 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatNativeDateModule } from '@angular/material/core';
 import { UsernameValidator } from './user-registration/validators/username.validator.service';
 import { ProductRegistrationComponent } from './product-registration/product-registration.component';
+//import { NavbarComponent } from './navbar/navbar.component';
+import { Routes, RouterModule, ActivatedRoute } from '@angular/router';
+//import { BrowseComponent } from './browse/browse.component';
+import { AuthGuard } from './auth/auth.guard';
+
+const appRoutes: Routes = [
+  { path: 'user-login', component: UserLoginComponent},
+  { path: 'user-registration', component: UserRegistrationComponent },
+  {
+    path: 'product-registration',
+    component: ProductRegistrationComponent,
+    canActivate: [AuthGuard]
+  },
+  //{ path: 'browse', component: BrowseComponent},
+  { path: '', redirectTo: 'browse', pathMatch: 'full'}
+];
 
 @NgModule({
   declarations: [
