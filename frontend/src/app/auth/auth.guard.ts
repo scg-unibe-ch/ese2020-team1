@@ -27,7 +27,7 @@ export class AuthGuard implements CanActivate {
     }
 
     //In no user logged in, navigation is cancelled
-    //Store the value of the current route in LoggedInCheckerService to access it after login
+    //Store the value of the current route in LoggedInCheckerService to access it after login (user-login needs to be updated)
     this.LoggedInCheckerService.redirectUrl = url;
 
     //Return the url to the user login page

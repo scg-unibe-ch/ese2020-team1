@@ -10,7 +10,7 @@ export class LoggedInCheckerService {
   constructor(private httpClient: HttpClient) { }
 
   loggedIn = false;
-  redirectUrl: string;
+  redirectUrl = '/';
 
   accessSecuredEndpoint(): void {
     this.httpClient.get(environment.endpointURL + 'secured').subscribe((res: any) => {
