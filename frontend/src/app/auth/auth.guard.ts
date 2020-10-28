@@ -21,9 +21,16 @@ export class AuthGuard implements CanActivate {
   }
 
   checkLogin(url: string): true | UrlTree {
-    if (this.LoggedInCheckerService.isUserLoggedIn) { return true; }
+    //Return true if a user is logged in -> navigation continues
+    if (this.LoggedInCheckerService.isUserLoggedIn()) {
+      return true;
+    }
 
+    //In no user logged in, navigation is cancelled
+    //Store the value of the current route in LoggedInCheckerService to access it after login
     this.LoggedInCheckerService.redirectUrl = url;
+
+    //Return the url to the user login page
     return this.router.parseUrl('/user-login');
   }
 
