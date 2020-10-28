@@ -48,9 +48,41 @@
     padding:unset;
 }
 
+.CartsLetters{
+    position: absolute;
+    padding-left: 750px;
+}
 
+.LogoImage{
+     padding-left: 700px;
+
+
+}
+.profile{
+    position: absolute;
+    padding-left: 1415px;
+    font-size: x-small;
+    padding-top: 30px;
+    font-family: "Roboto";
+}
+.SearchImage{
+    position: absolute;
+    padding-left: 1338px;
+    padding-bottom: 2px;
+    margin: unset;
+    
+}
+
+.form-control{
+    padding: 0px;
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+}
 .MenuItem1{
-   /* position: absolute;*/
+    /*position: absolute;*/
+    /*padding-left: 95px;*/
     color: black;
     font-family: "Roboto";
     font-size:medium;
@@ -73,5 +105,3 @@
     font-size:medium;
     padding-top: 4px;
 }
-
-    

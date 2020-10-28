@@ -26,13 +26,18 @@ import { ProductRegistrationComponent } from './product-registration/product-reg
 import { NavbarComponent } from './navbar/navbar.component';
 import { Routes, RouterModule, ActivatedRoute } from '@angular/router';
 import { BrowseComponent } from './browse/browse.component';
+import { AuthGuard } from './auth/auth.guard';
 
 const appRoutes: Routes = [
   { path: 'user-login', component: UserLoginComponent},
   { path: 'user-registration', component: UserRegistrationComponent },
-  { path: 'browse', component: BrowseComponent},
-  { path: "product-registration", component:ProductRegistrationComponent},
-  { path: '', redirectTo: 'browse', pathMatch: 'full'}
+  { path: 'browse', component: BrowseComponent},  
+  { path: '', redirectTo: 'browse', pathMatch: 'full'},
+  {
+    path: 'product-registration',
+    component: ProductRegistrationComponent,
+    canActivate: [AuthGuard]
+  },
 ];
 
 @NgModule({
