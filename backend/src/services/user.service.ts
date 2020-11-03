@@ -39,7 +39,20 @@ export class UserService {
             return Promise.resolve(user === null);
         });
 
-     }
+    }
+
+
+    public isEmailFree(email: string): Promise<boolean> {
+        return User.findOne({
+            where: {
+                email: email
+            }
+        })
+            .then(user => {
+                return Promise.resolve(user === null);
+            });
+
+    }
 
     public getAll(): Promise<User[]> {
         return User.findAll();

@@ -30,4 +30,11 @@ userController.get('/is-username-free/:username',
     }
 );
 
+userController.get('/is-email-free/:email',
+    (req: Request, res: Response) => {
+        userService.isEmailFree(req.params.email).then(free => res.send(free)).catch(err => res.status(400).send(err));
+    }
+);
+
+
 export const UserController: Router = userController;

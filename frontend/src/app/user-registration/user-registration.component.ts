@@ -118,10 +118,12 @@ export class UserRegistrationComponent implements OnInit {
       ]),
         this.usernameValidator.checkUsername.bind(this.usernameValidator)
       ],
-      email: new FormControl('', Validators.compose([
+      email: ['', Validators.compose([
         Validators.required,
         Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
-      ])),
+      ]),
+        this.usernameValidator.checkEmail.bind(this.usernameValidator),
+      ],
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       birthday: ['', Validators.required],

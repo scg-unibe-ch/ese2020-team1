@@ -17,6 +17,7 @@
           <mat-error *ngFor="let validation of validation_messages.email">
             <mat-error class="error-message" *ngIf="userDetailsForm.get('email').hasError(validation.type) && (userDetailsForm.get('email').dirty || userDetailsForm.get('email').touched)">{{validation.message}}</mat-error>
           </mat-error>
+          <mat-error class="error-message" *ngIf="userDetailsForm.get('email').errors?.emailInUse && (userDetailsForm.get('email').dirty || userDetailsForm.get('email').touched)">An account already exists for this e-mail</mat-error>
         </mat-form-field>
 
         <br>
