@@ -2,8 +2,8 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { environment } from '../../environments/environment';
+import { Router } from '@angular/router';
 import {
-  //Country,
   UsernameValidator,
   PasswordValidator,
   ParentErrorStateMatcher,
@@ -21,8 +21,10 @@ export class UserRegistrationComponent implements OnInit {
   userDetailsForm: FormGroup;
 
   matching_passwords_group: FormGroup;
-  //country_phone_group: FormGroup;
   result: Boolean;
+
+  //Set to true if the user account is created successfully. Used to display the corresponding success message to the user
+  alert: boolean = false;
 
   parentErrorStateMatcher = new ParentErrorStateMatcher();
 
@@ -89,7 +91,7 @@ export class UserRegistrationComponent implements OnInit {
     ]
   }
 
-  constructor(private fb: FormBuilder, private httpClient: HttpClient, private usernameValidator: UsernameValidator) { }
+  constructor(private fb: FormBuilder, private httpClient: HttpClient, private usernameValidator: UsernameValidator, private router: Router) { }
 
   ngOnInit() {
     this.createForms();
@@ -167,13 +169,14 @@ export class UserRegistrationComponent implements OnInit {
       phone: this.userDetailsForm.get('phone').value
 
     }).subscribe((res: any) => {
-      // Set user data in local storage
-      //localStorage.setItem('userToken', res.token);
-      //localStorage.setItem('userName', res.user.userName);
-
-      //this.checkUserStatus();
+      this.alert = true;
+      this.userDetailsForm.reset({});
     });
+    setTimeout(() => {
+      this.router.navigateByUrl("/user-login");
+    }, 5000);
   }
   }
+
 
 

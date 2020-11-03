@@ -77,7 +77,7 @@ export class ProductRegistrationComponent implements OnInit {
     });
     setTimeout(() => {
       this.router.navigateByUrl("/");
-    }, 2000);
+    }, 5000);
   }
   closeAlert() {
     this.alert = false;

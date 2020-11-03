@@ -2,6 +2,11 @@
   <div class="row">
     <div class="col">
       <h2 class="section-title">User details</h2>
+
+      <div *ngIf="alert" class="alert alert-success alert-dismissible fade show" role="alert">
+        Your account has been created! You will be redirected automatically.
+      </div>
+
       <form [formGroup]="userDetailsForm" (ngSubmit)="onSubmitUserDetails(userDetailsForm.value)">        
 
         <mat-form-field class="full-width">
