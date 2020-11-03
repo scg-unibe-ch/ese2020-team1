@@ -7,21 +7,34 @@ import { environment } from '../../environments/environment';
 })
 export class LoggedInCheckerService {
 
-  constructor(private httpClient: HttpClient) { }
 
+  userToken: string;
   loggedIn = false;
+
+  //Path to which a user gets redirected after login (user-login needs to be updated)
   redirectUrl = '/';
 
-  accessSecuredEndpoint(): void {
-    this.httpClient.get(environment.endpointURL + 'secured').subscribe((res: any) => {
-      this.loggedIn = true;
-    }, (error: any) => {
-        this.loggedIn = false;
-    });
+  constructor(private httpClient: HttpClient) { }
+
+
+
+  //Promise to check if user is logged in (access secured endpoint)
+  //Resolve with "true"
+  checkUserStatus(): boolean {
+    // Get user data from local storage
+    this.userToken = localStorage.getItem('userToken');
+
+    // Set boolean whether a user is logged in or not
+    this.loggedIn = !!(this.userToken);
+    return this.loggedIn
   }
 
+
+
+
+  
   isUserLoggedIn(): boolean {
-    this.accessSecuredEndpoint();
-    return this.loggedIn;
+    return this.checkUserStatus();
   }
+
 }
