@@ -113,6 +113,9 @@ Product, User
 Product
 *knows name*
 
+## UI Mockups
+
+![image 3](https://github.com/scg-unibe-ch/ese2020-team1/blob/master/deliverables/UIMockups.jpg)
 
 
 ## Product backlog and sprint backlog
