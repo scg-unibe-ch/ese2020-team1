@@ -59,16 +59,16 @@ As an administrator, I want to approve/disappear products by users, so I can che
 
 ## List of Functional and Non-Functional Requirements
 **Functional:**
-Register a new user
-Login a registered user
-Browse the catalogue
-Sell and buy products
+* Register a new user
+* Login a registered user
+* Browse the catalogue
+* Sell and buy products
 
 **Non-Functional: (see <a href="https://web.cse.ohio-state.edu/~bair.41/616/Project/Example_Document/Req_Doc_Example.html#Nonfunc">example</a>)**
-Security: User data must remain confidential
-Supportability: The web platform should run on all standard browsers
-Performance: for example max. 5 seconds for login
-Usability: The system should be easy to use
+* Security: User data must remain confidential
+* Supportability: The web platform should run on all standard browsers
+* Performance: for example max. 5 seconds for login
+* Usability: The system should be easy to use
 
 
 ## CRC Cards for User Stories
