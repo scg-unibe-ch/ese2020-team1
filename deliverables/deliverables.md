@@ -44,9 +44,9 @@ The admin decides to approve or decline the product.
 
 ## Use Case Diagram
 
-![image 1](./deliverables/UseCaseDiagram1.jpg)
+![image 1](https://github.com/scg-unibe-ch/ese2020-team1/blob/master/deliverables/UseCaseDiagram1.jpg)
 
-![image 1](./deliverables/UseCaseDiagram2.jpg)
+![image 2](https://github.com/scg-unibe-ch/ese2020-team1/blob/master/deliverables/UseCaseDiagram2.jpg)
 
 ## User Stories
 
