@@ -25,6 +25,7 @@ export class Server {
         TodoItem.createAssociations();
         TodoList.createAssociations();
         User.initialize(this.sequelize);
+        User.createAssociations();
 
         this.sequelize.sync().then(() => {                           // create connection to the database
             this.server.listen(this.port, () => {                                   // start server on specified port
