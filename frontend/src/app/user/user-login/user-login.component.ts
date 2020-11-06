@@ -1,10 +1,10 @@
 import { Component, Directive, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../environments/environment';
+import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 
-import { LoggedInCheckerService } from '../auth/logged-in-checker.service';
+import { LoggedInCheckerService } from '../../auth/logged-in-checker.service';
 
 @Component({
   selector: 'app-user-login',

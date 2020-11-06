@@ -15,8 +15,8 @@ import { TodoItemComponent } from './todo-list/todo-item/todo-item.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { AuthInterceptor } from './auth/auth.interceptor';
-import { UserLoginComponent } from './user-login/user-login.component';
-import { UserRegistrationComponent } from './user-registration/user-registration.component';
+import { UserLoginComponent } from './user/user-login/user-login.component';
+import { UserRegistrationComponent } from './user/user-registration/user-registration.component';
 import { MatPasswordStrengthModule } from '@angular-material-extensions/password-strength';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSelectModule } from '@angular/material/select';
@@ -30,12 +30,12 @@ import { BrowseComponent } from './browse/browse.component';
 import { AuthGuard } from './auth/auth.guard';
 
 const appRoutes: Routes = [
-  { path: 'user-login', component: UserLoginComponent},
-  { path: 'user-registration', component: UserRegistrationComponent },
+  { path: 'user/user-login', component: UserLoginComponent},
+  { path: 'user/user-registration', component: UserRegistrationComponent },
   { path: 'browse', component: BrowseComponent},  
   { path: '', redirectTo: 'browse', pathMatch: 'full'},
   {
-    path: 'product-registration',
+    path: 'product/product-registration',
     component: ProductRegistrationComponent,
     canActivate: [AuthGuard]
   },

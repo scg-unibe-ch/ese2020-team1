@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators, FormControl, ReactiveFormsModule } from '@angular/forms';
-import { ParentErrorStateMatcher } from '../user-registration/validators';
+import { ParentErrorStateMatcher } from '../../user/user-registration/validators';
 import { environment } from '../../../environments/environment';
 import { Router } from '@angular/router';
 
@@ -61,7 +61,7 @@ export class ProductRegistrationComponent implements OnInit {
 
 
     this.user = localStorage.getItem('userName');
-    this.httpClient.post(environment.endpointURL + 'product/register', {
+    this.httpClient.post(environment.endpointURL + 'product/add', {
       userName: this.user,
       productType: this.productDetailsForm.get('type').value,
       title: this.productDetailsForm.get('name').value,

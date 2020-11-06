@@ -32,7 +32,7 @@ export class AuthGuard implements CanActivate {
     this.LoggedInCheckerService.redirectUrl = url;
 
     //Return the url to the user login page
-    return this.router.parseUrl('/user-login');
+    return this.router.parseUrl('/user/user-login');
   }
 
   

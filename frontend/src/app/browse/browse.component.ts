@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { environment } from '../../environments/environment';
+import { HttpClient } from '@angular/common/http';
+import { Product } from '../models/product.model';
 
 @Component({
   selector: 'app-browse',
@@ -7,9 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BrowseComponent implements OnInit {
 
-  constructor() { }
+  listOfProducts: { string: Product[] };
+
+  constructor(private httpClient: HttpClient) { }
 
   ngOnInit(): void {
+    this.getProductList();
   }
 
+  getProductList(): void {
+    this.httpClient.get(environment.endpointURL + 'product/all').subscribe((item: any) => {
+      console.log(item);
+      //parse the json answer to listOfProducts
+    });
+  }
 }
