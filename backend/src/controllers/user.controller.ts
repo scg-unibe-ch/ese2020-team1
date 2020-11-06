@@ -24,6 +24,11 @@ userController.get('/', verifyToken, // you can add middleware on specific reque
     }
 );
 
+userController.delete('/:id', (req: Request, res: Response) => {
+    userService.deleteUser(req.params.id).then(item => res.status(200).send({ deleted: item })).catch(err => res.status(403).send(err));
+
+});
+
 userController.get('/is-username-free/:username',
     (req: Request, res: Response) => {
         userService.isUsernameFree(req.params.username).then(free => res.send(free)).catch(err => res.status(400).send(err));

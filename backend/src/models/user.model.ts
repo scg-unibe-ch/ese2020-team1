@@ -18,24 +18,25 @@ export interface UserAttributes {
     wallet: number;
 }
 
-export interface UserCreationAttributes extends Optional<UserAttributes, 'userId'> { }
+// The userId and wallet attributes are optional in User.build and User.create calls
+export interface UserCreationAttributes extends Optional<UserAttributes, 'userId' | 'wallet' > { }
 
 export class User extends Model<UserAttributes, UserCreationAttributes> implements UserAttributes {
     userId!: number;
     userName!: string;
     password!: string;
     // Additional user attributes
-    email: string;
-    firstName: string;
-    lastName: string;
-    birthday: Date;
-    gender: string;
-    street: string;
-    zip: number;
-    city: string;
-    country: string;
-    phone: string;
-    wallet: number;
+    email!: string; // the `null assertion` `!` is required in strict mode.
+    firstName!: string;
+    lastName!: string;
+    birthday!: Date;
+    gender!: string;
+    street!: string;
+    zip!: number;
+    city!: string;
+    country!: string;
+    phone!: string;
+    wallet!: number;
 
     public static initialize(sequelize: Sequelize) {
         User.init({
