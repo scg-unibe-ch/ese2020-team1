@@ -13,6 +13,8 @@ export class AuthGuard implements CanActivate {
 
   }
 
+  //Returs true if a user is allowed to access a path
+  //Returns UrlTree if a user is redirected to another path
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean | UrlTree {
@@ -21,8 +23,8 @@ export class AuthGuard implements CanActivate {
   }
 
 
+  //Returns true if a user is logged in -> navigation continues
   checkLogin(url: string): true | UrlTree {
-    //Return true if a user is logged in -> navigation continues
     if (this.LoggedInCheckerService.isUserLoggedIn()) {
       return true;
     }

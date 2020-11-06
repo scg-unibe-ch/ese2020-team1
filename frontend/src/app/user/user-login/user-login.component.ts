@@ -1,10 +1,10 @@
 import { Component, Directive, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../environments/environment';
+import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 
-import { LoggedInCheckerService } from '../auth/logged-in-checker.service';
+import { LoggedInCheckerService } from '../../auth/logged-in-checker.service';
 
 @Component({
   selector: 'app-user-login',
@@ -25,19 +25,10 @@ export class UserLoginComponent implements OnInit {
   secureEndpointResponse = '';
   checkStatus = '';
 
-  constructor(private httpClient: HttpClient, private LoggedInCheckerService: LoggedInCheckerService, private router: Router) { }
+  constructor(private httpClient: HttpClient, public LoggedInCheckerService: LoggedInCheckerService, private router: Router) { }
 
   ngOnInit(): void {
-    this.checkUserStatus();
-  }
-
-  checkUserStatus(): void {
-    // Get user data from local storage
-    this.userToken = localStorage.getItem('userToken');
-    this.userName = localStorage.getItem('userName');
-
-    // Set boolean whether a user is logged in or not
-    this.loggedIn = !!(this.userToken);
+    this.LoggedInCheckerService.checkUserStatus();
   }
 
 
@@ -50,13 +41,13 @@ export class UserLoginComponent implements OnInit {
       localStorage.setItem('userToken', res.token);
       localStorage.setItem('userName', res.user.userName);
 
-      this.checkUserStatus();
-
+      this.LoggedInCheckerService.checkUserStatus();
+      setTimeout(() => {
+        this.router.navigateByUrl('/');
+      }, 2000);
     });
 
-    setTimeout(() => {
-      this.router.navigateByUrl('/');
-    }, 2000);
+
   }
 
   logout(): void {
@@ -64,18 +55,18 @@ export class UserLoginComponent implements OnInit {
     localStorage.removeItem('userToken');
     localStorage.removeItem('userName');
 
-    this.checkUserStatus();
+    this.LoggedInCheckerService.checkUserStatus();
   }
 
 
   /**
    * Function to access a secure endpoint that can only be accessed by logged in users by providing their token.
    */
-  accessSecuredEndpoint(): void {
-    this.httpClient.get(environment.endpointURL + 'secured').subscribe((res: any) => {
-      this.secureEndpointResponse = 'Successfully accessed secure endpoint. Message from server: ' + res.message;
-    }, (error: any) => {
-      this.secureEndpointResponse = 'Unauthorized';
-    });
-  }
+  //accessSecuredEndpoint(): void {
+  //  this.httpClient.get(environment.endpointURL + 'secured').subscribe((res: any) => {
+  //    this.secureEndpointResponse = 'Successfully accessed secure endpoint. Message from server: ' + res.message;
+  //  }, (error: any) => {
+  //    this.secureEndpointResponse = 'Unauthorized';
+  //  });
+  //}
 }

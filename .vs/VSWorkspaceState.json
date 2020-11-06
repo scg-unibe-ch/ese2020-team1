@@ -1,14 +1,16 @@
 {
   "ExpandedNodes": [
     "",
-    "\\backend",
-    "\\backend\\postman_collection",
-    "\\backend\\src",
-    "\\backend\\src\\controllers",
-    "\\backend\\src\\models",
-    "\\backend\\src\\services",
-    "\\frontend\\src\\app"
+    "\\frontend",
+    "\\frontend\\src",
+    "\\frontend\\src\\app",
+    "\\frontend\\src\\app\\models",
+    "\\frontend\\src\\app\\product-registration",
+    "\\frontend\\src\\app\\todo-list",
+    "\\frontend\\src\\app\\todo-list\\todo-item",
+    "\\frontend\\src\\app\\user",
+    "\\frontend\\src\\app\\user-registration\\validators"
   ],
-  "SelectedNode": "\\backend\\postman_collection\\ese2020.postman_collection.json",
+  "SelectedNode": "\\frontend\\src\\app\\user-registration",
   "PreviewInSolutionExplorer": false
 }
