@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators, FormControl, ReactiveFormsModule } from '@angular/forms';
-import { environment } from '../../environments/environment';
+import { environment } from '../../../environments/environment';
 import { Router } from '@angular/router';
 
 @Component({
@@ -19,7 +19,8 @@ export class ProductRegistrationComponent implements OnInit {
     "",
     "Product (sell)",
     "Product (lend)",
-    "Service"
+    "Service (onetime)",
+    "Service (time-based)"
   ];
 
 
