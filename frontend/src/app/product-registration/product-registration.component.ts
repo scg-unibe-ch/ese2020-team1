@@ -2,6 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { environment } from '../../environments/environment';
+import { ParentErrorStateMatcher } from '../user-registration/validators';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,6 +13,7 @@ import { Router } from '@angular/router';
 export class ProductRegistrationComponent implements OnInit {
 
   productDetailsForm: FormGroup;
+  parentErrorStateMatcher = new ParentErrorStateMatcher();
   alert: boolean = false;
   user: String;
 

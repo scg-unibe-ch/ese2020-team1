@@ -1,5 +1,5 @@
 <mat-card>
-  <div *ngIf="!LoggedInCheckerService.checkUserStatus()">
+  <div *ngIf="!loggedIn">
     <mat-form-field>
       <input matInput maxlength="25" placeholder="User Name" [(ngModel)]="userName" name="userName">
       {{ checkStatus }}
@@ -11,7 +11,7 @@
     <p>Don't have an account? You can register <a routerLink="/user-registration">HERE</a>!</p>
   </div>
 
-  <div *ngIf="LoggedInCheckerService.checkUserStatus()">
+  <div *ngIf="loggedIn">
     <button mat-flat-button color="warn" (click)="logout()">Logout</button>
     You are currently logged in as {{ userName }}
   </div>
