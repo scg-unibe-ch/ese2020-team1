@@ -2,13 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\backend",
-    "\\backend\\postman_collection",
     "\\backend\\src",
     "\\backend\\src\\controllers",
     "\\backend\\src\\models",
     "\\backend\\src\\services",
-    "\\frontend\\src\\app"
+    "\\frontend\\src",
+    "\\frontend\\src\\app",
+    "\\frontend\\src\\app\\auth",
+    "\\frontend\\src\\app\\product-registration"
   ],
-  "SelectedNode": "\\backend\\postman_collection\\ese2020.postman_collection.json",
+  "SelectedNode": "\\backend\\postman_collection",
   "PreviewInSolutionExplorer": false
 }

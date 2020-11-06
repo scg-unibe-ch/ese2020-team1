@@ -29,10 +29,8 @@ export class LoggedInCheckerService {
     return this.loggedIn
   }
 
-
-
-
-  
+  //returns true if a user is logged in
+  //returns false if no user is logged in
   isUserLoggedIn(): boolean {
     return this.checkUserStatus();
   }
