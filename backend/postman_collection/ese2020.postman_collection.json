@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "d777af06-c630-4138-8628-5dc5880c6ae6",
+		"_postman_id": "1fa30f06-2586-4fcf-b9c3-126d38fe8826",
 		"name": "ese2020",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -84,7 +84,7 @@
 			"response": []
 		},
 		{
-			"name": "user registration",
+			"name": "user registration userName and passwort only",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -291,6 +291,57 @@
 						"user",
 						"login"
 					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user isusernamefree nora",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user registration full manu2000",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userName\":\"manu2000\",\r\n    \"password\":\"$ecurePW123\",\r\n    \"email\":\"manu@testmail.com\",\r\n    \"firstName\":\"Manuela\",\r\n    \"lastName\":\"Muster\",\r\n    \"birthday\":\"2020-11-10T23:00:00.000Z\",\r\n    \"gender\":\"Female\",\r\n    \"street\":\"Musterstrasse\",\r\n    \"zip\":\"3000\",\r\n    \"city\":\"Bern\",\r\n    \"country\":\"Schweiz\",\r\n    \"phone\":\"031 300 00 00\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/user/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user delete",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
 				}
 			},
 			"response": []

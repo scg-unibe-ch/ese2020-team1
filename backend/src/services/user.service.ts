@@ -29,16 +29,32 @@ export class UserService {
         .catch(err => Promise.reject({ message: err }));
     }
 
+    // Delete a user by id
+    public deleteUser(id: string): Promise<number> {
+        return User.findByPk(parseInt(id, 10))
+            .then(found => {
+                if (found != null) {
+                    found.destroy();
+                    return Promise.resolve(found.userId);
+                } else {
+                    return Promise.reject({ message: 'deletion failed' });
+                }
+            })
+            .catch(err => Promise.reject({ message: err }));
+    }
+
     public isUsernameFree(userName: string): Promise<boolean> {
         return User.findOne({
             where: {
                 userName: userName
             }
         })
-        .then(user => {
-            return Promise.resolve(user === null);
-        });
-
+            .then(user => {
+                return Promise.resolve(user === null);
+            })
+            .catch(err => {
+                return Promise.reject({ message: err });
+            });
     }
 
 
