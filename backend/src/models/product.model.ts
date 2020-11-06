@@ -14,6 +14,7 @@ export interface ProductAttributes {
     location: string;
     status: string;
     delivery: boolean;
+    // userId: number;
 }
 
 // tells sequelize that todoItemId is not a required field
@@ -33,6 +34,7 @@ export class Product extends Model<ProductAttributes, ProductCreationAttributes>
     location: string;
     status: string;
     delivery: boolean;
+    // userId: number;
 
 
     public static initialize(sequelize: Sequelize) { // definition for database
@@ -88,6 +90,10 @@ export class Product extends Model<ProductAttributes, ProductCreationAttributes>
                 defaultValue: false,
                 allowNull: false
             },
+            // userId: {
+            //    type: DataTypes.INTEGER,
+            //    allowNull: false
+            // }
         },
         { sequelize, tableName: 'products' }
         );

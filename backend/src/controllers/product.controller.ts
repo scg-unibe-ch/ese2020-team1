@@ -18,10 +18,12 @@ productController.put('/modify/:id', verifyToken, (req: Request, res: Response) 
 });
 
 productController.delete('/delete/:id', verifyToken, (req: Request, res: Response) => {
-    // TODO
+    const productId = parseInt(req.params.id, 10);
+    productService.delete(productId).then(() => res.status(200).send())
+        .catch(err => res.status(500).send(err));
 });
 
-productController.get('/all', verifyToken, (req: Request, res: Response) => {
+productController.get('/all', (req: Request, res: Response) => {
     productService.getAll()
         .then((product: Array<ProductAttributes>) => res.send(product))
         .catch(err => res.status(500).send(err));
