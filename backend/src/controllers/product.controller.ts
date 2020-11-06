@@ -21,8 +21,10 @@ productController.delete('/delete/:id', verifyToken, (req: Request, res: Respons
     // TODO
 });
 
-productController.get('allProducts', (req: Request, res: Response) => {
-    // TODO
+productController.get('/all', verifyToken, (req: Request, res: Response) => {
+    productService.getAll()
+        .then((product: Array<ProductAttributes>) => res.send(product))
+        .catch(err => res.status(500).send(err));
 });
 
 export const ProductController: Router = productController;
