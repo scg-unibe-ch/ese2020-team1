@@ -15,6 +15,6 @@
     "\\frontend\\src\\app\\user\\user-registration",
     "\\frontend\\src\\app\\user\\user-registration\\validators"
   ],
-  "SelectedNode": "\\backend\\src\\services\\admin.service.ts",
+  "SelectedNode": "\\frontend\\src\\app\\product\\index.ts",
   "PreviewInSolutionExplorer": false
 }
