@@ -3,6 +3,14 @@ import { User } from '../models/user.model';
 
 export class ProductService {
 
+    public getById(id: string): Promise<Product> {
+        return Product.findByPk(parseInt(id, 10))
+            .then(found => {
+                return Promise.resolve(found);
+            })
+            .catch(err => Promise.reject({ message: err }));
+    }
+
     public create(product: ProductAttributes): Promise<ProductAttributes> {
         // User.findOne({
         //    where: {

@@ -29,4 +29,10 @@ productController.get('/all', (req: Request, res: Response) => {
         .catch(err => res.status(500).send(err));
 });
 
+productController.get('/:id', (req: Request, res: Response) => {
+    productService.getById(req.params.id)
+        .then((product: ProductAttributes) => res.send(product))
+        .catch(err => res.status(500).send(err));
+});
+
 export const ProductController: Router = productController;
