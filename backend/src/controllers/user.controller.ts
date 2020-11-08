@@ -41,5 +41,11 @@ userController.get('/is-email-free/:email',
     }
 );
 
+userController.get('/is-admin/:username', verifyToken,
+    (req: Request, res: Response) => {
+        userService.isAdmin(req.params.username).then(isAdmin => res.send(isAdmin)).catch(err => res.status(400).send(err));
+    }
+);
+
 
 export const UserController: Router = userController;
