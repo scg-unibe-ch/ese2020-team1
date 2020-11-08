@@ -1,16 +1,16 @@
 {
   "ExpandedNodes": [
     "",
-    "\\backend\\src",
-    "\\backend\\src\\controllers",
-    "\\backend\\src\\models",
-    "\\backend\\src\\services",
     "\\frontend",
     "\\frontend\\src",
     "\\frontend\\src\\app",
     "\\frontend\\src\\app\\product",
-    "\\frontend\\src\\app\\product\\product-registration"
+    "\\frontend\\src\\app\\product\\product-registration",
+    "\\frontend\\src\\app\\user",
+    "\\frontend\\src\\app\\user\\user-login",
+    "\\frontend\\src\\app\\user\\user-registration",
+    "\\frontend\\src\\app\\user\\user-registration\\validators"
   ],
-  "SelectedNode": "\\frontend\\src\\app\\user-registration",
+  "SelectedNode": "\\frontend\\src\\app\\product\\index.ts",
   "PreviewInSolutionExplorer": false
 }
