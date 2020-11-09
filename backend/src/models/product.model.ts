@@ -3,7 +3,7 @@ import { User } from './user.model';
 
 export interface ProductAttributes {
     productId: number;
-    isApproved: boolean;
+    isApproved: string;
     userName: string;
     productType: string;
     title: string;
@@ -22,18 +22,18 @@ export interface ProductCreationAttributes extends Optional<ProductAttributes, '
 
 
 export class Product extends Model<ProductAttributes, ProductCreationAttributes> implements ProductAttributes {
-    productId: number;
-    isApproved: boolean;
-    userName: string;
-    productType: string;
-    title: string;
-    price: number;
-    payFreq: string;
+    productId!: number;
+    isApproved!: string; // pending (default), approved, disapproved
+    userName!: string;
+    productType!: string;
+    title!: string;
+    price!: number;
+    payFreq!: string;
     // category: category;
-    description: string;
-    location: string;
-    status: string;
-    delivery: boolean;
+    description!: string;
+    location!: string;
+    status!: string;
+    delivery!: boolean;
     // userId: number;
 
 
@@ -45,8 +45,8 @@ export class Product extends Model<ProductAttributes, ProductCreationAttributes>
                 primaryKey: true
             },
             isApproved: {
-                type: DataTypes.BOOLEAN,
-                defaultValue: false,
+                type: DataTypes.STRING,
+                defaultValue: 'pending',
                 allowNull: false
             },
             userName: {

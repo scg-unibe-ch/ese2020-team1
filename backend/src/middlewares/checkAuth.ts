@@ -19,3 +19,12 @@ export function verifyToken(req: Request, res: Response, next: any) {
         res.status(403).send({ message: 'Unauthorized' });
     }
 }
+
+export function verifyAdmin(req: Request, res: Response, next: any) {
+    if (req.body.tokenPayload.isAdmin !== true) {
+        res.status(403).send({ message: 'Unauthorized' });
+
+    } else {
+        next();
+    }
+}

@@ -64,6 +64,10 @@ export class Admin extends User {
             wallet: {
                 type: DataTypes.INTEGER,
                 defaultValue: 100
+            },
+            isAdmin: {
+                type: DataTypes.BOOLEAN,
+                defaultValue: false
             }
 
         },

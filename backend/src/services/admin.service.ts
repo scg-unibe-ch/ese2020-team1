@@ -8,8 +8,9 @@ export class AdminService {
 
     public register(admin: UserAttributes): Promise<UserAttributes> {
         const saltRounds = 12;
+        admin.isAdmin = true;
         admin.password = bcrypt.hashSync(admin.password, saltRounds); // hashes the password, never store passwords as plaintext
-        return Admin.create(admin).then(inserted => Promise.resolve(inserted)).catch(err => Promise.reject(err));
+        return User.create(admin).then(inserted => Promise.resolve(inserted)).catch(err => Promise.reject(err));
     }
 
     public deleteAdmin(id: string): Promise<number> {
@@ -30,15 +31,21 @@ export class AdminService {
     }
 
     public approveProduct(id: string): Promise<Product> {
-        // Find a product by id and set the isApproved flag to false
+        // Find a product by id and set the isApproved flag to approved
         return Product.findByPk(parseInt(id, 19))
             .then((product) => {
-                product.isApproved = true;
+                product.update({ isApproved: 'approved' });
                 return Promise.resolve(product);
             })
             .catch(err => Promise.reject({ message: err }));
     }
-    // public disapproveProduct(id: string): Promise<Product> {
-    //    //Todo
-    // }
+     public disapproveProduct(id: string): Promise<Product> {
+         // Find a product by id and set the isApproved flag to disapproved
+         return Product.findByPk(parseInt(id, 19))
+             .then((product) => {
+                 product.update({ isApproved: 'disapproved' });
+                 return Promise.resolve(product);
+             })
+             .catch(err => Promise.reject({ message: err }));
+     }
 }

@@ -3,18 +3,13 @@
     "",
     "\\backend",
     "\\backend\\src",
-    "\\backend\\src\\controllers",
-    "\\backend\\src\\middlewares",
     "\\backend\\src\\models",
     "\\backend\\src\\public",
     "\\backend\\src\\public\\images",
     "\\backend\\src\\services",
     "\\frontend\\src",
     "\\frontend\\src\\app",
-    "\\frontend\\src\\app\\user",
-    "\\frontend\\src\\app\\user\\user-registration",
-    "\\frontend\\src\\app\\user\\user-registration\\validators"
+    "\\frontend\\src\\app\\user"
   ],
-  "SelectedNode": "\\frontend\\src\\app\\product\\index.ts",
   "PreviewInSolutionExplorer": false
 }
