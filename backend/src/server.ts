@@ -11,7 +11,6 @@ import { TodoList } from './models/todolist.model';
 import { TodoItem } from './models/todoitem.model';
 import { User } from './models/user.model';
 import { Product } from './models/product.model';
-import { Admin } from './models/admin.model';
 
 import cors from 'cors';
 
@@ -32,8 +31,6 @@ export class Server {
         Product.initialize(this.sequelize);
         User.createAssociations();
         Product.createAssociations();
-        Admin.initialize(this.sequelize);
-        Admin.createAssociations();
 
         this.sequelize.sync().then(() => {                           // create connection to the database
             this.server.listen(this.port, () => {                                   // start server on specified port

@@ -2,7 +2,6 @@ import { UserAttributes, User } from '../models/user.model';
 import { LoginResponse, LoginRequest } from '../models/login.model';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import { Admin } from '../models/admin.model';
 
 export class UserService {
 
@@ -73,17 +72,5 @@ export class UserService {
 
     public getAll(): Promise<User[]> {
         return User.findAll();
-    }
-
-    public isAdmin(userName: string): Promise<boolean> {
-        // Returns true if the user is an admin, return false else (returns also false if the user is not registered)
-        return Admin.findOne({
-            where: {
-                userName: userName
-            }
-        })
-            .then(user => {
-                return Promise.resolve(user != null);
-            });
     }
 }

@@ -3,13 +3,13 @@
     "",
     "\\backend",
     "\\backend\\src",
+    "\\backend\\src\\controllers",
+    "\\backend\\src\\middlewares",
     "\\backend\\src\\models",
     "\\backend\\src\\public",
     "\\backend\\src\\public\\images",
-    "\\backend\\src\\services",
-    "\\frontend\\src",
-    "\\frontend\\src\\app",
-    "\\frontend\\src\\app\\user"
+    "\\backend\\src\\services"
   ],
+  "SelectedNode": "\\backend\\src\\server.ts",
   "PreviewInSolutionExplorer": false
 }

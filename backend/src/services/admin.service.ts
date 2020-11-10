@@ -1,7 +1,6 @@
 import { User, UserAttributes } from '../models/user.model';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import { Admin } from '../models/admin.model';
 import { Product } from '../models/product.model';
 
 export class AdminService {
@@ -14,7 +13,7 @@ export class AdminService {
     }
 
     public deleteAdmin(id: string): Promise<number> {
-        return Admin.findByPk(parseInt(id, 10))
+        return User.findByPk(parseInt(id, 10))
             .then(found => {
                 if (found != null) {
                     found.destroy();
@@ -26,8 +25,15 @@ export class AdminService {
             .catch(err => Promise.reject({ message: err }));
     }
 
-    public getAll(): Promise<Admin[]> {
-        return Admin.findAll();
+    public getAll(): Promise<User[]> {
+        return User.findAll({
+            where:
+                { isAdmin: true }
+        }).then(found => {
+            return Promise.resolve(found);
+        }).catch(err => {
+            return Promise.reject({ message: err });
+        });
     }
 
     public approveProduct(id: string): Promise<Product> {

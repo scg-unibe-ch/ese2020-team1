@@ -32,4 +32,8 @@ adminController.put('/disapprove-product/:id', verifyToken, verifyAdmin, (req: R
         .catch(err => res.status(403).send(err));
 });
 
+adminController.get('/verify-admin', verifyToken, verifyAdmin, (req: Request, res: Response) => {
+    res.status(200).send({ message: true });
+});
+
 export const AdminController: Router = adminController;
