@@ -1,8 +1,54 @@
-<mat-card *ngFor="let product of listOfProducts" class ="product-card">
-  <mat-card-header>
+<div class="collection_page">
+<p class="h1">CURRENTLY ON CARTS</p>
+<br><br><br>
+<!--<span class="product-card">
+  
+  <span *ngFor="let product of listOfProducts" class="next-item">
+      <img src="/ese2020-team1/frontend/src/assets/Missing_Image.jpg" width="300px" height="300px">
+      <p><b>{{product.title}}</b></p>
+      <p>{{product.description}}</p>
+  </span>
+  
+</span>-->
+<hr class="hr">
+<span class="total_products">TOTAL PRODUCTS: {{listOfProducts.length}}</span>
+<span class="sort_by">SORT BY: DATE ADDED
+  <img src="../../assets/down-arrow.png" width="25px" height="25px">
+</span>
+<span class="availability">AVILABILITY: MAIL DELIVERY
+  <img src="../../assets/down-arrow.png" width="25px" height="25px">
+</span>
+<hr class="hr">
+<ng-container class="container" *ngFor="let product of listOfProducts" >
+  <section class="next-item" >
+    <ng-container width="500px" height="900px">
+      <figure><img src="../../assets/Missing_Image.jpg" width="290px" height="200px">
+      </figure>
+    </ng-container>
+    <div class="product_content">
+      
+      <!--<p class="product_description">{{product.description}}</p>-->
+    </div>
+    <footer class="product_footer">
+      <p class="product_title">{{product.title}}</p>
+      <em class="product_price">{{product.price | currency: ' CHF'}}</em>
+      <em class="review_image"><img src="../../assets/reviews.png" width="120px" height="22px"> (15)</em>
+      <br>
+      <em class="added_by">Posted by: {{product.userName}}</em>
+      <br>
+      <button class="shop_now" mat-flat-button color="primary">SHOP NOW</button>
+    </footer>
+  </section>
+</ng-container>
+
+</div>
+<!--<mat-card *ngFor="let product of listOfProducts" class ="product-card">
+  <mat-card-header >
     <mat-card-title>{{product.title}}</mat-card-title>
   </mat-card-header>
   <mat-card-content>
     <p>{{product.description}}</p>
   </mat-card-content>
-</mat-card>
+</mat-card>-->
+
+

@@ -13,6 +13,9 @@
 .LogoImage{
      padding-left: 450px;
 }
+.Website_title{
+    padding-left: -100px;
+}
 .ProfileImage{
     /*position: absolute;*/
    padding-left: 15px;
@@ -36,7 +39,7 @@
 
 .search{
    /* position:absolute;*/
-    padding-left:280px;
+    padding-left:260px;
     padding-top: 23px;
 }
 
@@ -82,6 +85,7 @@
     font-family: "Roboto";
     font-size:medium;
     padding-top: 4px;
+    padding-left: 10px;
   
 }
 .MenuItem2{

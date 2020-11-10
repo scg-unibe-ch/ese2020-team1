@@ -11,7 +11,7 @@ body { margin: 30px; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 button, input {
-  margin-left: 15px !important;
+ /* margin-left: 15px !important;*/
   margin-right: 15px !important;
 }
 
