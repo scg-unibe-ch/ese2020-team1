@@ -19,3 +19,4 @@ export class BrowseComponent implements OnInit {
     this.productService.getProductList().subscribe((result) => this.listOfProducts = result);
   }
 }
+

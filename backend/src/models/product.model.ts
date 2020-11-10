@@ -3,7 +3,7 @@ import { User } from './user.model';
 
 export interface ProductAttributes {
     productId: number;
-    isApproved: boolean;
+    isApproved: string;
     userName: string;
     productType: string;
     title: string;
@@ -14,7 +14,7 @@ export interface ProductAttributes {
     location: string;
     status: string;
     delivery: boolean;
-    // userId: number;
+    userId: number;
 }
 
 // tells sequelize that todoItemId is not a required field
@@ -22,19 +22,19 @@ export interface ProductCreationAttributes extends Optional<ProductAttributes, '
 
 
 export class Product extends Model<ProductAttributes, ProductCreationAttributes> implements ProductAttributes {
-    productId: number;
-    isApproved: boolean;
-    userName: string;
-    productType: string;
-    title: string;
-    price: number;
-    payFreq: string;
+    productId!: number;
+    isApproved!: string; // pending (default), approved, disapproved
+    userName!: string;
+    productType!: string;
+    title!: string;
+    price!: number;
+    payFreq!: string;
     // category: category;
-    description: string;
-    location: string;
-    status: string;
-    delivery: boolean;
-    // userId: number;
+    description!: string;
+    location!: string;
+    status!: string;
+    delivery!: boolean;
+    userId!: number;
 
 
     public static initialize(sequelize: Sequelize) { // definition for database
@@ -45,8 +45,8 @@ export class Product extends Model<ProductAttributes, ProductCreationAttributes>
                 primaryKey: true
             },
             isApproved: {
-                type: DataTypes.BOOLEAN,
-                defaultValue: false,
+                type: DataTypes.STRING,
+                defaultValue: 'pending',
                 allowNull: false
             },
             userName: {
@@ -90,22 +90,22 @@ export class Product extends Model<ProductAttributes, ProductCreationAttributes>
                 defaultValue: false,
                 allowNull: false
             },
-            // userId: {
-            //    type: DataTypes.INTEGER,
-            //    allowNull: false
-            // }
+             userId: {
+                type: DataTypes.INTEGER,
+                allowNull: false
+             }
         },
         { sequelize, tableName: 'products' }
         );
 
     }
-    public static createAssociations() {
+     public static createAssociations() {
         Product.belongsTo(User, {
             targetKey: 'userId',
             as: 'user',
             onDelete: 'cascade',
             foreignKey: 'userId'
         });
-    }
+     }
 
 }

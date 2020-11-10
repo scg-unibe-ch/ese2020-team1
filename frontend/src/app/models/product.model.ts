@@ -1,6 +1,6 @@
 export class Product {
   productId: number;
-  isApproved: boolean; //Did an admin already approve the product?
+  isApproved: string; //Did an admin already approve the product?
   userName: string; //Name of the user who created the product
   productType: string; //Product or service, sell or lend
   title: string;
@@ -10,9 +10,10 @@ export class Product {
   description: string;
   location: string;
   status: string; //sold or available
-  delivery: boolean
+  delivery: boolean;
+  userId: number;
   constructor(httpResponse: any) {
-    this.productId = httpResponse.productID;
+    this.productId = httpResponse.productId;
     this.isApproved = httpResponse.isApproved; //Did an admin already approve the product?
     this.userName = httpResponse.userName; //Name of the user who created the product
     this.productType = httpResponse.productType; //Product or service, sell or lend
@@ -24,5 +25,6 @@ export class Product {
     this.location = httpResponse.location;
     this.status = httpResponse.status; //sold or available
     this.delivery = httpResponse.delivery;
+    this.userId = httpResponse.userId;
   }
 }

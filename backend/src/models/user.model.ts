@@ -3,6 +3,7 @@ import { Optional, Model, Sequelize, DataTypes } from 'sequelize';
 import { Product } from './product.model';
 
 export interface UserAttributes {
+    isAdmin: boolean;
     userId: number;
     userName: string;
     password: string;
@@ -38,6 +39,7 @@ export class User extends Model<UserAttributes, UserCreationAttributes> implemen
     country!: string;
     phone!: string;
     wallet!: number;
+    isAdmin!: boolean;
 
     public static initialize(sequelize: Sequelize) {
         User.init({
@@ -97,6 +99,10 @@ export class User extends Model<UserAttributes, UserCreationAttributes> implemen
             wallet: {
                 type: DataTypes.INTEGER,
                 defaultValue: 100
+            },
+            isAdmin: {
+                type: DataTypes.BOOLEAN,
+                allowNull: false
             }
 
         },

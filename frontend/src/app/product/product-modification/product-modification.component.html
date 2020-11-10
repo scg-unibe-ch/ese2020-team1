@@ -1,0 +1,76 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div *ngIf="alert" class="alert alert-success alert-dismissible fade show" role="alert">
+              Your product was changed successfully!
+              <button (click)="closeAlert()" type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+
+            <form [formGroup]="productModificationForm" (ngSubmit)="onSubmitProductDetails(productModificationForm.value)">
+
+              <p> Are you offering a product or a service?</p>
+              <mat-form-field>
+                <mat-select [placeholder]="product.productType" formControlName ="type">
+                  <mat-option *ngFor="let type of types" [value]="type">
+                    {{type}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <br >
+
+              <p>Product / Service Specification</p>
+                
+
+              <mat-form-field class="full-width">
+                  <input matInput [placeholder]="product.title" formControlName="name" required>
+                </mat-form-field>
+
+                <mat-form-field class="full-width">
+                  <input matInput [placeholder]="product.location" formControlName="location" required>
+                </mat-form-field>
+                <br>
+
+                <mat-form-field class="textbox-full-width">
+                  <textarea matInput [placeholder]="product.description" formControlName="description" required></textarea>
+                </mat-form-field>
+
+              <br>
+
+              <p>Payment Details</p>
+                
+              
+                <mat-form-field class="full-width">
+                  <input matInput type="number" [placeholder]="product.price" formControlName="price" required>
+                </mat-form-field>
+
+                <mat-form-field>
+                  <mat-select [placeholder]="product.payFreq" formControlName ="paymentBasis">
+                    <mat-option *ngFor="let paymentBasis of paymentBases" [value]="paymentBasis">
+                      {{paymentBasis}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+              <br>
+
+                <p>Delivery</p>
+                
+
+                <mat-checkbox [checked]="product.delivery">
+                  Delivery possible
+                </mat-checkbox>
+
+              <br>
+
+
+                <button class="submit-btn" color="primary" mat-raised-button type="submit" [disabled]="!productModificationForm.valid">
+                  Modify Product/Service
+                </button>
+
+            </form>
+        </div>
+    </div>
+</div>

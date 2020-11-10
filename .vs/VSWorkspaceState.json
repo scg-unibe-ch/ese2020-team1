@@ -8,13 +8,8 @@
     "\\backend\\src\\models",
     "\\backend\\src\\public",
     "\\backend\\src\\public\\images",
-    "\\backend\\src\\services",
-    "\\frontend\\src",
-    "\\frontend\\src\\app",
-    "\\frontend\\src\\app\\user",
-    "\\frontend\\src\\app\\user\\user-registration",
-    "\\frontend\\src\\app\\user\\user-registration\\validators"
+    "\\backend\\src\\services"
   ],
-  "SelectedNode": "\\frontend\\src\\app\\product\\index.ts",
+  "SelectedNode": "\\backend\\src\\server.ts",
   "PreviewInSolutionExplorer": false
 }

@@ -2,7 +2,6 @@ import { UserAttributes, User } from '../models/user.model';
 import { LoginResponse, LoginRequest } from '../models/login.model';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import { Admin } from '../models/admin.model';
 
 export class UserService {
 
@@ -21,7 +20,7 @@ export class UserService {
         })
         .then(user => {
             if (bcrypt.compareSync(loginRequestee.password, user.password)) {// compares the hash with the password from the lognin request
-                const token: string = jwt.sign({ userName: user.userName, userId: user.userId }, secret, { expiresIn: '2h' });
+                const token: string = jwt.sign({ userName: user.userName, userId: user.userId, isAdmin: user.isAdmin }, secret, { expiresIn: '2h' });
                 return Promise.resolve({ user, token });
             } else {
                 return Promise.reject({ message: 'not authorized' });
@@ -73,17 +72,5 @@ export class UserService {
 
     public getAll(): Promise<User[]> {
         return User.findAll();
-    }
-
-    public isAdmin(userName: string): Promise<boolean> {
-        // Returns true if the user is an admin, return false else (returns also false if the user is not registered)
-        return Admin.findOne({
-            where: {
-                userName: userName
-            }
-        })
-            .then(user => {
-                return Promise.resolve(user != null);
-            });
     }
 }

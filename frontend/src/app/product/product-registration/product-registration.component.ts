@@ -13,10 +13,11 @@ import { BrowseComponent } from '../../browse/browse.component';
 })
 export class ProductRegistrationComponent implements OnInit {
 
+  //Create product registration form
   productDetailsForm: FormGroup;
   parentErrorStateMatcher = new ParentErrorStateMatcher();
+  //For notifying the user if the registration was successful
   alert: boolean = false;
-  user: String;
 
   types = [
     "",
@@ -61,9 +62,7 @@ export class ProductRegistrationComponent implements OnInit {
   onSubmitProductDetails(value): void {
 
 
-    this.user = localStorage.getItem('userName');
     this.httpClient.post(environment.endpointURL + 'product/add', {
-      userName: this.user,
       productType: this.productDetailsForm.get('type').value,
       title: this.productDetailsForm.get('name').value,
       price: this.productDetailsForm.get('price').value,
