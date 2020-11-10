@@ -345,6 +345,276 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Product registration",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6IkpvbmF0aGFuIiwidXNlcklkIjoyLCJpYXQiOjE2MDQ4NjA1NzAsImV4cCI6MTYwNDg2Nzc3MH0.5ISAYdVOsZUyTynuw8OhY8Sgs7CtWFK7xVYpHHXcOvk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"userName\":\"pasci93\",\r\n\"productType\":\"Product (lend)\",\r\n\"title\":\"Ski\",\"price\":200,\r\n\"payFreq\":\"Daily\",\r\n\"description\":\"I lend my skis (HEAD, 168 cm) on a daily basis\",\r\n\"location\":\"Bern\",\r\n\"status\":\"availabe\",\r\n\"delivery\":false}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/product/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"product",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete product",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6Ik5vcmEiLCJ1c2VySWQiOjEsImlhdCI6MTYwNDg2MDEzMSwiZXhwIjoxNjA0ODY3MzMxfQ.pNo2M4vPjmamuV3xYYS60wKwMGXqfEJARDWfCcVMtTE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/product/delete/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"product",
+						"delete",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Product get all",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/product/all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"product",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get product by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/product/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"product",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "register admin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userName\":\"manu2000\",\r\n    \"password\":\"$ecurePW123\",\r\n    \"email\":\"manu@testmail.com\",\r\n    \"firstName\":\"Manuela\",\r\n    \"lastName\":\"Muster\",\r\n    \"birthday\":\"2020-11-10T23:00:00.000Z\",\r\n    \"gender\":\"Female\",\r\n    \"street\":\"Musterstrasse\",\r\n    \"zip\":\"3000\",\r\n    \"city\":\"Bern\",\r\n    \"country\":\"Schweiz\",\r\n    \"phone\":\"031 300 00 00\",\r\n    \"isAdmin\": \"true\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/admin/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"admin",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete admin",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/admin/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"admin",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "verify is admin",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6Ik5vcmEiLCJ1c2VySWQiOjEsImlhdCI6MTYwNDg2OTM3OCwiZXhwIjoxNjA0ODc2NTc4fQ.FmKD_uQVODjP3qoyXrF1twWnnyodFpGQTyNLpRftDVs",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/user/is-admin/pasci9",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"is-admin",
+						"pasci9"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "approve product",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6Ik5vcmEiLCJ1c2VySWQiOjEsImlzQWRtaW4iOnt9LCJpYXQiOjE2MDQ5MDgyOTEsImV4cCI6MTYwNDkxNTQ5MX0.mCSSF_cXbIYDYAT-h6pvBODZW9ucdODBJHgC4uimP-s",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/admin/approve-product/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"admin",
+						"approve-product",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user login manu2000 admin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userName\":\"manu2000\",\r\n    \"password\":\"$ecurePW123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/user/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get product by user",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/product/by-user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"product",
+						"by-user"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"protocolProfileBehavior": {}
