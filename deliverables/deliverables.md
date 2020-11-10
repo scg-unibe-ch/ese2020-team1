@@ -117,9 +117,22 @@ Product
 
 ![image 3](https://github.com/scg-unibe-ch/ese2020-team1/blob/master/deliverables/UIMockups.jpg)
 
+## Prototypes
+
+![image 4](https://github.com/scg-unibe-ch/ese2020-team1/blob/master/deliverables/Homepage.png)
+
+![image 5](https://github.com/scg-unibe-ch/ese2020-team1/blob/master/deliverables/CollectionPage.png)
+
+![image 6](https://github.com/scg-unibe-ch/ese2020-team1/blob/master/deliverables/AddProduct.png)
+
 
 ## Product backlog and sprint backlog
 
 For tracking the tasks that need to be done, its deadlines, assigning the corresponding person that has to complete it and the progress we are using the ticketing system Notion.
 
 The detailed overview can be found on this link: https://www.notion.so/invite/f52cb06cdddb39d3bcf7ba8f894450eb1580b1c5 
+
+
+## UML class diagram
+
+![image 7](https://github.com/scg-unibe-ch/ese2020-team1/blob/master/deliverables/UMLclass.png)
