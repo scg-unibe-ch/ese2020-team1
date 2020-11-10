@@ -8,7 +8,9 @@ const productController: Router = express.Router();
 const productService = new ProductService();
 
 productController.post('/add', verifyToken, (req: Request, res: Response) => {
-    productService.create(req.body)
+    const userId: number = req.body.tokenPayload.userId;
+    const userName: string = req.body.tokenPayload.userName;
+    productService.create(req.body, userId, userName)
         .then(added => res.send(added))
         .catch(err => res.status(500).send(err));
 });
@@ -51,17 +53,14 @@ productController.get('/disapproved', (req: Request, res: Response) => {
         .catch(err => res.status(500).send(err));
 });
 
-productController.get('/:id', (req: Request, res: Response) => {
+productController.get('/by-product/:id', (req: Request, res: Response) => {
     productService.getById(req.params.id)
         .then((product: ProductAttributes) => res.status(200).send(product))
         .catch(err => res.status(500).send(err));
 });
 
-
-// productController.get(':userId'), (req: Request, res: Response) => {
-// productService.getByUser(parseInt(req.params.userId, 10)
- productController.get(':UserName', (req: Request, res: Response) => {
-    productService.getByUser(req.params.userName)
+ productController.get('/by-user/:id', (req: Request, res: Response) => {
+    productService.getByUser(req.params.id)
         .then((product: Array<ProductAttributes>) => res.status(200).send(product))
         .catch(err => res.status(500).send(err));
  });

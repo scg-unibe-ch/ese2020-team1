@@ -15,12 +15,10 @@ export class ProductService {
             .catch(err => Promise.reject({ message: err }));
     }
 
-    public create(product: ProductAttributes): Promise<ProductAttributes> {
-        // User.findOne({
-        //    where: {
-        //        userName: product.userName
-        //    }
-        // }).then(user => product.userId = user.userId);
+    public create(product: ProductAttributes, id: number, name: string): Promise<ProductAttributes> {
+
+        product.userId = id;
+        product.userName = name;
 
         return Product.create(product)
             .then(inserted => Promise.resolve(inserted))
@@ -28,17 +26,17 @@ export class ProductService {
     }
 
     public delete(productId: number): Promise<Product> {
-        // return Product.findByPk(productId)
-        // .then(found => found.destroy()
-        // .then(() => Promise.resolve(found))
-        // .catch(err => Promise.reject(err)));
-        const product: Promise<Product> = Product.findOne({
-            where: { productId: productId }
-        });
-        Product.destroy({
-            where: { productId: productId }
-        });
-        return product;
+         return Product.findByPk(productId)
+         .then(found => found.destroy()
+         .then(() => Promise.resolve(found))
+         .catch(err => Promise.reject(err)));
+        // const product: Promise<Product> = Product.findOne({
+        //    where: { productId: productId }
+        // });
+        // Product.destroy({
+        //    where: { productId: productId }
+        // });
+        // return product;
     }
 
     public modify(productId: number, product: ProductAttributes): Promise<ProductAttributes> {
@@ -49,8 +47,7 @@ export class ProductService {
     }
 
     public getAll(): Promise<Product[]> {
-        return Product.findAll()
-            .catch(err => Promise.reject(err));
+        return Product.findAll().then(found => Promise.resolve(found)).catch(err => Promise.reject(err));
     }
 
     public getPending(): Promise<Product[]> {
@@ -58,7 +55,7 @@ export class ProductService {
             where: {
                 isApproved: 'pending'
             },
-        }).catch(err => Promise.reject(err));
+        }).then(found => Promise.resolve(found)).catch(err => Promise.reject(err));
     }
 
     public getApproved(): Promise<Product[]> {
@@ -66,7 +63,8 @@ export class ProductService {
             where: {
                 isApproved: 'approved'
             },
-        }).catch(err => Promise.reject(err));
+        }).then(found => Promise.resolve(found))
+            .catch(err => Promise.reject(err));
     }
 
     public getDisapproved(): Promise<Product[]> {
@@ -74,15 +72,16 @@ export class ProductService {
             where: {
                 isApproved: 'disapproved'
             },
-        }).catch(err => Promise.reject(err));
+        }).then(found => Promise.resolve(found)).catch(err => Promise.reject(err));
     }
 
-     public getByUser(userName: string): Promise<Product[]> {
-        return Product.findAll({
-            where: {
-                userName: userName
-            },
-     }).catch (err => Promise.reject(err));
+     public getByUser(userId: string): Promise<Product[]> {
+         return Product.findAll({
+             where: {
+                 userId: parseInt(userId, 10)
+             },
+         }).then(found => Promise.resolve(found))
+            .catch(err => Promise.reject(err));
      }
 
     // public getByCateogry(cateogry: string): Promise<Product[]> {
