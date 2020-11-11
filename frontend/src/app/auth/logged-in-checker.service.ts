@@ -26,7 +26,7 @@ export class LoggedInCheckerService {
 
     // Set boolean whether a user is logged in or not
     this.loggedIn = !!(this.userToken);
-    return this.loggedIn
+    return this.loggedIn;
   }
 
   //returns true if a user is logged in
