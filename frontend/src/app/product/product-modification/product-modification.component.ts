@@ -16,11 +16,11 @@ import { ProductService } from '../product.service';
 export class ProductModificationComponent implements OnInit {
 
   //The product id will be passed from the parent component
-  productId: number = 8;
+  productId: number = 6;
 
   @Input()
   product: Product = new Product({
-    "productId": 8,
+    "productId": 6,
     "isApproved": "approved",
     "userName": "pasci93",
     "productType": "Product (lend)",
@@ -40,7 +40,8 @@ export class ProductModificationComponent implements OnInit {
   productModificationForm: FormGroup;
   parentErrorStateMatcher = new ParentErrorStateMatcher();
   //For notifying the user if the modification was successful
-  alert: boolean = false;
+  alertModify: boolean = false;
+  alertDelete: boolean = false;
 
   types = [
     "",
@@ -97,12 +98,30 @@ export class ProductModificationComponent implements OnInit {
       delivery: this.productModificationForm.get('delivery').value,
 
     }).subscribe((res: any) => {
-      this.alert = true;
+      this.alertModify = true;
       this.product = res;
     });
   }
+
+  onDeleteProduct(): void {
+    this.productService.deleteProduct(this.product.productId).subscribe(message => {
+      if (message === null) {
+        //Represent notification upon successful deletion
+        this.alertDelete = true;
+        //Return to browse page
+        setTimeout(() => {
+          this.router.navigateByUrl('/');
+        }, 2000);
+      }
+    });
+  } 
+
+
   closeAlert() {
-    this.alert = false;
+    this.alertModify = false;
+    this.alertDelete = false;
   }
+
+
 
 }
