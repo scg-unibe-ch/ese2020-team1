@@ -31,6 +31,7 @@ import { AuthGuard } from './auth/auth.guard';
 import { ProductModificationComponent } from './product/product-modification/product-modification.component';
 import { ProfileComponent } from "./profile/profile.component";
 import { ProductDisplayComponent } from './product/product-display/product-display.component';
+import { ProductsByUserComponent } from './product/products-by-user/products-by-user.component';
 
 const appRoutes: Routes = [
   { path: 'user/user-login', component: UserLoginComponent},
@@ -58,7 +59,8 @@ const appRoutes: Routes = [
     BrowseComponent,
     ProductModificationComponent,
     ProfileComponent,
-    ProductDisplayComponent
+    ProductDisplayComponent,
+    ProductsByUserComponent
   ],
   imports: [
     BrowserModule,

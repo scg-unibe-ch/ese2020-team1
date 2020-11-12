@@ -3,13 +3,14 @@
     "",
     "\\backend",
     "\\backend\\src",
-    "\\backend\\src\\controllers",
-    "\\backend\\src\\middlewares",
-    "\\backend\\src\\models",
-    "\\backend\\src\\public",
-    "\\backend\\src\\public\\images",
-    "\\backend\\src\\services"
+    "\\frontend",
+    "\\frontend\\src\\app",
+    "\\frontend\\src\\app\\browse",
+    "\\frontend\\src\\app\\navbar",
+    "\\frontend\\src\\app\\product",
+    "\\frontend\\src\\app\\product\\product-display",
+    "\\frontend\\src\\app\\todo-list"
   ],
-  "SelectedNode": "\\backend\\src\\server.ts",
+  "SelectedNode": "\\backend\\src\\controllers\\admin.controller.ts",
   "PreviewInSolutionExplorer": false
 }

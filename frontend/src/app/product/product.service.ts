@@ -25,4 +25,8 @@ export class ProductService {
   deleteProduct(id: number): Observable<any> {
     return this.httpClient.delete(environment.endpointURL + 'product/delete/' + id);
   }
+
+  getProductByUser(): Observable<any>{
+    return this.httpClient.get(environment.endpointURL+  'product/by-user');
+  }
 }
