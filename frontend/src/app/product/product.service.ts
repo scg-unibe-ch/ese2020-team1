@@ -29,4 +29,16 @@ export class ProductService {
   getProductByUser(): Observable<any>{
     return this.httpClient.get(environment.endpointURL+  'product/by-user');
   }
+
+  getPendingProducts(): Observable<any> {
+    return this.httpClient.get(environment.endpointURL + 'product/pending');
+  }
+
+  approveProduct(id: number): Observable<any> {
+    return this.httpClient.get(environment.endpointURL + 'admin/approve-product/' + id);
+  }
+
+  disapproveProduct(id: number): Observable<any> {
+    return this.httpClient.get(environment.endpointURL + 'admin/disapprove-product/' + id);
+  }
 }

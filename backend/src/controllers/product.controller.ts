@@ -35,7 +35,7 @@ productController.get('/all', (req: Request, res: Response) => {
         .catch(err => res.status(500).send(err));
 });
 
-productController.get('/pending', (req: Request, res: Response) => {
+productController.get('/pending', verifyToken, verifyAdmin, (req: Request, res: Response) => {
     productService.getPending()
         .then((product: Array<ProductAttributes>) => res.status(200).send(product))
         .catch(err => res.status(500).send(err));

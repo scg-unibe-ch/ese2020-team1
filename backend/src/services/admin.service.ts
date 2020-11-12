@@ -38,7 +38,7 @@ export class AdminService {
 
     public approveProduct(id: string): Promise<Product> {
         // Find a product by id and set the isApproved flag to approved
-        return Product.findByPk(parseInt(id, 19))
+        return Product.findByPk(parseInt(id, 10))
             .then((product) => {
                 product.update({ isApproved: 'approved' });
                 return Promise.resolve(product);
@@ -47,7 +47,7 @@ export class AdminService {
     }
      public disapproveProduct(id: string): Promise<Product> {
          // Find a product by id and set the isApproved flag to disapproved
-         return Product.findByPk(parseInt(id, 19))
+         return Product.findByPk(parseInt(id, 10))
              .then((product) => {
                  product.update({ isApproved: 'disapproved' });
                  return Promise.resolve(product);

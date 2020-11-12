@@ -43,4 +43,8 @@ export class LoggedInCheckerService {
     return this.checkUserStatus();
   }
 
+  isAdmin(): Observable<any> {
+    return this.httpClient.get(environment.endpointURL + "admin/verify-admin");
+  }
+
 }

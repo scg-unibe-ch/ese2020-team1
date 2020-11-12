@@ -32,6 +32,8 @@ import { ProductModificationComponent } from './product/product-modification/pro
 import { ProfileComponent } from "./user/profile/profile.component";
 import { ProductDisplayComponent } from './product/product-display/product-display.component';
 import { ProductsByUserComponent } from './product/products-by-user/products-by-user.component';
+import { AdminDashboardComponent } from './user/admin-dashboard/admin-dashboard.component';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 const appRoutes: Routes = [
   { path: 'user/user-login', component: UserLoginComponent},
@@ -60,7 +62,8 @@ const appRoutes: Routes = [
     ProductModificationComponent,
     ProfileComponent,
     ProductDisplayComponent,
-    ProductsByUserComponent
+    ProductsByUserComponent,
+    AdminDashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -79,6 +82,7 @@ const appRoutes: Routes = [
     MatDatepickerModule,
     MatSelectModule,
     MatNativeDateModule,
+    MatExpansionModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [

@@ -20,20 +20,20 @@ adminController.delete('/:id', (req: Request, res: Response) => {
 
 });
 
-adminController.put('/approve-product/:id', verifyToken, verifyAdmin, (req: Request, res: Response) => {
+adminController.get('/approve-product/:id', verifyToken, verifyAdmin, (req: Request, res: Response) => {
      adminService.approveProduct(req.params.id)
         .then(item => res.status(200).send({ approved: item }))
         .catch(err => res.status(403).send(err));
 });
 
-adminController.put('/disapprove-product/:id', verifyToken, verifyAdmin, (req: Request, res: Response) => {
+adminController.get('/disapprove-product/:id', verifyToken, verifyAdmin, (req: Request, res: Response) => {
     adminService.disapproveProduct(req.params.id)
         .then(item => res.status(200).send({ approved: item }))
         .catch(err => res.status(403).send(err));
 });
 
 adminController.get('/verify-admin', verifyToken, verifyAdmin, (req: Request, res: Response) => {
-    res.status(200).send({ message: true });
+    res.status(200).send({message: true});
 });
 
 export const AdminController: Router = adminController;

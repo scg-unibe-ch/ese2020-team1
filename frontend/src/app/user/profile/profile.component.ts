@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Product } from '../../models/product.model';
 import { ProductService } from '../../product/product.service';
 import { User } from '../../models/user.model';
+import { LoggedInCheckerService } from '../../auth/logged-in-checker.service';
 
 @Component({
   selector: 'app-profile',
@@ -10,13 +11,22 @@ import { User } from '../../models/user.model';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  
+
+  isAdmin: boolean = false;
+
   @Input()
   user: User;
 
-  constructor() { }
+  constructor(private loggedInCheckerService: LoggedInCheckerService) {
+
+  }
 
   ngOnInit(): void {
+
+    this.loggedInCheckerService.isAdmin().subscribe(item => {
+      this.isAdmin = item.message;
+    })
+    this.isAdmin = this.user.isAdmin;
   }
 
 }
