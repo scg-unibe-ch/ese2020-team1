@@ -17,8 +17,17 @@
   <div *ngIf="loggedIn">
     <button mat-flat-button color="warn" (click)="logout()">Logout</button>
     You are currently logged in as {{ userName }}
+    
+  </div>
+  
+</mat-card>
+
+
+
+  <div *ngIf="loggedIn">
+    
     <app-profile [user]="user"></app-profile>
   </div>
-</mat-card>
+
  
 

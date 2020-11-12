@@ -20,27 +20,24 @@ export class UserLoginComponent implements OnInit {
   password = '';
   user: User;
 
-  userToken: string;
   loggedIn = false;
 
   //data for showing the response
   secureEndpointResponse = '';
   checkStatus = '';
 
-  constructor(private httpClient: HttpClient, private LoggedInCheckerService: LoggedInCheckerService, private router: Router) { }
+  constructor(private httpClient: HttpClient, private loggedInCheckerService: LoggedInCheckerService, private router: Router) { }
 
   ngOnInit(): void {
-    this.checkUserStatus();
+    this.loggedIn = this.loggedInCheckerService.checkUserStatus()
+    if (this.loggedIn) {
+        this.loggedInCheckerService.getUser().subscribe((found) => {
+          this.user = found;
+          this.userName = this.user.userName;
+        });
+    }
   }
 
-  checkUserStatus(): void {
-    // Get user data from local storage
-    this.userToken = localStorage.getItem('userToken');
-    this.userName = localStorage.getItem('userName');
-
-    // Set boolean whether a user is logged in or not
-    this.loggedIn = !!(this.userToken);
-  }
 
 
   login(): void {
@@ -51,15 +48,13 @@ export class UserLoginComponent implements OnInit {
       // Set user data in local storage
       localStorage.setItem('userToken', res.token);
       localStorage.setItem('userName', res.user.userName);
-      this.user=res.user;
 
-      this.checkUserStatus();
+      this.user = res.user;
+      this.userName = this.user.userName;
+
+      this.loggedIn = true;
 
     });
-
-    setTimeout(() => {
-      this.router.navigateByUrl('/');
-    }, 2000);
   }
 
   logout(): void {
@@ -67,7 +62,7 @@ export class UserLoginComponent implements OnInit {
     localStorage.removeItem('userToken');
     localStorage.removeItem('userName');
 
-    this.checkUserStatus();
+    this.loggedIn = false;
   }
 
 

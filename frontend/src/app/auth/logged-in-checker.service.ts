@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
+import { User } from '../models/user.model';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +12,7 @@ export class LoggedInCheckerService {
 
   userToken: string;
   loggedIn = false;
+  user: User;
 
   //Path to which a user gets redirected after login (user-login needs to be updated)
   redirectUrl = '/';
@@ -27,6 +30,10 @@ export class LoggedInCheckerService {
     // Set boolean whether a user is logged in or not
     this.loggedIn = !!(this.userToken);
     return this.loggedIn;
+  }
+
+  getUser(): Observable<any>{
+    return this.httpClient.get(environment.endpointURL + 'user/user');
   }
 
   //returns true if a user is logged in
