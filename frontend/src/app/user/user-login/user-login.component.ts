@@ -16,7 +16,7 @@ import { LoggedInCheckerService } from '../../auth/logged-in-checker.service';
 
 export class UserLoginComponent implements OnInit {
 
-
+  loginFailed: boolean;
   userName = '';
   password = '';
   user: User;
@@ -31,6 +31,7 @@ export class UserLoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loggedIn = this.loggedInCheckerService.checkUserStatus()
+    this.loginFailed = false;
     if (this.loggedIn) {
         this.loggedInCheckerService.getUser().subscribe((found) => {
           this.user = found;
@@ -52,10 +53,9 @@ export class UserLoginComponent implements OnInit {
 
       this.user = res.user;
       this.userName = this.user.userName;
-
+      this.loginFailed = false;
       this.loggedIn = this.loggedInCheckerService.isUserLoggedIn();
-
-    });
+    }, (err) => this.loginFailed = true); //Catch an error from the backend
   }
 
   logout(): void {
@@ -64,7 +64,7 @@ export class UserLoginComponent implements OnInit {
     localStorage.removeItem('userName');
 
     this.loggedIn = this.loggedInCheckerService.isUserLoggedIn();
-
+    this.loginFailed = false;
   }
 
 
@@ -78,4 +78,9 @@ export class UserLoginComponent implements OnInit {
       this.secureEndpointResponse = 'Unauthorized';
     });
   }
+
+  closeAlert() {
+    this.loginFailed = false;
+  }
+
 }
