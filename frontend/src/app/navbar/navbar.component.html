@@ -2,49 +2,45 @@
   <area shape="rect" href="../user-login">
 </map>
 
-<mat-toolbar class="toolbarClass">
-<mat-toolbar-row>
-  <span class="MenuItem1">
-    <a routerLink="/product/product-registration">SELL/LEND </a>
-    <img src="../../assets/down-arrow.png" width="25px" height="25px"></span>
-    <span class="MenuItem2">
-      RENT
-      <img src="../../assets/down-arrow.png" width="25px" height="25px"></span>
-      <span class="MenuItem3">
-        LEARN MORE
-        <img src="../../assets/down-arrow.png" width="25px" height="25px"></span>
-<span class="LogoImage"><img  src="../../assets/Logo.png" width="63px" height="50px"></span>
-  <span class="Website_title">ARTs</span>
-  <span class="search">
-    <div class="p-1 bg-light rounded rounded-pill shadow-sm mb-4">
-      <div class="input-group">
-        <div class="input-group-prepend">
-          <button id="button-addon2" type="submit" class="btn btn-link text-warning"><img  src="../../assets/search.png"  width="25px" height="25px"><i class="fa fa-search"></i></button>
-        
-        <input type="search" size="10" placeholder="Search here" aria-describedby="button-addon2" class="form-control border-0 bg-light">
-      </div>
-      </div>
-    </div>
-   <!-- <input type="text" placeholder="Search store..." size=10 height="20px" width="10px">-->
+<nav class="navbar navbar-expand-lg navbar-light">
+  <span class="LogoImage"><img  src="../../assets/Logo.png" width="63px" height="50px">
+    <a routerLink="/browse" class="navbar-brand">ARTs</a>
   </span>
-  <span class="SearchImage">
-    <!--<button  class="SearchButton"type="button" width="40px" height="40px">
-    <img  src="../assets/search.png" width="35px" height="35px"></button>-->
     
-  </span>
-  <span class="ProfileImage">
-    <img src="../../assets/profile.png" width="30px" height="30px">
+  
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a routerLink="/browse">BROWSE</a>
+            </li>
+            <li class="nav-item">
+              <a routerLink="/product/product-registration">SELL/LEND </a>
+            </li>
+            <li class="nav-item">
+              <a routerLink="/browse">LEARN MORE</a>
+            </li>
+        </ul>
+    </div>
+
+
+<form class="form-inline my-2 my-lg-0">
+  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+</form>
+
+<span class="ProfileImage">
+   <img src="../../assets/profile.png" width="30px" height="30px">
     <br>
     <a *ngIf="!loggedIn" routerLink="/user/user-login" routerLinkActive="active-link">LOGIN </a>
     
     <a *ngIf="loggedIn" routerLink="/user/user-login" routerLinkActive="active-link">PROFILE</a> 
-    </span>
+</span>
     
-    <span class="CartImage">
-      <img src="../../assets/cart.png" width="30px" height="30px"><br><a routerLink="/profile" routerLinkActive="active-link">CART </a></span>
-    
-    
-          
-          
-</mat-toolbar-row>
-</mat-toolbar>
+<span class="CartImage">
+   <img src="../../assets/cart.png" width="30px" height="30px"><br><a routerLink="/profile" routerLinkActive="active-link">CART </a>
+</span>
+</nav>
