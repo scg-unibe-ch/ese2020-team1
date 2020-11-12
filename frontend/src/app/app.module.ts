@@ -36,7 +36,6 @@ const appRoutes: Routes = [
   { path: 'user/user-registration', component: UserRegistrationComponent },
   { path: 'browse', component: BrowseComponent },
   { path: 'product/product-modification', component: ProductModificationComponent},
-  { path: 'profile', component: ProfileComponent},
   { path: '', redirectTo: 'browse', pathMatch: 'full'},
   {
     path: 'product/product-registration',

@@ -43,6 +43,12 @@ export class UserService {
             .catch(err => Promise.reject({ message: err }));
     }
 
+    public getUserById(id: number): Promise<User> {
+        return User.findByPk(id)
+            .then((found) => Promise.resolve(found))
+            .catch((err) => Promise.reject(err));
+    }
+
     public isUsernameFree(userName: string): Promise<boolean> {
         return User.findOne({
             where: {

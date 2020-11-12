@@ -1,4 +1,4 @@
-import { Component, Directive, OnInit } from '@angular/core';
+import { Component, Directive, OnInit, Input, Output, EventEmitter  } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs';
@@ -15,6 +15,7 @@ import { LoggedInCheckerService } from '../../auth/logged-in-checker.service';
 
 
 export class UserLoginComponent implements OnInit {
+
 
   userName = '';
   password = '';
@@ -52,7 +53,7 @@ export class UserLoginComponent implements OnInit {
       this.user = res.user;
       this.userName = this.user.userName;
 
-      this.loggedIn = true;
+      this.loggedIn = this.loggedInCheckerService.isUserLoggedIn();
 
     });
   }
@@ -62,7 +63,8 @@ export class UserLoginComponent implements OnInit {
     localStorage.removeItem('userToken');
     localStorage.removeItem('userName');
 
-    this.loggedIn = false;
+    this.loggedIn = this.loggedInCheckerService.isUserLoggedIn();
+
   }
 
 

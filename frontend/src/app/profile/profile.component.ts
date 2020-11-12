@@ -12,12 +12,11 @@ import { User } from '../models/user.model';
 export class ProfileComponent implements OnInit {
   
   @Input()
-  user: User=new User(null);
+  user: User;
 
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.user);
   }
 
 }

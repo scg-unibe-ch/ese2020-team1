@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { User } from '../models/user.model';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +11,7 @@ export class LoggedInCheckerService {
 
 
   userToken: string;
-  loggedIn = false;
+  loggedIn = new Subject<boolean>();
   user: User;
 
   //Path to which a user gets redirected after login (user-login needs to be updated)
@@ -28,8 +28,8 @@ export class LoggedInCheckerService {
     this.userToken = localStorage.getItem('userToken');
 
     // Set boolean whether a user is logged in or not
-    this.loggedIn = !!(this.userToken);
-    return this.loggedIn;
+    this.loggedIn.next(!!this.userToken);
+    return !!this.userToken;
   }
 
   getUser(): Observable<any>{
