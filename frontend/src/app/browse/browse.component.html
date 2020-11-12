@@ -31,7 +31,7 @@
       <!--<p class="product_description">{{product.description}}</p>-->
     </div>
     <footer class="product_footer">
-      <p class="product_title">{{product.title}}</p>
+      <p class="product_title"><a routerLink="../product/display" [state]=product>{{product.title}}</a></p>
       <p class="product_price">{{product.price | currency: ' CHF '}}</p>
       <img src="../../assets/reviews.png" width="120px"> (15)
       <p class="added_by">Posted by: {{product.userName}}</p>

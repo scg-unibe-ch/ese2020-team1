@@ -30,13 +30,15 @@ import { BrowseComponent } from './browse/browse.component';
 import { AuthGuard } from './auth/auth.guard';
 import { ProductModificationComponent } from './product/product-modification/product-modification.component';
 import { ProfileComponent } from "./profile/profile.component";
+import { ProductDisplayComponent } from './product/product-display/product-display.component';
 
 const appRoutes: Routes = [
   { path: 'user/user-login', component: UserLoginComponent},
   { path: 'user/user-registration', component: UserRegistrationComponent },
   { path: 'browse', component: BrowseComponent },
   { path: 'product/product-modification', component: ProductModificationComponent},
-  { path: '', redirectTo: 'browse', pathMatch: 'full'},
+  { path: '', redirectTo: 'browse', pathMatch: 'full' },
+  { path: 'product/display', component: ProductDisplayComponent},
   {
     path: 'product/product-registration',
     component: ProductRegistrationComponent,
@@ -55,7 +57,8 @@ const appRoutes: Routes = [
     NavbarComponent,
     BrowseComponent,
     ProductModificationComponent,
-    ProfileComponent
+    ProfileComponent,
+    ProductDisplayComponent
   ],
   imports: [
     BrowserModule,
