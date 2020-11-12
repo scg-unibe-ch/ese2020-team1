@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Product } from '../models/product.model';
-import { ProductService } from '../product/product.service';
-import { User } from '../models/user.model';
+import { Product } from '../../models/product.model';
+import { ProductService } from '../../product/product.service';
+import { User } from '../../models/user.model';
 
 @Component({
   selector: 'app-profile',

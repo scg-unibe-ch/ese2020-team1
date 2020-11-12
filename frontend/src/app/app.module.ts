@@ -29,7 +29,7 @@ import { Routes, RouterModule, ActivatedRoute } from '@angular/router';
 import { BrowseComponent } from './browse/browse.component';
 import { AuthGuard } from './auth/auth.guard';
 import { ProductModificationComponent } from './product/product-modification/product-modification.component';
-import { ProfileComponent } from "./profile/profile.component";
+import { ProfileComponent } from "./user/profile/profile.component";
 import { ProductDisplayComponent } from './product/product-display/product-display.component';
 import { ProductsByUserComponent } from './product/products-by-user/products-by-user.component';
 
