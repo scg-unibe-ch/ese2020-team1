@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import {User} from '../../models/user.model';
 
 import { LoggedInCheckerService } from '../../auth/logged-in-checker.service';
 
@@ -17,6 +18,7 @@ export class UserLoginComponent implements OnInit {
 
   userName = '';
   password = '';
+  user: User;
 
   userToken: string;
   loggedIn = false;
@@ -49,6 +51,7 @@ export class UserLoginComponent implements OnInit {
       // Set user data in local storage
       localStorage.setItem('userToken', res.token);
       localStorage.setItem('userName', res.user.userName);
+      this.user=res.user;
 
       this.checkUserStatus();
 

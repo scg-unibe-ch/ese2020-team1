@@ -29,12 +29,14 @@ import { Routes, RouterModule, ActivatedRoute } from '@angular/router';
 import { BrowseComponent } from './browse/browse.component';
 import { AuthGuard } from './auth/auth.guard';
 import { ProductModificationComponent } from './product/product-modification/product-modification.component';
+import {ProfileComponent} from "./profile/profile.component";
 
 const appRoutes: Routes = [
   { path: 'user/user-login', component: UserLoginComponent},
   { path: 'user/user-registration', component: UserRegistrationComponent },
   { path: 'browse', component: BrowseComponent },
   { path: 'product/product-modification', component: ProductModificationComponent},
+  { path: 'profile', component: ProfileComponent},
   { path: '', redirectTo: 'browse', pathMatch: 'full'},
   {
     path: 'product/product-registration',
@@ -53,7 +55,8 @@ const appRoutes: Routes = [
     ProductRegistrationComponent,
     NavbarComponent,
     BrowseComponent,
-    ProductModificationComponent
+    ProductModificationComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

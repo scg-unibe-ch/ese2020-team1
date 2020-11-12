@@ -1,0 +1,19 @@
+.profile_page{
+    
+    margin: 30px;
+}
+
+.menu{
+    border-radius: 2px;
+    border-color: black;
+    border-right: black;
+    background: blanchedalmond;
+    width: 15%;
+    height: 100%;
+}
+
+.profile_logo{
+    margin-left: 20%;
+    width: 140px;
+    padding-right: unset;
+}
