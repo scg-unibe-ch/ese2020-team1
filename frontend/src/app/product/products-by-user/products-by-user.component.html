@@ -15,7 +15,7 @@
       <p class="product_price">{{product.price | currency: ' CHF '}}</p>
       <img src="../../assets/reviews.png" width="120px"> (15)
       <p class="added_by"> Status: {{product.isApproved}}</p>
-      <a routerLink='../../product/product-modification'><button class="shop_now" mat-flat-button color="primary"> EDIT</button></a>
+      <a routerLink='../../product/product-modification' [state]=product><button class="edit" mat-flat-button color="primary"> EDIT</button></a>
     </footer>
   </section>
 </ng-container>

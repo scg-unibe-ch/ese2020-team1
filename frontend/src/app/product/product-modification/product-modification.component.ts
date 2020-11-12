@@ -18,25 +18,8 @@ export class ProductModificationComponent implements OnInit {
   //
   modificationEnabled: boolean = false;
   //The product id will be passed from the parent component
-  productId: number = 6;
 
-  @Input()
-  product: Product = new Product({
-    "productId": 9,
-    "isApproved": "approved",
-    "userName": "pasci93",
-    "productType": "Product (lend)",
-    "title": "Ski",
-    "price": 200,
-    "payFreq": "Daily",
-    "description": "I lend my skis (HEAD, 168 cm) on a daily basis",
-    "location": "Bern",
-    "status": "availabe",
-    "delivery": true,
-    "userId": null,
-    "createdAt": "2020-11-09T20:31:42.835Z",
-    "updatedAt": "2020-11-09T20:39:31.727Z"
-  });
+  product: Product;
 
   //Create product modification form
   productModificationForm: FormGroup;
@@ -64,6 +47,7 @@ export class ProductModificationComponent implements OnInit {
   constructor(private fb: FormBuilder, private httpClient: HttpClient, private router: Router, private productService: ProductService) { }
 
   ngOnInit(): void {
+    this.product = window.history.state;
     this.createForms();
   }
 
