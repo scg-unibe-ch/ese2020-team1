@@ -59,8 +59,8 @@ productController.get('/by-product/:id', (req: Request, res: Response) => {
         .catch(err => res.status(500).send(err));
 });
 
- productController.get('/by-user/:id', (req: Request, res: Response) => {
-    productService.getByUser(req.params.id)
+ productController.get('/by-user', verifyToken, (req: Request, res: Response) => {
+    productService.getByUser(req.body.tokenPayload.userId)
         .then((product: Array<ProductAttributes>) => res.status(200).send(product))
         .catch(err => res.status(500).send(err));
  });

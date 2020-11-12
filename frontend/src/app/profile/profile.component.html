@@ -1,7 +1,12 @@
-<p>test</p>
 <div class="profile_page" >
     <div class="menu">
         <img class="profile_logo" src="../../assets/profile.png" width="140px" height="140px">
-        {{user.userName}}
+        <br>
+        <i class="username">{{user.userName}}</i> 
+        <br><br>
+        <mat-tab-group class="user_menu">
+            <mat-tab label="Currently selling"><app-products-by-user></app-products-by-user></mat-tab>
+            <mat-tab label="Profile Information">View 2</mat-tab>
+        </mat-tab-group>
     </div>
 </div>
