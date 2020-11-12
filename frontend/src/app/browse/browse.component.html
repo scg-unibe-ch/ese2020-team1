@@ -1,6 +1,5 @@
 <div class="collection_page">
-<p class="h1">CURRENTLY ON CARTS</p>
-<br><br><br>
+    <h1>CURRENTLY ON CARTS</h1>
 <!--<span class="product-card">
   
   <span *ngFor="let product of listOfProducts" class="next-item">
@@ -11,18 +10,20 @@
   
 </span>-->
 <hr class="hr">
-<span class="total_products">TOTAL PRODUCTS: {{listOfProducts.length}}</span>
-<span class="sort_by">SORT BY: DATE ADDED
-  <img src="../../assets/down-arrow.png" width="25px" height="25px">
-</span>
-<span class="availability">AVILABILITY: MAIL DELIVERY
-  <img src="../../assets/down-arrow.png" width="25px" height="25px">
-</span>
+    <nav class="navbar">
+      <span class="total_products">TOTAL PRODUCTS: {{listOfProducts.length}}</span>
+      <span class="sort_by">SORT BY: DATE ADDED
+        <img src="../../assets/down-arrow.png" width="25px" height="25px">
+      </span>
+      <span class="availability">AVILABILITY: MAIL DELIVERY
+        <img src="../../assets/down-arrow.png" width="25px" height="25px">
+      </span>
+    </nav>
 <hr class="hr">
 <ng-container class="container" *ngFor="let product of listOfProducts" >
   <section class="next-item" >
-    <ng-container width="500px" height="900px">
-      <figure><img src="../../assets/Missing_Image.jpg" width="290px" height="200px">
+    <ng-container>
+      <figure><img src="../../assets/Missing_Image.jpg" width="270px" height="200px">
       </figure>
     </ng-container>
     <div class="product_content">
@@ -31,11 +32,9 @@
     </div>
     <footer class="product_footer">
       <p class="product_title">{{product.title}}</p>
-      <em class="product_price">{{product.price | currency: ' CHF'}}</em>
-      <em class="review_image"><img src="../../assets/reviews.png" width="120px" height="22px"> (15)</em>
-      <br>
-      <em class="added_by">Posted by: {{product.userName}}</em>
-      <br>
+      <p class="product_price">{{product.price | currency: ' CHF '}}</p>
+      <img src="../../assets/reviews.png" width="120px"> (15)
+      <p class="added_by">Posted by: {{product.userName}}</p>
       <a routerLink="/product/product-registration"><button class="shop_now" mat-flat-button color="primary">SHOP NOW</button></a>
     </footer>
   </section>
