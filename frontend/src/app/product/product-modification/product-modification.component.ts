@@ -85,6 +85,7 @@ export class ProductModificationComponent implements OnInit {
       location: this.productModificationForm.get('location').value,
       status: "availabe",
       delivery: this.productModificationForm.get('delivery').value,
+      isApproved: "pending"
 
     }).subscribe((res: any) => {
       this.alertModify = true;
