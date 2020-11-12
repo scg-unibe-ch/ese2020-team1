@@ -74,7 +74,7 @@ export class ProductRegistrationComponent implements OnInit {
 
     }).subscribe((res: any) => {
       this.alert = true;
-      this.productDetailsForm.reset({});
+      this.productDetailsForm.disable();
     });
     setTimeout(() => {
       this.router.navigateByUrl("/");

@@ -19,6 +19,9 @@ button, input {
   margin-right: 25px !important;
 }
 
+.alert{
+    margin: 20px;
+}
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
