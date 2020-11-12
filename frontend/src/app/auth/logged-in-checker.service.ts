@@ -11,6 +11,7 @@ export class LoggedInCheckerService {
 
 
   userToken: string;
+  //Subject can be subscribed by other components, e.g. the navbar in order to automatically check if a user is logged in
   loggedIn = new Subject<boolean>();
   user: User;
 
