@@ -15,12 +15,14 @@ import { ProductService } from '../product.service';
 })
 export class ProductModificationComponent implements OnInit {
 
+  //
+  modificationEnabled: boolean = false;
   //The product id will be passed from the parent component
   productId: number = 6;
 
   @Input()
   product: Product = new Product({
-    "productId": 6,
+    "productId": 9,
     "isApproved": "approved",
     "userName": "pasci93",
     "productType": "Product (lend)",
@@ -82,6 +84,9 @@ export class ProductModificationComponent implements OnInit {
       location: new FormControl(this.product.location, Validators.required),
       delivery: new FormControl(this.product.delivery, Validators.nullValidator)
     });
+
+    this.productModificationForm.disable();
+    this.productModificationForm.get('delivery').disable();
   }
 
   onSubmitProductDetails(value): void {
@@ -100,6 +105,8 @@ export class ProductModificationComponent implements OnInit {
     }).subscribe((res: any) => {
       this.alertModify = true;
       this.product = res;
+      this.modificationEnabled = false;
+      this.productModificationForm.disable();
     });
   }
 
@@ -108,13 +115,20 @@ export class ProductModificationComponent implements OnInit {
       if (message === null) {
         //Represent notification upon successful deletion
         this.alertDelete = true;
+        this.modificationEnabled = false;
         //Return to browse page
         setTimeout(() => {
           this.router.navigateByUrl('/');
         }, 2000);
       }
     });
-  } 
+
+  }
+
+  onModifyProduct(): void {
+    this.productModificationForm.enable();
+    this.modificationEnabled = true;
+  }
 
 
   closeAlert() {

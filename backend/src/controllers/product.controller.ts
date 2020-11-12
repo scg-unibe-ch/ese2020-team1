@@ -18,7 +18,7 @@ productController.post('/add', verifyToken, (req: Request, res: Response) => {
 productController.put('/modify/:id', verifyToken, (req: Request, res: Response) => {
     const productId = parseInt(req.params.id, 10);
     productService.modify(productId, req.body)
-        .then(() => res.status(200).send())
+        .then((modified) => res.status(200).send(modified))
         .catch(err => res.status(500).send(err));
 });
 

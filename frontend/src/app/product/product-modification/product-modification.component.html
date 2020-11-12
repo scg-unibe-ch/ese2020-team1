@@ -19,7 +19,7 @@
 
               <p> Are you offering a product or a service?</p>
               <mat-form-field>
-                <mat-select [placeholder]="product.productType" formControlName ="type">
+                <mat-select [placeholder]="" formControlName ="type">
                   <mat-option *ngFor="let type of types" [value]="type">
                     {{type}}
                   </mat-option>
@@ -32,16 +32,16 @@
                 
 
               <mat-form-field class="full-width">
-                  <input matInput [placeholder]="product.title" formControlName="name" required>
+                  <input matInput placeholder="Title" formControlName="name" required>
                 </mat-form-field>
 
                 <mat-form-field class="full-width">
-                  <input matInput [placeholder]="product.location" formControlName="location" required>
+                  <input matInput placeholder="Location" formControlName="location" required>
                 </mat-form-field>
                 <br>
 
                 <mat-form-field class="textbox-full-width">
-                  <textarea matInput [placeholder]="product.description" formControlName="description" required></textarea>
+                  <textarea matInput placeholder="Description" formControlName="description" required></textarea>
                 </mat-form-field>
 
               <br>
@@ -50,11 +50,11 @@
                 
               
                 <mat-form-field class="full-width">
-                  <input matInput type="number" [placeholder]="product.price" formControlName="price" required>
+                  <input matInput type="number" placeholder="Price" formControlName="price" required>
                 </mat-form-field>
 
                 <mat-form-field>
-                  <mat-select [placeholder]="product.payFreq" formControlName ="paymentBasis">
+                  <mat-select placeholder="Payment Basis" formControlName ="paymentBasis">
                     <mat-option *ngFor="let paymentBasis of paymentBases" [value]="paymentBasis">
                       {{paymentBasis}}
                     </mat-option>
@@ -65,20 +65,21 @@
 
                 <p>Delivery</p>
                 
-
-                <mat-checkbox [checked]="product.delivery">
+                <mat-checkbox formControlName="delivery">
                   Delivery possible
                 </mat-checkbox>
 
               <br>
 
+                <button *ngIf="!modificationEnabled" class="submit-btn" color="primary" mat-raised-button type="button" (click) ="onModifyProduct()">Modify Product</button>
 
-                <button class="submit-btn" color="primary" mat-raised-button type="submit" [disabled]="!productModificationForm.valid">
-                  Modify Product/Service
+
+                <button *ngIf="modificationEnabled" class="submit-btn" color="primary" mat-raised-button type="submit" [disabled]="!productModificationForm.valid">
+                  Safe
                 </button>
 
               
-            <button class="submit-btn" color="warn" mat-raised-button type="button" (click) ="onDeleteProduct()">
+            <button *ngIf="modificationEnabled" class="submit-btn" color="warn" mat-raised-button type="button" (click) ="onDeleteProduct()">
               Delete
             </button>
             </form>
