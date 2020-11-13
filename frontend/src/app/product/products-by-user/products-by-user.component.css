@@ -1,86 +1,13 @@
 .collection_page {
     text-align: center;
   }
-  h1{
-      font-family: "Roboto";
-      font-size: large;
-      text-align: center;
-  }
   .total_products{
       color: black;
       font-family: "Roboto";
       font-size:medium;
   }
-  .sort_by{
-      color: black;
-      font-family: "Roboto";
-      font-size:medium;
-      text-align: right;
-  }
-  .availability{
-      color: black;
-      font-family: "Roboto";
-      font-size:medium;
-      text-align: right;
-  }
   
-  .next-item{
-      display: inline-table;
-      font-family: "Roboto";
-      position: relative;
-      margin: 20px;
-      overflow:hidden;
-      border-radius: 10px;
-      -webkit-box-shadow: 0px 0px 23px -7px rgba(0, 0, 0, 0.28);
-      -moz-box-shadow: 0px 0px 23px -7px rgba(0, 0, 0, 0.28);
-      box-shadow: 0px 0px 23px -7px rgba(0, 0, 0, 0.28);
-      padding: 10px;
-      background: rgb(252, 243, 207);
-      width: 290px;
-      text-align: left;
-  }
-  
-  .container{
-      display: grid;
-      grid-template-columns: auto auto auto;
-      
-      
-  }
-  
-  .review_image{
-      padding-top: unset;
-      padding-bottom: unset;
-  }
-  
-  .product_price{
-      padding:unset;
-      margin: unset;
-      font-family: "Roboto";
-  }
-  .product_title{
-      padding:unset;
-      margin: unset;
-      font-family:"Engravers MT";
-      font-size: medium;
-  }
-  .product_description{
-      padding:unset;
-      margin: unset;
-      font-family: "Roboto";
-  }
   
   .shop_now{
       width: 100%;
   }
-  .product_footer{
-      padding: unset;
-  }
-  .product_content{
-      padding: unset;
-  }
-  
-  .added_by{
-      text-align: right;
-  }
-  
-  
