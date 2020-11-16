@@ -35,7 +35,7 @@
       <p class="product_price">{{product.price | currency: ' CHF '}}</p>
       <img src="../../assets/reviews.png" width="120px"> (15)
       <p class="added_by">Posted by: {{product.userName}}</p>
-      <a routerLink="/product/product-registration"><button class="shop_now" mat-flat-button color="primary">SHOP NOW</button></a>
+      <a routerLink="/purchase" [state]=product><button class="shop_now" mat-flat-button color="primary">SHOP NOW</button></a>
     </footer>
   </section>
 </ng-container>

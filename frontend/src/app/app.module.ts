@@ -34,6 +34,7 @@ import { ProductDisplayComponent } from './product/product-display/product-displ
 import { ProductsByUserComponent } from './product/products-by-user/products-by-user.component';
 import { AdminDashboardComponent } from './user/admin-dashboard/admin-dashboard.component';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { ProductPurchaseComponent } from './product/product-purchase/product-purchase.component';
 
 const appRoutes: Routes = [
   { path: 'user/user-login', component: UserLoginComponent},
@@ -41,7 +42,8 @@ const appRoutes: Routes = [
   { path: 'browse', component: BrowseComponent },
   { path: 'product/product-modification', component: ProductModificationComponent},
   { path: '', redirectTo: 'browse', pathMatch: 'full' },
-  { path: 'product/display', component: ProductDisplayComponent},
+  { path: 'product/display', component: ProductDisplayComponent },
+  { path: 'purchase', component: ProductPurchaseComponent},
   {
     path: 'product/product-registration',
     component: ProductRegistrationComponent,
@@ -63,7 +65,8 @@ const appRoutes: Routes = [
     ProfileComponent,
     ProductDisplayComponent,
     ProductsByUserComponent,
-    AdminDashboardComponent
+    AdminDashboardComponent,
+    ProductPurchaseComponent
   ],
   imports: [
     BrowserModule,
