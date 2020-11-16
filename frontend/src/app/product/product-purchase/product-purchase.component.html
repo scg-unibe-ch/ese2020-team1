@@ -1,1 +1,43 @@
-<p>product-purchase works!</p>
+<mat-horizontal-stepper [linear]="true" #stepper>
+  <mat-step [stepControl]="specificationForm">
+    <form [formGroup]="specificationForm">
+      <ng-template matStepLabel>Order details</ng-template>
+      <div  *ngIf ="timeBased">
+        <h3>For how many {{hourly ? 'hours' : 'days' }} do you want to book the {{product.productType}}?</h3>
+        
+      <mat-form-field>
+        <mat-label>Duration</mat-label>
+        <input matInput type="number" placeholder="0" formControlName="time" required>
+      </mat-form-field>
+      </div>
+      <br>
+      <h3>
+        Total Price: {{ totalPrice }}
+      </h3>
+      <div>
+        <button color="primary" mat-raised-button matStepperNext>Purchase Product</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="checkoutForm" label="Fill out your address">
+    <form [formGroup]="checkoutForm">
+      <mat-form-field>
+        <mat-label>Address</mat-label>
+        <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
+               required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext (click)="uponConfirmOrder()">Confirm Order</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    <p>You are now done.</p>
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>

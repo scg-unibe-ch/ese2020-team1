@@ -35,6 +35,7 @@ import { ProductsByUserComponent } from './product/products-by-user/products-by-
 import { AdminDashboardComponent } from './user/admin-dashboard/admin-dashboard.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { ProductPurchaseComponent } from './product/product-purchase/product-purchase.component';
+import { MatStepperModule } from '@angular/material/stepper';
 
 const appRoutes: Routes = [
   { path: 'user/user-login', component: UserLoginComponent},
@@ -86,7 +87,8 @@ const appRoutes: Routes = [
     MatSelectModule,
     MatNativeDateModule,
     MatExpansionModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    MatStepperModule
   ],
   providers: [
     UsernameValidator,
