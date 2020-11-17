@@ -7,7 +7,19 @@ import { Transaction } from '../models/transaction.model';
 
 
 export class UserService {
-    getNotifications(userId: number): Promise<UserNotification[]> {
+    public deleteNotification(id: string) {
+        return UserNotification.findByPk(parseInt(id, 10))
+            .then(found => {
+                if (found != null) {
+                    found.destroy();
+                    return Promise.resolve(found);
+                } else {
+                    return Promise.reject({ message: 'deletion failed' });
+                }
+            })
+            .catch(err => Promise.reject({ message: err }));
+     }
+    public getNotifications(userId: number): Promise<UserNotification[]> {
         return UserNotification.findAll({
             where: {
                 sellerId: userId
@@ -16,7 +28,7 @@ export class UserService {
             .catch(err => Promise.reject(err));
     }
 
-    getTransactions(transactionId: string): Promise<Transaction> {
+    public getTransactions(transactionId: string): Promise<Transaction> {
         return Transaction.findByPk(parseInt(transactionId, 10)).then(found => Promise.resolve(found))
             .catch(err => Promise.reject(err));
     }

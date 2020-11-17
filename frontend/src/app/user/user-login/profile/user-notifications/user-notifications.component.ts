@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { UserNotification } from '../../../../models/usernotification.model';
 import { NotificationService } from '../../notification.service';
 import { Transaction } from '../../../../models/transaction.model';
+import { ProductService } from '../../../../product/product.service';
+import { Product } from '../../../../models/product.model';
 
 @Component({
   selector: 'app-user-notifications',
@@ -10,7 +12,7 @@ import { Transaction } from '../../../../models/transaction.model';
 })
 export class UserNotificationsComponent implements OnInit {
 
-  constructor(private notificationService: NotificationService) { }
+  constructor(private notificationService: NotificationService, private productService: ProductService) { }
 
   notifications: UserNotification[];
 
@@ -22,10 +24,19 @@ export class UserNotificationsComponent implements OnInit {
       this.notifications = result;
       for (let notification of this.notifications) {
         this.notificationService.getTransactions(notification.transactionId).subscribe((result) => {
-          this.transactions.push(result);
+          notification.transaction = result;
+          this.productService.getProductById(notification.transaction.productId).subscribe((result) => {
+            notification.product = result;
+          })
         })
       }
     });
+  }
+
+  onDeleteNotification(notification: UserNotification): void {
+    this.notificationService.deleteNotification(notification.notificationId).subscribe(() => {
+      this.notifications.splice(this.notifications.indexOf(notification),1);
+    })
   }
 
 }

@@ -90,6 +90,10 @@ h1 {
     margin: 20px;
 }
 
+.mat-raised-button{
+    margin: 5px;
+}
+
 a{
     color: black;
 }

@@ -4,6 +4,7 @@ import { UserService } from '../services/user.service';
 import { verifyToken, verifyAdmin } from '../middlewares/checkAuth';
 import { UserNotificationAttributes } from '../models/usernotification.model';
 import { TransactionAttributes } from '../models/transaction.model';
+import { read } from 'fs';
 
 const userController: Router = express.Router();
 const userService = new UserService();
@@ -58,6 +59,11 @@ userController.get('/transactions/:id', verifyToken, (req: Request, res: Respons
     userService.getTransactions(req.params.id)
         .then((transaction: TransactionAttributes) => res.status(200).send(transaction))
         .catch(err => res.status(400).send(err));
+});
+
+userController.delete('/notification/:id', verifyToken, (req: Request, res: Response) => {
+    userService.deleteNotification(req.params.id)
+        .then(item => res.status(200).send({ deleted: item })).catch(err => res.status(403).send(err));
 });
 
 

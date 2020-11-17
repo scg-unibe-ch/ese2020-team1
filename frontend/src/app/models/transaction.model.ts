@@ -1,5 +1,6 @@
 export class Transaction {
   transactionId: number;
+  productId: number;
   buyerId: number;
   buyerFirstName: string;
   buyerLastName: string;
@@ -13,6 +14,7 @@ export class Transaction {
 
   constructor(httpResponse: any) {
     this.transactionId = httpResponse.transactionId;
+    this.productId = httpResponse.productId;
     this.buyerId = httpResponse.buyerId;
     this.buyerFirstName = httpResponse.buyerFirstName;
     this.buyerLastName = httpResponse.buyerLastName;
