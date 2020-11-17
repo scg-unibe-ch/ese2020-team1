@@ -12,7 +12,6 @@ export interface ProductAttributes {
     // category: category;
     description: string;
     location: string;
-    status: string;
     delivery: boolean;
     userId: number;
 }
@@ -23,7 +22,7 @@ export interface ProductCreationAttributes extends Optional<ProductAttributes, '
 
 export class Product extends Model<ProductAttributes, ProductCreationAttributes> implements ProductAttributes {
     productId!: number;
-    isApproved!: string; // pending (default), approved, disapproved
+    isApproved!: string; // pending (default), approved, disapproved, sold
     userName!: string;
     productType!: string;
     title!: string;
@@ -32,7 +31,6 @@ export class Product extends Model<ProductAttributes, ProductCreationAttributes>
     // category: category;
     description!: string;
     location!: string;
-    status!: string;
     delivery!: boolean;
     userId!: number;
 
@@ -78,10 +76,6 @@ export class Product extends Model<ProductAttributes, ProductCreationAttributes>
                 allowNull: false
             },
             location: {
-                type: DataTypes.STRING,
-                allowNull: false
-            },
-            status: {
                 type: DataTypes.STRING,
                 allowNull: false
             },
