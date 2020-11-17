@@ -9,9 +9,7 @@ import { UserNotification } from '../../models/usernotification.model';
 })
 export class NotificationService {
 
-  getTransactions(notificationId: number): Observable<any> {
-    return this.httpClient.get(environment.endpointURL + 'user/transactions/' + notificationId);
-  }
+  
 
   constructor(private httpClient: HttpClient) { }
 
@@ -22,4 +20,9 @@ export class NotificationService {
   public deleteNotification(notificationId: number): Observable<any> {
     return this.httpClient.delete(environment.endpointURL + 'user/notification/' + notificationId);
   }
+
+  getTransactions(notificationId: number): Observable<any> {
+    return this.httpClient.get(environment.endpointURL + 'user/transactions/' + notificationId);
+  }
+
 }
