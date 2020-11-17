@@ -44,7 +44,10 @@ const appRoutes: Routes = [
   { path: 'product/product-modification', component: ProductModificationComponent},
   { path: '', redirectTo: 'browse', pathMatch: 'full' },
   { path: 'product/display', component: ProductDisplayComponent },
-  { path: 'purchase', component: ProductPurchaseComponent},
+  { path: 'purchase',
+    component: ProductPurchaseComponent,
+    canActivate: [AuthGuard]
+  },
   {
     path: 'product/product-registration',
     component: ProductRegistrationComponent,
