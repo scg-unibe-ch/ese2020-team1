@@ -41,4 +41,5 @@ export class ProductService {
   disapproveProduct(id: number): Observable<any> {
     return this.httpClient.get(environment.endpointURL + 'admin/disapprove-product/' + id);
   }
+
 }
