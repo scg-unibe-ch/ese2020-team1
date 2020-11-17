@@ -15,6 +15,7 @@ import { environment } from '../../../environments/environment';
 export class ProductPurchaseComponent implements OnInit {
 
   isLinear: boolean = false; //Necessary for angular stepper
+  purchaseDenied: boolean = false; //Set to true if the total price exceeds the saldo of the buyer
 
 
   product: Product;
@@ -70,6 +71,13 @@ export class ProductPurchaseComponent implements OnInit {
     this.specificationForm.valueChanges.subscribe(val => {
       this.totalPrice = val.time * this.totalPrice;
     });
+
+    if (this.totalPrice > this.buyer.wallet) {
+      this.purchaseDenied = true;
+    } else {
+      this.purchaseDenied = false;
+    }
+
     
   }
 

@@ -14,8 +14,14 @@
       <h3>
         Total Price: {{ totalPrice }}
       </h3>
+      <div *ngIf="purchaseDenied" class="alert alert-danger alert-dismissible fade show" role="alert">
+        Your saldo is too small!
+        <button (click)="closeAlert()" type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
       <div>
-        <button color="primary" mat-raised-button matStepperNext>Purchase Product</button>
+        <button color="primary" mat-raised-button matStepperNext [disabled]="purchaseDenied">Purchase Product</button>
       </div>
     </form>
   </mat-step>
@@ -31,21 +37,21 @@
         <input matInput formControlName="lastname" [placeholder]="buyer.lastName" required>
       </mat-form-field>
       <br>
-      <mat-form-field>
+      <mat-form-field *ngIf="product.delivery">
         <mat-label>Street</mat-label>
         <input matInput formControlName="street" [placeholder]="buyer.street" required>
       </mat-form-field>
       <br>
-      <mat-form-field>
+      <mat-form-field *ngIf="product.delivery">
         <mat-label>ZIP Code</mat-label>
         <input matInput type="number" formControlName="zip" [placeholder]="buyer.zip" required>
       </mat-form-field>
-      <mat-form-field>
+      <mat-form-field *ngIf="product.delivery">
         <mat-label>City</mat-label>
         <input matInput formControlName="city" [placeholder]="buyer.city" required>
       </mat-form-field>
       <br>
-      <mat-form-field>
+      <mat-form-field *ngIf="product.delivery">
         <mat-label>Country</mat-label>
         <input matInput formControlName="country" [placeholder]="buyer.country" required>
       </mat-form-field>
@@ -57,7 +63,7 @@
 
       <div>
         <button mat-button mat-raised-button color="primary" matStepperPrevious>Back</button>
-        <button mat-button mat-raised-button color="primary" matStepperNext (click)="uponConfirmOrder()">Confirm Order</button>
+        <button mat-button mat-raised-button color="primary" matStepperNext (click)="uponConfirmOrder()" [disabled]="purchaseDenied">Confirm Order</button>
       </div>
     </form>
   </mat-step>
