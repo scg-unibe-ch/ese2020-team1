@@ -71,4 +71,10 @@ productController.get('/by-product/:id', (req: Request, res: Response) => {
 //        .catch(err => res.status(500).send(err));
 // });
 
+productController.get('/search', (req: Request, res: Response) => {
+    productService.search(req.body)
+        .then((product: Array<ProductAttributes>) => res.status(200).send(product))
+        .catch(err => res.status(500).send(err));
+});
+
 export const ProductController: Router = productController;

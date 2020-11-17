@@ -1,4 +1,5 @@
 import { ProductAttributes, Product } from '../models/product.model';
+import { SearchRequest } from '../models/search.model';
 import { User } from '../models/user.model';
 
 const { Op } = require('sequelize');
@@ -92,5 +93,14 @@ export class ProductService {
     // }).catch (err => Promise.reject(err));
     // }
 
+
+    public search(filter: SearchRequest): Promise<Product[]> {
+        return Product.findAll({
+            where: {
+                title: filter.title
+            },
+        }).then(found => Promise.resolve(found))
+            .catch(err => Promise.reject(err));
+    }
 
 }
