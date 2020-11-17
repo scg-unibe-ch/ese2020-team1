@@ -28,14 +28,15 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { Routes, RouterModule, ActivatedRoute } from '@angular/router';
 import { BrowseComponent } from './browse/browse.component';
 import { AuthGuard } from './auth/auth.guard';
-import { ProductModificationComponent } from './product/product-modification/product-modification.component';
-import { ProfileComponent } from "./user/profile/profile.component";
+import { ProductModificationComponent } from './user/user-login/profile/products-by-user/product-modification/product-modification.component';
+import { ProfileComponent } from "./user/user-login/profile/profile.component";
 import { ProductDisplayComponent } from './product/product-display/product-display.component';
-import { ProductsByUserComponent } from './product/products-by-user/products-by-user.component';
-import { AdminDashboardComponent } from './user/admin-dashboard/admin-dashboard.component';
+import { ProductsByUserComponent } from './user/user-login/profile/products-by-user/products-by-user.component';
+import { AdminDashboardComponent } from './user/user-login/profile/admin-dashboard/admin-dashboard.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { ProductPurchaseComponent } from './product/product-purchase/product-purchase.component';
 import { MatStepperModule } from '@angular/material/stepper';
+import { UserNotificationsComponent } from './user/user-login/profile/user-notifications/user-notifications.component';
 
 const appRoutes: Routes = [
   { path: 'user/user-login', component: UserLoginComponent},
@@ -70,7 +71,8 @@ const appRoutes: Routes = [
     ProductDisplayComponent,
     ProductsByUserComponent,
     AdminDashboardComponent,
-    ProductPurchaseComponent
+    ProductPurchaseComponent,
+    UserNotificationsComponent
   ],
   imports: [
     BrowserModule,

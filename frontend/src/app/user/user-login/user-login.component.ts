@@ -1,9 +1,10 @@
 import { Component, Directive, OnInit, Input, Output, EventEmitter  } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
-import { Observable } from 'rxjs';
+import { NotificationService } from './notification.service';
 import { Router } from '@angular/router';
-import {User} from '../../models/user.model';
+import { User } from '../../models/user.model';
+import { UserNotification } from '../../models/usernotification.model';
 
 import { LoggedInCheckerService } from '../../auth/logged-in-checker.service';
 
@@ -27,7 +28,7 @@ export class UserLoginComponent implements OnInit {
   secureEndpointResponse = '';
   checkStatus = '';
 
-  constructor(private httpClient: HttpClient, private loggedInCheckerService: LoggedInCheckerService, private router: Router) { }
+  constructor(private httpClient: HttpClient, private loggedInCheckerService: LoggedInCheckerService, private router: Router, private notificationService: NotificationService) { }
 
   ngOnInit(): void {
     this.loggedIn = this.loggedInCheckerService.checkUserStatus()
@@ -55,7 +56,9 @@ export class UserLoginComponent implements OnInit {
       this.userName = this.user.userName;
       this.loginFailed = false;
       this.loggedIn = this.loggedInCheckerService.isUserLoggedIn();
-    }, (err) => this.loginFailed = true); //Catch an error from the backend
+
+
+    }, (err) => this.loginFailed = true);
   }
 
   logout(): void {
@@ -65,18 +68,6 @@ export class UserLoginComponent implements OnInit {
 
     this.loggedIn = this.loggedInCheckerService.isUserLoggedIn();
     this.loginFailed = false;
-  }
-
-
-  /**
-   * Function to access a secure endpoint that can only be accessed by logged in users by providing their token.
-   */
-  accessSecuredEndpoint(): void {
-    this.httpClient.get(environment.endpointURL + 'secured').subscribe((res: any) => {
-      this.secureEndpointResponse = 'Successfully accessed secure endpoint. Message from server: ' + res.message;
-    }, (error: any) => {
-      this.secureEndpointResponse = 'Unauthorized';
-    });
   }
 
   closeAlert() {

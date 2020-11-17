@@ -12,6 +12,7 @@ export interface TransactionAttributes {
     buyerCity: string;
     buyerCountry: string;
     totalPrice: number;
+    time: number;
     messageToSeller: string;
 }
 
@@ -29,6 +30,7 @@ export class Transaction extends Model<TransactionAttributes, TransactionCreatio
     buyerCity!: string;
     buyerCountry!: string;
     totalPrice!: number;
+    time!: number;
     messageToSeller: string;
 
 
@@ -82,6 +84,10 @@ export class Transaction extends Model<TransactionAttributes, TransactionCreatio
             messageToSeller: {
                 type: DataTypes.STRING,
                 allowNull: true
+            },
+            time: {
+                type: DataTypes.INTEGER,
+                allowNull: false
             }
         },
             {

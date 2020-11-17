@@ -13,6 +13,7 @@ import { TodoItem } from './models/todoitem.model';
 import { User } from './models/user.model';
 import { Product } from './models/product.model';
 import { Transaction } from './models/transaction.model';
+import { UserNotification } from './models/usernotification.model';
 
 import cors from 'cors';
 
@@ -35,6 +36,7 @@ export class Server {
         Product.createAssociations();
         Transaction.initialize(this.sequelize);
         Transaction.createAssociations();
+        UserNotification.initialize(this.sequelize);
 
         this.sequelize.sync().then(() => {                           // create connection to the database
             this.server.listen(this.port, () => {                                   // start server on specified port

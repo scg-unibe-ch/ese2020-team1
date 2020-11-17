@@ -2,6 +2,7 @@ import { UserAttributes, User } from '../models/user.model';
 import { ProductAttributes, Product } from '../models/product.model';
 import { TransactionAttributes, Transaction } from '../models/transaction.model';
 import { TodoItem } from '../models/todoitem.model';
+import { UserNotificationAttributes, UserNotification } from '../models/usernotification.model';
 
 
 export class PurchaseService {
@@ -12,6 +13,9 @@ export class PurchaseService {
 
 
         return this.createTransaction(transaction)
+            .then(created => {
+                return this.createNotification(created.transactionId, created.sellerId);
+            })
             .then(() => {
                 return this.updateWallet(transaction.sellerId, +transaction.totalPrice);
             })
@@ -20,7 +24,8 @@ export class PurchaseService {
             })
             .then(() => {
                 return this.updateProductStatus(transaction.productId);
-            });
+            })
+            .catch(err => Promise.reject(err));
 
     }
 
@@ -29,6 +34,15 @@ export class PurchaseService {
             return Promise.resolve(created);
         })
             .catch(err => Promise.reject(err));
+    }
+
+    private createNotification(transId: number, userId: number): Promise<void> {
+
+        return UserNotification.create({
+            transactionId: transId,
+            sellerId: userId
+
+        }).then(() => Promise.resolve()).catch(err => Promise.reject(err));
     }
 
     private updateWallet(userId: number, amount: number): Promise<void> {

@@ -1,9 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Product } from '../../models/product.model';
-import { ProductService } from '../../product/product.service';
-import { User } from '../../models/user.model';
-import { LoggedInCheckerService } from '../../auth/logged-in-checker.service';
+import { Product } from '../../../models/product.model';
+import { ProductService } from '../../../product/product.service';
+import { User } from '../../../models/user.model';
+import { LoggedInCheckerService } from '../../../auth/logged-in-checker.service';
+import { UserNotification } from '../../../models/usernotification.model';
 
 @Component({
   selector: 'app-profile',
@@ -16,6 +17,7 @@ export class ProfileComponent implements OnInit {
 
   @Input()
   user: User;
+
 
   constructor(private loggedInCheckerService: LoggedInCheckerService) {
 

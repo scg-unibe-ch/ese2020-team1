@@ -126,6 +126,7 @@ export class ProductPurchaseComponent implements OnInit {
       buyerZip: this.checkoutForm.get('zip').value,
       buyerCity: this.checkoutForm.get('city').value,
       buyerCountry: this.checkoutForm.get('country').value,
+      time: this.specificationForm.get('time').value,
       totalPrice: this.totalPrice,
       messageToSeller: this.checkoutForm.get('message').value
     }).subscribe();
