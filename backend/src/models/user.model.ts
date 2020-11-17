@@ -17,11 +17,11 @@ export interface UserAttributes {
     city: string;
     country: string;
     phone: string;
-    walletId: number;
+    wallet: number;
 }
 
 // The userId and wallet attributes are optional in User.build and User.create calls
-export interface UserCreationAttributes extends Optional<UserAttributes, 'userId' | 'walletId' > { }
+export interface UserCreationAttributes extends Optional<UserAttributes, 'userId' | 'wallet' > { }
 
 export class User extends Model<UserAttributes, UserCreationAttributes> implements UserAttributes {
     userId!: number;
@@ -38,7 +38,7 @@ export class User extends Model<UserAttributes, UserCreationAttributes> implemen
     city!: string;
     country!: string;
     phone!: string;
-    walletId!: number;
+    wallet!: number;
     isAdmin!: boolean;
 
     public static initialize(sequelize: Sequelize) {
@@ -96,7 +96,7 @@ export class User extends Model<UserAttributes, UserCreationAttributes> implemen
                 type: DataTypes.STRING,
                 allowNull: false
             },
-            walletId: {
+            wallet: {
                 type: DataTypes.INTEGER,
                 defaultValue: 100
             },

@@ -6,21 +6,21 @@ import { TodoItem } from '../models/todoitem.model';
 
 export class PurchaseService {
 
-    public purchase(transaction: TransactionAttributes, buyerId: number): Promise<TransactionAttributes> {
+    public purchase(transaction: TransactionAttributes, buyerId: number): Promise<void> {
 
         transaction.buyerId = buyerId; // Store the buyerId from extracted from the token
 
 
-        return this.createTransaction(transaction).then(created => {
-
-            return Promise.resolve(created);
-            // this.getWalletId(transaction.buyerId).then(buyerWalletId => {
-            //    this.getWalletId(transaction.sellerId).then(sellerWalletId => {
-            //        this.updateWallets(buyerWalletId, sellerWalletId, transaction.totalPrice);
-            //    });
-            // });
-        });
-
+        return this.createTransaction(transaction)
+            .then(() => {
+                return this.updateWallet(transaction.sellerId, +transaction.totalPrice);
+            })
+            .then(() => {
+                return this.updateWallet(transaction.buyerId, -transaction.totalPrice);
+            })
+            .then(() => {
+                return this.updateProductStatus(transaction.productId);
+            });
 
     }
 
@@ -31,15 +31,26 @@ export class PurchaseService {
             .catch(err => Promise.reject(err));
     }
 
-    private getWalletId(userId: number): Promise<number> {
-        // Todo
-        return User.findByPk(userId).then(found => {
-            return Promise.resolve(found.walletId);
-        }).catch(err => Promise.reject(err));
+    private updateWallet(userId: number, amount: number): Promise<void> {
+        // Update the sellers wallet
+        return User.findByPk(userId).then((found) => {
+            return found.update({
+                wallet: found.wallet + amount // The saldo is checked in the frontend
+            }).then((updated) => {
+                return Promise.resolve();
+            });
+        }).then(promise => {
+            return promise;
+        });
     }
 
-    private updateWallets(buyerWalletId: number, sellerWalletId: number, amount: number): Promise<void> {
-        // Todo
-        return Promise.resolve();
+    private updateProductStatus(productId: number): Promise<void> {
+        return Product.findByPk(productId).then((found) => {
+            return found.update({
+                isApproved: 'sold'
+            }).then(() => {
+                return Promise.resolve();
+            });
+        });
     }
 }

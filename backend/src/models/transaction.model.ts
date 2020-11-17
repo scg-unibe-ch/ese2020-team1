@@ -5,6 +5,8 @@ export interface TransactionAttributes {
     productId: number;
     sellerId: number;
     buyerId: number;
+    buyerFirstName: string;
+    buyerLastName: string;
     buyerStreet: string;
     buyerZip: number;
     buyerCity: string;
@@ -20,6 +22,8 @@ export class Transaction extends Model<TransactionAttributes, TransactionCreatio
     productId!: number;
     sellerId!: number;
     buyerId!: number;
+    buyerFirstName: string;
+    buyerLastName: string;
     buyerStreet!: string;
     buyerZip!: number;
     buyerCity!: string;
@@ -45,6 +49,14 @@ export class Transaction extends Model<TransactionAttributes, TransactionCreatio
             },
             buyerId: {
                 type: DataTypes.INTEGER,
+                allowNull: false
+            },
+            buyerFirstName: {
+                type: DataTypes.STRING,
+                allowNull: false
+            },
+            buyerLastName: {
+                type: DataTypes.STRING,
                 allowNull: false
             },
             buyerStreet: {
