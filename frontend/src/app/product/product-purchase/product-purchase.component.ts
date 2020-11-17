@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../../models/product.model';
-import { Transaction } from '../../models/transaction.model';
 import { Router } from '@angular/router';
 import { User } from '../../models/user.model';
 import { LoggedInCheckerService } from '../../auth/logged-in-checker.service';
 import { FormBuilder, FormGroup, Validators, FormControl, ReactiveFormsModule } from '@angular/forms';
-import { PurchaseService } from './purchase.service';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-product-purchase',
@@ -16,6 +16,7 @@ export class ProductPurchaseComponent implements OnInit {
 
   isLinear: boolean = false; //Necessary for angular stepper
 
+
   product: Product;
   buyer: User;
 
@@ -25,13 +26,10 @@ export class ProductPurchaseComponent implements OnInit {
 
   totalPrice: number;
 
-  transaction: Transaction;
-
-
   specificationForm: FormGroup; //In case of timebased product/service, the buyer indicates the total hours/days
   checkoutForm: FormGroup; //The transaction is confirmed and the user enters the necessary details for the transaction
 
-  constructor(private router: Router, private loggedInCheckerService: LoggedInCheckerService, private purchasService: PurchaseService, private fb: FormBuilder) {
+  constructor(private router: Router, private loggedInCheckerService: LoggedInCheckerService, private httpClient: HttpClient, private fb: FormBuilder) {
 
   }
 
@@ -40,7 +38,7 @@ export class ProductPurchaseComponent implements OnInit {
     this.product = window.history.state;
 
     this.totalPrice = this.product.price;
-
+    //Check what type of product/service it is on order to adapt the html accordingly
     if (this.product.productType == "Product (lend)" || this.product.productType == "Service (time-based)") {
       this.timeBased = true;
 
@@ -52,10 +50,17 @@ export class ProductPurchaseComponent implements OnInit {
       }
     }
 
+
+    //Get all the user details from the backend
     this.loggedInCheckerService.getUser().subscribe(user => {
       this.buyer = user;
+
+
+      //Create the forms
       this.createForms();
-      this.onChanges();
+
+      this.onChanges(); //Called if input values change
+
     });
 
   }
@@ -88,23 +93,33 @@ export class ProductPurchaseComponent implements OnInit {
 
   createCheckoutForm(): void {
     this.checkoutForm = this.fb.group({
-      street: new FormControl(this.buyer.street, Validators.required)
-    })
+      firstname: new FormControl(this.buyer.firstName, Validators.required),
+      lastname: new FormControl(this.buyer.lastName, Validators.required),
+      street: new FormControl(this.buyer.street, Validators.required),
+      zip: new FormControl(this.buyer.zip, Validators.compose([
+        Validators.pattern(/^[0-9]\d*$/),
+        Validators.required
+      ])),
+      city: new FormControl(this.buyer.city, Validators.required),
+      country: new FormControl(this.buyer.country, Validators.required),
+      message: new FormControl("", Validators.maxLength(300))
+    });
   }
 
   uponConfirmOrder(): void {
 
-    this.purchasService.purchaseProduct(new Transaction(
-      0,
-      this.product.productId,
-      this.product.userId,
-      this.buyer.userId,
-      this.checkoutForm.get('buyerStreet').value,
-      this.checkoutForm.get('buyerZip').value,
-      this.checkoutForm.get('buyerCity').value,
-      this.checkoutForm.get('buyerCountry').value,
-      this.totalPrice,
-      this.checkoutForm.get('messageToSeller').value
-    )).subscribe(confirmed => this.transaction = confirmed);
+    this.httpClient.post(environment.endpointURL + 'purchase', {
+      productId: this.product.productId,
+      sellerId: this.product.userId,
+      buyerId: this.buyer.userId,
+      buyerFirstName: this.checkoutForm.get('firstname').value,
+      buyerLastName: this.checkoutForm.get('lastname').value,
+      buyerStreet: this.checkoutForm.get('street').value,
+      buyerZip: this.checkoutForm.get('zip').value,
+      buyerCity: this.checkoutForm.get('city').value,
+      buyerCountry: this.checkoutForm.get('country').value,
+      totalPrice: this.totalPrice,
+      messageToSeller: this.checkoutForm.get('message').value
+    }).subscribe();
   }
 }
