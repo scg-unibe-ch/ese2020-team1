@@ -8,6 +8,9 @@
             <mat-tab label="Currently selling"><ng-template matTabContent><app-products-by-user></app-products-by-user></ng-template></mat-tab>
             <mat-tab label="Profile Information">View 2</mat-tab>
             <mat-tab *ngIf="isAdmin" label="Admin Dashboard"><ng-template matTabContent><app-admin-dashboard></app-admin-dashboard></ng-template></mat-tab>
+            <mat-tab label="Notifications">
+              <ng-template matTabContent><app-user-notifications></app-user-notifications></ng-template>
+            </mat-tab>
         </mat-tab-group>
     </div>
 </div>

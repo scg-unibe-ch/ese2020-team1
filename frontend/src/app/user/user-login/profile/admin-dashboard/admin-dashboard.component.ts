@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from '../../models/product.model';
-import { ProductService } from '../../product/product.service';
+import { Product } from '../../../../models/product.model';
+import { ProductService } from '../../../../product/product.service';
 
 @Component({
   selector: 'app-admin-dashboard',

@@ -33,14 +33,13 @@
 </form>
 
 <span class="ProfileImage">
-   <img src="../../assets/profile.png" width="30px" height="30px">
-    <br>
-    <a *ngIf="!loggedIn" routerLink="/user/user-login" routerLinkActive="active-link">LOGIN </a>
+  
+    <a *ngIf="!loggedIn" routerLink="/user/user-login" routerLinkActive="active-link"><img src="../../assets/profile.png" width="30px" height="30px"><br>LOGIN </a>
     
-    <a *ngIf="loggedIn" routerLink="/user/user-login" routerLinkActive="active-link">PROFILE</a> 
+    <a *ngIf="loggedIn" routerLink="/user/user-login" routerLinkActive="active-link"><img src="../../assets/profile.png" width="30px" height="30px"><br>PROFILE</a> 
 </span>
     
 <span class="CartImage">
-   <img src="../../assets/cart.png" width="30px" height="30px"><br><a routerLink="/profile" routerLinkActive="active-link">CART </a>
+   <a routerLink="/profile" routerLinkActive="active-link"><img src="../../assets/cart.png" width="30px" height="30px"><br>CART </a>
 </span>
 </nav>

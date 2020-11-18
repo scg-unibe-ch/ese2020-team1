@@ -1,0 +1,27 @@
+<div *ngFor ="let notification of notifications">
+    <div class="next-item" role="alert">
+    {{notification.product.title}} was sold to {{notification.transaction.buyerFirstName}}!
+      <div *ngIf="notification.product.delivery">
+          <h3 style="padding-top:10px;font-weight:bold">Shipping Info:</h3>
+          <p>{{notification.transaction.buyerFirstName}} {{notification.transaction.buyerLastName}}<br />
+          {{notification.transaction.buyerStreet}} <br />
+          {{notification.transaction.buyerZip}} {{notification.transaction.buyerCity}} <br />
+          {{notification.transaction.buyerCountry}}</p>
+      </div>
+<!--    <button (click)="closeAlert()" type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>-->
+      
+                
+
+
+    <a routerLink="../../product/product-modification" [state]="notification.product">
+      <button class="submit-btn" color="primary" mat-raised-button>
+         Edit or delete {{notification.product.title}}
+      </button>
+      </a>
+        <button  class="submit-btn" color="warn" mat-raised-button type="submit" (click)="onDeleteNotification(notification)">
+          Delete Notification
+        </button>
+  </div>
+</div>
