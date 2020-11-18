@@ -1,0 +1,22 @@
+.left-product{
+width: 1024px;
+height:100%;
+left:15px;
+background-color: #fffdf5;
+padding-left: 25px;
+padding-top: 10px;
+}
+
+.right-info{
+position: fixed;
+width: 30%;
+right:15px;
+top:95px;
+background-color:#fffdf5;
+padding-left: 25px;
+padding-top: 15px;
+}
+
+.post-question{
+    padding-left: 20px;
+}
