@@ -11,6 +11,7 @@ import { Product } from '../../models/product.model';
 export class ProductDisplayComponent implements OnInit {
 
   product: Product;
+  shipping: string;
 
   constructor(private router: Router) {
     
@@ -19,6 +20,15 @@ export class ProductDisplayComponent implements OnInit {
   ngOnInit(): void {
     
     this.product = window.history.state;
+    
+    if(this.product.delivery == false){
+      this.shipping = "Shipping not possible"
+    }
+    if(this.product.delivery == true){
+      this.shipping = "Shipping possible"
+    } else {
+      this.shipping = "No info"
+    }
   }
 
 }
