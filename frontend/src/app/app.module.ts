@@ -37,6 +37,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { ProductPurchaseComponent } from './product/product-purchase/product-purchase.component';
 import { MatStepperModule } from '@angular/material/stepper';
 import { UserNotificationsComponent } from './user/user-login/profile/user-notifications/user-notifications.component';
+import { UserInformationComponent } from './user/user-login/profile/user-information/user-information.component';
 
 const appRoutes: Routes = [
   { path: 'user/user-login', component: UserLoginComponent},
@@ -72,7 +73,8 @@ const appRoutes: Routes = [
     ProductsByUserComponent,
     AdminDashboardComponent,
     ProductPurchaseComponent,
-    UserNotificationsComponent
+    UserNotificationsComponent,
+    UserInformationComponent
   ],
   imports: [
     BrowserModule,
