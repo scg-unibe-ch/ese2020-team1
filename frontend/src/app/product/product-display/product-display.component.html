@@ -26,9 +26,9 @@
         <p>{{product.title}}</p>
         <hr>
         <p><b>Price:</b> {{product.price}}</p>
-        <button type="button" class="btn btn-outline-dark">Buy</button>
+        <a routerLink="/purchase" [state]=product><button type="button" class="btn btn-outline-dark">Buy</button></a>
         <hr>
         <p>{{shipping}}</p>
-        <p><b>Seller:</b> User Name for the User that posted this product</p>
+        <p><b>Seller:</b> {{product.userName}}</p>
     </div>
 </div>
