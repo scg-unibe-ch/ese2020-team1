@@ -1,10 +1,15 @@
 <div *ngFor ="let notification of notifications">
     <div class="next-item" role="alert">
-    {{notification.product.title}} was sold to {{notification.transaction.buyerFirstName}}!
+        <h3>{{notification.product.title}} was sold to {{notification.transaction.buyerFirstName}}!</h3>
+        
       <div *ngIf="!!notification.transaction.messageToSeller">
-        Message from the buyer
+          <h3>Message from the buyer:</h3>
+          <div class="panel">
+            {{notification.transaction.messageToSeller}}
+          </div>
+        
         <br />
-        {{notification.transaction.messageToSeller}}
+          <br />
       </div>
       <div *ngIf="notification.product.delivery">
           <h3 style="padding-top:10px;font-weight:bold">Shipping Info:</h3>
