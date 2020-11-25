@@ -12,11 +12,17 @@ import { ProductService } from '../product.service';
 export class BrowseComponent implements OnInit {
 
   listOfProducts: Product[];
+  searchString = '';
 
   constructor(private httpClient: HttpClient, private productService: ProductService) { }
 
   ngOnInit(): void {
-    this.productService.getProductList().subscribe((result) => this.listOfProducts = result);
+    this.productService.getProductList(this.searchString).subscribe((result) => this.listOfProducts = result);
+  }
+
+  onSearch(): void {
+    console.log(this.searchString);
+    this.productService.getProductList(this.searchString).subscribe((result) => this.listOfProducts = result);
   }
 }
 

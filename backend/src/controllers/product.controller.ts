@@ -41,7 +41,7 @@ productController.get('/pending', verifyToken, verifyAdmin, (req: Request, res: 
         .catch(err => res.status(500).send(err));
 });
 
-productController.get('/approved', (req: Request, res: Response) => {
+productController.get('/approved/:searchString', (req: Request, res: Response) => {
     productService.getApproved()
         .then((product: Array<ProductAttributes>) => res.status(200).send(product))
         .catch(err => res.status(500).send(err));

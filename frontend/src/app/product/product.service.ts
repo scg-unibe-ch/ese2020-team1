@@ -14,8 +14,8 @@ export class ProductService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getProductList(): Observable<any> {
-    return this.httpClient.get(environment.endpointURL + 'product/approved');
+  getProductList(searchString: string): Observable<any> {
+    return this.httpClient.get(environment.endpointURL + 'product/approved/' + searchString);
   }
 
   getProductById(id: number): Observable<any> {
