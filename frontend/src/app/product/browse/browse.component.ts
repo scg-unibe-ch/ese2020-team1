@@ -16,7 +16,7 @@ export class BrowseComponent implements OnInit {
 
 
   //Filter configuration
-  deliveryPossible = true;
+  deliveryPossible = false;
   location = '';
   price = 0;
   maxPrice = 0;

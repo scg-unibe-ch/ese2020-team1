@@ -18,11 +18,19 @@
     </nav>
   
     <div class="filters">
-      Price: <mat-slider class="price-slider" [min] = "1" [max] = "maxPrice" [step] ="priceStep" [(ngModel)]="price"></mat-slider> {{price}}
-      Location: <mat-form-field><input matInput placeholder="Location" [(ngModel)]="location" name="location"></mat-form-field>
+        <div class="row">
+          <div class="col-md-4">Price: <mat-slider class="price-slider" [min] = "1" [max] = "maxPrice" [step] ="priceStep" [(ngModel)]="price"></mat-slider> {{price}}</div>
+            <div class="col-md-4">Location: <mat-form-field><input matInput placeholder="Location" [(ngModel)]="location" name="location"></mat-form-field></div>
+            <div class="col-md-4">Delivery possible: <mat-checkbox [(ngModel)]="deliveryPossible"></mat-checkbox></div>
+        </div>
+        
+      
+      
+      
     </div>
+
 <hr class="hr">
-<ng-container class="item-container" *ngFor="let product of listOfProducts | filter: price : location" >
+<ng-container class="item-container" *ngFor="let product of listOfProducts | filter: price : location : deliveryPossible" >
   <a [routerLink]="['../display']" [queryParams]="{id: product.productId}">
   <div class="next-item" >
     <ng-container>
