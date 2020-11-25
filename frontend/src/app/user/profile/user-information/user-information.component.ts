@@ -1,9 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { User } from '../../../../models/user.model';
-import { LoggedInCheckerService } from '../../../../auth/logged-in-checker.service';
+import { User } from '../../../models/user.model';
+import { LoggedInCheckerService } from '../../../auth/logged-in-checker.service';
 import { Router } from '@angular/router';
-import { environment } from '../../../../../environments/environment';
+import { environment } from '../../../../environments/environment';
 import { NotificationService } from '../../notification.service';
 
 @Component({

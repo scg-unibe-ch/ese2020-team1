@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators, FormControl, ReactiveFormsModule } 
 import { ParentErrorStateMatcher } from '../../user/user-registration/validators';
 import { environment } from '../../../environments/environment';
 import { Router } from '@angular/router';
-import { BrowseComponent } from '../../browse/browse.component';
+import { BrowseComponent } from '../browse/browse.component';
 
 @Component({
   selector: 'app-product-registration',

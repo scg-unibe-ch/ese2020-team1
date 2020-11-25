@@ -1,16 +1,16 @@
 {
   "ExpandedNodes": [
     "",
-    "\\backend",
-    "\\backend\\src",
     "\\frontend",
+    "\\frontend\\src",
     "\\frontend\\src\\app",
-    "\\frontend\\src\\app\\browse",
-    "\\frontend\\src\\app\\navbar",
+    "\\frontend\\src\\app\\auth",
     "\\frontend\\src\\app\\product",
-    "\\frontend\\src\\app\\product\\product-display",
-    "\\frontend\\src\\app\\todo-list"
+    "\\frontend\\src\\app\\product\\product-modification",
+    "\\frontend\\src\\app\\user",
+    "\\frontend\\src\\app\\user\\user-login",
+    "\\frontend\\src\\app\\user\\user-login\\profile"
   ],
-  "SelectedNode": "\\backend\\src\\controllers\\admin.controller.ts",
+  "SelectedNode": "\\frontend\\src\\app\\user\\user-login\\profile",
   "PreviewInSolutionExplorer": false
 }

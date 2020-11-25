@@ -1,14 +1,5 @@
 <div class="collection_page">
     <h1>CURRENTLY ON CARTS</h1>
-<!--<span class="product-card">
-  
-  <span *ngFor="let product of listOfProducts" class="next-item">
-      <img src="/ese2020-team1/frontend/src/assets/Missing_Image.jpg" width="300px" height="300px">
-      <p><b>{{product.title}}</b></p>
-      <p>{{product.description}}</p>
-  </span>
-  
-</span>-->
 <hr class="hr">
     <nav class="navbar">
       <span class="total_products">TOTAL PRODUCTS: {{listOfProducts.length}}</span>
@@ -21,7 +12,7 @@
     </nav>
 <hr class="hr">
 <ng-container class="item-container" *ngFor="let product of listOfProducts" >
-  <a routerLink="../product/display" [state]=product>
+  <a [routerLink]="['../display']" [queryParams]="{id: product.productId}">
   <div class="next-item" >
     <ng-container>
       <figure><img src="../../assets/Missing_Image.jpg" width="270px" height="200px">
@@ -35,20 +26,12 @@
       <p class="product_price">{{product.price | currency: ' CHF '}}</p>
       <img src="../../assets/reviews.png" width="120px"> (15)
       <p class="added_by">Posted by: {{product.userName}}</p>
-      <a routerLink="/purchase" [state]=product><button class="shop_now" mat-flat-button color="primary">SHOP NOW</button></a>
+      <a [routerLink]="['../purchase']" [queryParams]="{id: product.productId}"><button class="shop_now" mat-flat-button color="primary">SHOP NOW</button></a>
     </footer>
   </div>
   </a>
 </ng-container>
 
 </div>
-<!--<mat-card *ngFor="let product of listOfProducts" class ="product-card">
-  <mat-card-header >
-    <mat-card-title>{{product.title}}</mat-card-title>
-  </mat-card-header>
-  <mat-card-content>
-    <p>{{product.description}}</p>
-  </mat-card-content>
-</mat-card>-->
 
 

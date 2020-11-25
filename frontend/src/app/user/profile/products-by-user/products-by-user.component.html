@@ -1,0 +1,23 @@
+<div class="collection_page">
+
+<ng-container class="container" *ngFor="let product of listOfProducts" >
+  <a [routerLink]="['../../product/display']" [queryParams]="{id: product.productId}">
+  <section class="next-item" >
+    <ng-container>
+      <figure><img src="../../assets/Missing_Image.jpg" width="270px" height="200px">
+      </figure>
+    </ng-container>
+    <footer class="product_footer">
+      <p class="product_title">{{product.title}}</p>
+      <p class="product_price">{{product.price | currency: ' CHF '}}</p>
+      <img src="../../assets/reviews.png" width="120px"> (15)
+      <p class="added_by"> Status: {{product.isApproved}}</p>
+      <a [routerLink]="['../../product/product-modification']" [queryParams]="{id: product.productId}"><button class="edit" mat-flat-button color="primary"> EDIT</button></a>
+    </footer>
+  </section>
+    </a>
+</ng-container>
+
+</div>
+
+

@@ -1,12 +1,11 @@
 import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators, FormControl, ReactiveFormsModule } from '@angular/forms';
-import { ParentErrorStateMatcher } from '../../../../user-registration/validators';
-import { environment } from '../../../../../../environments/environment';
-import { Router } from '@angular/router';
-import { BrowseComponent } from '../../../../../browse/browse.component';
-import { Product } from '../../../../../models/product.model';
-import { ProductService } from '../../../../../product/product.service';
+import { ParentErrorStateMatcher } from '../../user/user-registration/validators';
+import { environment } from '../../../environments/environment';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Product } from '../../models/product.model';
+import { ProductService } from '../product.service';
 
 @Component({
   selector: 'app-product-modification',
@@ -20,6 +19,8 @@ export class ProductModificationComponent implements OnInit {
   //The product id will be passed from the parent component
 
   product: Product;
+  productId: number;
+
 
   //Create product modification form
   productModificationForm: FormGroup;
@@ -44,11 +45,25 @@ export class ProductModificationComponent implements OnInit {
     "Daily"
   ];
 
-  constructor(private fb: FormBuilder, private httpClient: HttpClient, private router: Router, private productService: ProductService) { }
+  constructor(
+    private fb: FormBuilder,
+    private httpClient: HttpClient,
+    private router: Router,
+    private productService: ProductService,
+    private activeRoute: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
-    this.product = window.history.state;
-    this.createForms();
+
+    //Store the product
+    this.activeRoute.queryParams.subscribe(params => {
+      this.productId = params['id'];
+      this.productService.getProductById(this.productId).subscribe(result => {
+        this.product = result;
+        
+        this.createForms();
+      });
+    });
   }
 
 

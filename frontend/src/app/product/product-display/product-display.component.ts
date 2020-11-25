@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from '../../models/product.model';
+import { ProductService } from '../product.service';
 
 @Component({
   selector: 'app-product-display',
@@ -10,25 +11,29 @@ import { Product } from '../../models/product.model';
 })
 export class ProductDisplayComponent implements OnInit {
 
+  productId: number;
   product: Product;
   shipping: string;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private activeRoute: ActivatedRoute, private productService: ProductService) {
     
   }
 
   ngOnInit(): void {
+
+    this.activeRoute.queryParams.subscribe(params => {
+      this.productId = params['id'];
+      this.productService.getProductById(this.productId).subscribe(result => {
+        this.product = result;
+        if (this.product.delivery == true) {
+          this.shipping = "Shipping possible"
+        } else {
+          this.shipping = "Shipping not possible"
+        }
+      });
+    });
     
-    this.product = window.history.state;
     
-    if(this.product.delivery == false){
-      this.shipping = "Shipping not possible"
-    }
-    if(this.product.delivery == true){
-      this.shipping = "Shipping possible"
-    } else {
-      this.shipping = "No info"
-    }
   }
 
 }

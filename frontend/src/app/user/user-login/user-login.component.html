@@ -20,15 +20,6 @@
     <li>Forgot Password? </li>
     <li> Don't have an account? You can register <a routerLink="/user/user-registration">HERE</a>!</li> </ul>
   </div>
-
-  
-
-  <div *ngIf="loggedIn">    
-    <app-profile [user]="user"></app-profile>
-  </div>
-  <div *ngIf="loggedIn" class="logout-button">
-    <button mat-flat-button  color="warn" (click)="logout()">Logout</button>    
-  </div>
 </mat-card>
 
  

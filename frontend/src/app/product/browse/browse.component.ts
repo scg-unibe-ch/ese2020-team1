@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { environment } from '../../environments/environment';
+import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { Product } from '../models/product.model';
-import { ProductService } from '../product/product.service';
+import { Product } from '../../models/product.model';
+import { ProductService } from '../product.service';
 
 @Component({
   selector: 'app-browse',

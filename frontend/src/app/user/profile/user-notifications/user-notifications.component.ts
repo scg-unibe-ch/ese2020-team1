@@ -1,9 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { UserNotification } from '../../../../models/usernotification.model';
+import { UserNotification } from '../../../models/usernotification.model';
 import { NotificationService } from '../../notification.service';
-import { Transaction } from '../../../../models/transaction.model';
-import { ProductService } from '../../../../product/product.service';
-import { Product } from '../../../../models/product.model';
+import { Transaction } from '../../../models/transaction.model';
+import { ProductService } from '../../../product/product.service';
 
 @Component({
   selector: 'app-user-notifications',

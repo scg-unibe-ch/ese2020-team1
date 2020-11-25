@@ -1,10 +1,10 @@
 <map name="workmap">
-  <area shape="rect" href="../user-login">
+  <area shape="rect" href="/user/profile">
 </map>
 
 <nav class="navbar navbar-expand-lg navbar-light">
   <span class="LogoImage"><img  src="../../assets/Logo.png" width="63px" height="50px">
-    <a routerLink="/browse" class="navbar-brand">ARTs</a>
+    <a routerLink="/product/browse" class="navbar-brand">ARTs</a>
   </span>
     
   
@@ -15,13 +15,13 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a routerLink="/browse">BROWSE</a>
+              <a routerLink="/product/browse">BROWSE</a>
             </li>
             <li class="nav-item">
               <a routerLink="/product/product-registration">SELL/LEND </a>
             </li>
             <li class="nav-item">
-              <a routerLink="/browse">LEARN MORE</a>
+              <a routerLink="/product/browse">LEARN MORE</a>
             </li>
         </ul>
     </div>
@@ -34,12 +34,12 @@
 
 <span class="ProfileImage">
   
-    <a *ngIf="!loggedIn" routerLink="/user/user-login" routerLinkActive="active-link"><img src="../../assets/profile.png" width="30px" height="30px"><br>LOGIN </a>
+    <a *ngIf="!loggedIn" routerLink="/user/profile" routerLinkActive="active-link"><img src="../../assets/profile.png" width="30px" height="30px"><br>LOGIN </a>
     
-    <a *ngIf="loggedIn" routerLink="/user/user-login" routerLinkActive="active-link"><img src="../../assets/profile.png" width="30px" height="30px"><br>PROFILE</a> 
+    <a *ngIf="loggedIn" routerLink="/user/profile" routerLinkActive="active-link"><img src="../../assets/profile.png" width="30px" height="30px"><br>PROFILE</a> 
 </span>
     
 <span class="CartImage">
-   <a routerLink="/profile" routerLinkActive="active-link"><img src="../../assets/cart.png" width="30px" height="30px"><br>CART </a>
+   <a routerLink="/user/profile" routerLinkActive="active-link"><img src="../../assets/cart.png" width="30px" height="30px"><br>CART </a>
 </span>
 </nav>

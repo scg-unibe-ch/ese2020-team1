@@ -1,10 +1,8 @@
 import { Component, Directive, OnInit, Input, Output, EventEmitter  } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
-import { NotificationService } from './notification.service';
 import { Router } from '@angular/router';
 import { User } from '../../models/user.model';
-import { UserNotification } from '../../models/usernotification.model';
 
 import { LoggedInCheckerService } from '../../auth/logged-in-checker.service';
 
@@ -28,7 +26,7 @@ export class UserLoginComponent implements OnInit {
   secureEndpointResponse = '';
   checkStatus = '';
 
-  constructor(private httpClient: HttpClient, private loggedInCheckerService: LoggedInCheckerService, private router: Router, private notificationService: NotificationService) { }
+  constructor(private httpClient: HttpClient, private loggedInCheckerService: LoggedInCheckerService, private router: Router) { }
 
   ngOnInit(): void {
     this.loggedIn = this.loggedInCheckerService.checkUserStatus()
@@ -37,6 +35,7 @@ export class UserLoginComponent implements OnInit {
         this.loggedInCheckerService.getUser().subscribe((found) => {
           this.user = found;
           this.userName = this.user.userName;
+          this.router.navigate(['/user/profile'], { queryParams: { id: this.user.userId } });
         });
     }
   }
@@ -56,6 +55,7 @@ export class UserLoginComponent implements OnInit {
       this.userName = this.user.userName;
       this.loginFailed = false;
       this.loggedIn = this.loggedInCheckerService.isUserLoggedIn();
+      this.router.navigate(['/user/profile'], { queryParams: { id: this.user.userId } });
 
 
     }, (err) => this.loginFailed = true);
