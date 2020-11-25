@@ -43,6 +43,7 @@ export class UserInformationComponent implements OnInit {
             this.userName = this.user.userName;
             this.userFirstName=this.user.firstName;
             this.userLastName= this.user.lastName;
+            this.userBirthdate = new Date().toLocaleDateString();
           });
       }
     }
