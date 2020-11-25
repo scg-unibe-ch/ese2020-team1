@@ -108,7 +108,7 @@ const appRoutes: Routes = [
     MatExpansionModule,
     RouterModule.forRoot(appRoutes),
     MatStepperModule,
-    MatSliderModule
+    MatSliderModule,
   ],
   providers: [
     UsernameValidator,

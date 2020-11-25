@@ -1,11 +1,13 @@
 .collection_page {
   text-align: center;
 }
+
 .total_products{
     color: black;
     font-family: "Roboto";
     font-size:medium;
 }
+
 .sort_by{
     color: black;
     font-family: "Roboto";

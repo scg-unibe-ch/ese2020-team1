@@ -9,6 +9,36 @@
         </mat-form-field>
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click) ="onSearch()">Search</button>
       </form>
+        <span class="single-filter">
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Price
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-slider class="mat-form-field-wrapper" [min] = "1" [max] = "maxPrice" [step] ="priceStep" [(ngModel)]="price"></mat-slider> {{price}}
+          </mat-expansion-panel>
+        </span>
+        <span class="single-filter">
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Location
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-form-field><input matInput placeholder="Location" [(ngModel)]="location" name="location"></mat-form-field>
+          </mat-expansion-panel>
+        </span>
+        <span class="single-filter">          
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Delivery possible
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-checkbox class = "mat-form-field-wrapper" [(ngModel)]="deliveryPossible"></mat-checkbox> Yes
+          </mat-expansion-panel>
+        </span>
 <!--      <span class="sort_by">SORT BY: DATE ADDED
         <img src="../../assets/down-arrow.png" width="25px" height="25px">
       </span>
@@ -16,18 +46,6 @@
         <img src="../../assets/down-arrow.png" width="25px" height="25px">
       </span>-->
     </nav>
-  
-    <div class="filters">
-        <div class="row">
-          <div class="col-md-4">Price: <mat-slider class="price-slider" [min] = "1" [max] = "maxPrice" [step] ="priceStep" [(ngModel)]="price"></mat-slider> {{price}}</div>
-            <div class="col-md-4">Location: <mat-form-field><input matInput placeholder="Location" [(ngModel)]="location" name="location"></mat-form-field></div>
-            <div class="col-md-4">Delivery possible: <mat-checkbox [(ngModel)]="deliveryPossible"></mat-checkbox></div>
-        </div>
-        
-      
-      
-      
-    </div>
 
 <hr class="hr">
 <ng-container class="item-container" *ngFor="let product of listOfProducts | filter: price : location : deliveryPossible" >
