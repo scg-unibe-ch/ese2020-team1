@@ -17,7 +17,7 @@ export class BrowseComponent implements OnInit {
 
   //Filter configuration
   deliveryPossible = true;
-  location = 'Bern';
+  location = '';
   price = 0;
   maxPrice = 0;
   priceStep = 1;

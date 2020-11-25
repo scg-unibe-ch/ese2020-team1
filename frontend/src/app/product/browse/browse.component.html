@@ -15,13 +15,14 @@
       <span class="availability">AVILABILITY: MAIL DELIVERY
         <img src="../../assets/down-arrow.png" width="25px" height="25px">
       </span>-->
-    <div class="filters">
-      <mat-slider class="price-slider" [min] = "1" [max] = "maxPrice" [step] ="priceStep" [(ngModel)]="price"></mat-slider>
-      Price:{{price}}
-    </div>
     </nav>
+  
+    <div class="filters">
+      Price: <mat-slider class="price-slider" [min] = "1" [max] = "maxPrice" [step] ="priceStep" [(ngModel)]="price"></mat-slider> {{price}}
+      Location: <mat-form-field><input matInput placeholder="Location" [(ngModel)]="location" name="location"></mat-form-field>
+    </div>
 <hr class="hr">
-<ng-container class="item-container" *ngFor="let product of listOfProducts | filter: price" >
+<ng-container class="item-container" *ngFor="let product of listOfProducts | filter: price : location" >
   <a [routerLink]="['../display']" [queryParams]="{id: product.productId}">
   <div class="next-item" >
     <ng-container>
