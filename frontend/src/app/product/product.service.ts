@@ -18,6 +18,11 @@ export class ProductService {
     return this.httpClient.get(environment.endpointURL + 'product/approved');
   }
 
+
+  getProductListSearch(searchString: string): Observable<any> {
+    return this.httpClient.get(environment.endpointURL + 'product/approved/' + searchString);
+  }
+
   getProductById(id: number): Observable<any> {
     return this.httpClient.get(environment.endpointURL + 'product/by-product/' + id);
   }

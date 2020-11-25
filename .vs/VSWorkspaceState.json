@@ -1,16 +1,18 @@
 {
   "ExpandedNodes": [
     "",
+    "\\backend\\postman_collection",
+    "\\backend\\src",
+    "\\backend\\src\\controllers",
     "\\frontend",
     "\\frontend\\src",
     "\\frontend\\src\\app",
-    "\\frontend\\src\\app\\auth",
     "\\frontend\\src\\app\\product",
-    "\\frontend\\src\\app\\product\\product-modification",
+    "\\frontend\\src\\app\\product\\product-display",
     "\\frontend\\src\\app\\user",
-    "\\frontend\\src\\app\\user\\user-login",
-    "\\frontend\\src\\app\\user\\user-login\\profile"
+    "\\frontend\\src\\app\\user\\profile",
+    "\\frontend\\src\\app\\user\\profile\\user-information"
   ],
-  "SelectedNode": "\\frontend\\src\\app\\user\\user-login\\profile",
+  "SelectedNode": "\\frontend\\src\\app\\app.module.ts",
   "PreviewInSolutionExplorer": false
 }

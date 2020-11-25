@@ -38,6 +38,8 @@ import { ProductPurchaseComponent } from './product/product-purchase/product-pur
 import { MatStepperModule } from '@angular/material/stepper';
 import { UserNotificationsComponent } from './user/profile/user-notifications/user-notifications.component';
 import { UserInformationComponent } from './user/profile/user-information/user-information.component';
+import { FilterPipe } from './product/browse/filter.pipe';
+import { MatSliderModule } from '@angular/material/slider';
 
 const appRoutes: Routes = [
   {
@@ -83,7 +85,8 @@ const appRoutes: Routes = [
     AdminDashboardComponent,
     ProductPurchaseComponent,
     UserNotificationsComponent,
-    UserInformationComponent
+    UserInformationComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
@@ -104,7 +107,8 @@ const appRoutes: Routes = [
     MatNativeDateModule,
     MatExpansionModule,
     RouterModule.forRoot(appRoutes),
-    MatStepperModule
+    MatStepperModule,
+    MatSliderModule,
   ],
   providers: [
     UsernameValidator,
