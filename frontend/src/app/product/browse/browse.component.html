@@ -9,15 +9,19 @@
         </mat-form-field>
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click) ="onSearch()">Search</button>
       </form>
-      <span class="sort_by">SORT BY: DATE ADDED
+<!--      <span class="sort_by">SORT BY: DATE ADDED
         <img src="../../assets/down-arrow.png" width="25px" height="25px">
       </span>
       <span class="availability">AVILABILITY: MAIL DELIVERY
         <img src="../../assets/down-arrow.png" width="25px" height="25px">
-      </span>
+      </span>-->
+    <div class="filters">
+      <mat-slider class="price-slider" [min] = "1" [max] = "maxPrice" [step] ="priceStep" [(ngModel)]="price"></mat-slider>
+      Price:{{price}}
+    </div>
     </nav>
 <hr class="hr">
-<ng-container class="item-container" *ngFor="let product of listOfProducts" >
+<ng-container class="item-container" *ngFor="let product of listOfProducts | filter: price" >
   <a [routerLink]="['../display']" [queryParams]="{id: product.productId}">
   <div class="next-item" >
     <ng-container>

@@ -14,15 +14,27 @@ export class BrowseComponent implements OnInit {
   listOfProducts: Product[];
   searchString = '';
 
+
+  //Filter configuration
+  deliveryPossible = true;
+  location = 'Bern';
+  price = 0;
+  maxPrice = 0;
+  priceStep = 1;
+
   constructor(private httpClient: HttpClient, private productService: ProductService) { }
 
   ngOnInit(): void {
-    this.productService.getProductList(this.searchString).subscribe((result) => this.listOfProducts = result);
+    this.productService.getProductList().subscribe((result) => {
+      this.listOfProducts = result;
+      this.maxPrice = Math.max.apply(Math, this.listOfProducts.map(function(o) { return o.price })); //Get the maximum price of all the products
+      
+    });
   }
 
   onSearch(): void {
     console.log(this.searchString);
-    this.productService.getProductList(this.searchString).subscribe((result) => this.listOfProducts = result);
+    this.productService.getProductListSearch(this.searchString).subscribe((result) => this.listOfProducts = result);
   }
 }
 

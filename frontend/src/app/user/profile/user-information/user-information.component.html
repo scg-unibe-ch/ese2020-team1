@@ -1,6 +1,6 @@
 <p>First name: {{user.firstName}}</p>
 <p>Last name: {{user.lastName}}</p>
 <p>Email: {{user.email}}</p>
-<p>Birthdate: {{user.birthday}}</p>
+<p>Birthdate: {{user.birthday | date: 'yyy-MM-dd'}}</p>
 <p>Address: {{user.street}},{{user.zip}},{{user.city}}</p>
 <p>Phone: {{user.phone}}</p>
