@@ -24,9 +24,6 @@ export class UserNotificationsComponent implements OnInit {
       for (let notification of this.notifications) {
         this.notificationService.getTransactions(notification.transactionId).subscribe((result) => {
           notification.transaction = result;
-          this.productService.getProductById(notification.transaction.productId).subscribe((result) => {
-            notification.product = result;
-          })
         })
       }
     });

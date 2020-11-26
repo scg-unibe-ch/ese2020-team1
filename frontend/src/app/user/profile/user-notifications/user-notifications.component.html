@@ -1,6 +1,10 @@
 <div *ngFor ="let notification of notifications">
     <div class="next-item" role="alert">
-        <h3>{{notification.product.title}} was sold to {{notification.transaction.buyerFirstName}}!</h3>
+        <h3>{{notification.transaction.productTitle}} was sold to {{notification.transaction.buyerUserName}}!</h3>
+
+        <div *ngIf="notification.transaction.payFreq==='Hourly' || notification.transaction.payFreq==='Daily'">
+          Duration: {{notification.transaction.time}} {{notification.transaction.payFreq==='Hourly' ? 'hours' : 'days' }}
+        </div>
         
       <div *ngIf="!!notification.transaction.messageToSeller">
           <h3>Message from the buyer:</h3>
@@ -11,23 +15,17 @@
         <br />
           <br />
       </div>
-      <div *ngIf="notification.product.delivery">
+      <div *ngIf="notification.transaction.delivery">
           <h3 style="padding-top:10px;font-weight:bold">Shipping Info:</h3>
           <p>{{notification.transaction.buyerFirstName}} {{notification.transaction.buyerLastName}}<br />
           {{notification.transaction.buyerStreet}} <br />
           {{notification.transaction.buyerZip}} {{notification.transaction.buyerCity}} <br />
           {{notification.transaction.buyerCountry}}</p>
       </div>
-<!--    <button (click)="closeAlert()" type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>-->
-      
-                
 
-
-    <a routerLink="../../product/product-modification" [state]="notification.product">
+    <a routerLink="../../product/product-modification" [queryParams]="{id: notification.transaction.productId}">
       <button class="submit-btn" color="primary" mat-raised-button>
-         Edit or delete {{notification.product.title}}
+         Edit or delete {{notification.transaction.productTitle}}
       </button>
       </a>
         <button  class="submit-btn" color="warn" mat-raised-button type="submit" (click)="onDeleteNotification(notification)">

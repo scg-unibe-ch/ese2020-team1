@@ -3,8 +3,11 @@ import { Optional, Model, Sequelize, DataTypes } from 'sequelize';
 export interface TransactionAttributes {
     transactionId: number;
     productId: number;
+    productTitle: string;
+    productType: string;
     sellerId: number;
     buyerId: number;
+    buyerUserName: string;
     buyerFirstName: string;
     buyerLastName: string;
     buyerStreet: string;
@@ -14,6 +17,10 @@ export interface TransactionAttributes {
     totalPrice: number;
     time: number;
     messageToSeller: string;
+    delivery: boolean;
+    payFreq: string;
+    confirmed: boolean;
+
 }
 
 export interface TransactionCreationAttributes extends Optional<TransactionAttributes, 'transactionId'> { }
@@ -21,8 +28,11 @@ export interface TransactionCreationAttributes extends Optional<TransactionAttri
 export class Transaction extends Model<TransactionAttributes, TransactionCreationAttributes> implements TransactionAttributes {
     transactionId!: number;
     productId!: number;
+    productTitle!: string;
+    productType!: string;
     sellerId!: number;
     buyerId!: number;
+    buyerUserName!: string;
     buyerFirstName: string;
     buyerLastName: string;
     buyerStreet!: string;
@@ -31,7 +41,10 @@ export class Transaction extends Model<TransactionAttributes, TransactionCreatio
     buyerCountry!: string;
     totalPrice!: number;
     time!: number;
-    messageToSeller: string;
+    messageToSeller!: string;
+    delivery!: boolean;
+    payFreq!: string;
+    confirmed!: boolean;
 
 
     public static initialize(sequelize: Sequelize) {
@@ -45,12 +58,24 @@ export class Transaction extends Model<TransactionAttributes, TransactionCreatio
                 type: DataTypes.INTEGER,
                 allowNull: false
             },
+            productTitle: {
+                type: DataTypes.STRING,
+                allowNull: false
+            },
+            productType: {
+                type: DataTypes.STRING,
+                allowNull: false
+            },
             sellerId: {
                 type: DataTypes.INTEGER,
                 allowNull: false
             },
             buyerId: {
                 type: DataTypes.INTEGER,
+                allowNull: false
+            },
+            buyerUserName: {
+                type: DataTypes.STRING,
                 allowNull: false
             },
             buyerFirstName: {
@@ -87,6 +112,18 @@ export class Transaction extends Model<TransactionAttributes, TransactionCreatio
             },
             time: {
                 type: DataTypes.INTEGER,
+                allowNull: false
+            },
+            delivery: {
+                type: DataTypes.BOOLEAN,
+                allowNull: false
+            },
+            payFreq: {
+                type: DataTypes.STRING,
+                allowNull: false
+            },
+            confirmed: {
+                type: DataTypes.BOOLEAN,
                 allowNull: false
             }
         },

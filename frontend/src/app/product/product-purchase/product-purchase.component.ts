@@ -7,6 +7,7 @@ import { FormBuilder, FormGroup, Validators, FormControl, ReactiveFormsModule } 
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { ProductService } from '../product.service';
+import { Transaction } from '../../models/transaction.model';
 
 @Component({
   selector: 'app-product-purchase',
@@ -21,6 +22,7 @@ export class ProductPurchaseComponent implements OnInit {
   productId: number;
   product: Product;
   buyer: User;
+  transaction: Transaction;
 
   timeBased: boolean = false;; //Set to true if product/service is time-based
   hourly: boolean = false; //Set to true if Product/service is paid hourly
@@ -131,10 +133,14 @@ export class ProductPurchaseComponent implements OnInit {
 
   uponConfirmOrder(): void {
 
+
     this.httpClient.post(environment.endpointURL + 'purchase', {
       productId: this.product.productId,
+      productTitle: this.product.title,
+      productType: this.product.productType,
       sellerId: this.product.userId,
       buyerId: this.buyer.userId,
+      buyerUserName: this.buyer.userName,
       buyerFirstName: this.checkoutForm.get('firstname').value,
       buyerLastName: this.checkoutForm.get('lastname').value,
       buyerStreet: this.checkoutForm.get('street').value,
@@ -143,7 +149,10 @@ export class ProductPurchaseComponent implements OnInit {
       buyerCountry: this.checkoutForm.get('country').value,
       time: this.specificationForm.get('time').value,
       totalPrice: this.totalPrice,
-      messageToSeller: this.checkoutForm.get('message').value
+      messageToSeller: this.checkoutForm.get('message').value,
+      delivery: this.product.delivery,
+      payFreq: this.product.payFreq,
+      confirmed: (this.product.productType === "Product (sell)") //If product is for sale then no confirmation of the transaction is needed
     }).subscribe();
   }
 }
