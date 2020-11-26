@@ -67,6 +67,16 @@ export class ProductService {
             .catch(err => Promise.reject(err));
     }
 
+    public getApprovedSearch(searchString: string): Promise<Product[]> {
+        return Product.findAll({
+            where: {
+                isApproved: 'approved',
+                title: { [Op.like]: '%' + searchString + '%' }
+            },
+        }).then(found => Promise.resolve(found))
+            .catch(err => Promise.reject(err));
+    }
+
     public getDisapproved(): Promise<Product[]> {
         return Product.findAll({
             where: {
