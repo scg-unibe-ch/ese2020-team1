@@ -70,8 +70,15 @@ export class ProductService {
     public getApprovedSearch(searchString: string): Promise<Product[]> {
         return Product.findAll({
             where: {
-                isApproved: 'approved',
-                title: { [Op.like]: '%' + searchString + '%' }
+                [Op.and]: [
+                    { isApproved : 'approved' },
+                    {
+                        [Op.or]: [
+                            { title: { [Op.like]: '%' + searchString + '%' } },
+                            { description: { [Op.like]: '%' + searchString + '%' } }
+                        ]
+                    }
+                ]
             },
         }).then(found => Promise.resolve(found))
             .catch(err => Promise.reject(err));
