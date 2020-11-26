@@ -6,7 +6,6 @@ export class UserNotification {
   notificationId: number;
   transactionId: number;
   sellerId: number;
-  product: Product;
   transaction: Transaction;
 
   constructor(httpResponse: any) {

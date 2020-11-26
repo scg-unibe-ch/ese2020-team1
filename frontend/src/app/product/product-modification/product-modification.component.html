@@ -70,9 +70,9 @@
                 </mat-checkbox>
 
               <br>
-
+                <div text-decoriation="italic" *ngIf="(product.isApproved==='sold')">Product is sold, no modification possible!</div>
                 <button class="submit-btn" *ngIf="!modificationEnabled && product.isApproved!='sold'" class="submit-btn" color="primary" mat-raised-button type="button" (click) ="onModifyProduct()">Modify Product</button>
-
+                
 
                 <button *ngIf="modificationEnabled" class="submit-btn" color="primary" mat-raised-button type="submit" [disabled]="!productModificationForm.valid">
                   Save

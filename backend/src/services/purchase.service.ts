@@ -14,13 +14,25 @@ export class PurchaseService {
 
         return this.createTransaction(transaction)
             .then(created => {
-                return this.createNotification(created.transactionId, created.sellerId);
+                if (transaction.confirmed) {
+                    return this.createNotification(created.transactionId, created.sellerId);
+                } else {
+                    return Promise.resolve();
+                }
             })
             .then(() => {
-                return this.updateWallet(transaction.sellerId, +transaction.totalPrice);
+                if (transaction.confirmed) {
+                    return this.updateWallet(transaction.sellerId, +transaction.totalPrice);
+                } else {
+                    return Promise.resolve();
+                }
             })
             .then(() => {
-                return this.updateWallet(transaction.buyerId, -transaction.totalPrice);
+                if (transaction.confirmed) {
+                    return this.updateWallet(transaction.buyerId, -transaction.totalPrice);
+                } else {
+                    return Promise.resolve();
+                }
             })
             .then(() => {
                 return this.updateProductStatus(transaction.productId);
@@ -60,11 +72,35 @@ export class PurchaseService {
 
     private updateProductStatus(productId: number): Promise<void> {
         return Product.findByPk(productId).then((found) => {
+            if (found.productType === 'Product (sell)') {
+                return found.update({
+                    isApproved: 'sold'
+                }).then(() => {
+                    return Promise.resolve();
+                });
+            } else { return Promise.resolve(); }
+
+        });
+    }
+
+    public confirmTransaction(transactionId: number): Promise<void> {
+        return Transaction.findByPk(transactionId).then(found => {
             return found.update({
-                isApproved: 'sold'
-            }).then(() => {
+                confirmed: true
+            })
+            .then(() => {
                 return Promise.resolve();
+            })
+            .then(() => {
+                return this.createNotification(found.transactionId, found.sellerId);
+            })
+            .then(() => {
+                return this.updateWallet(found.sellerId, +found.totalPrice);
+            })
+            .then(() => {
+                return this.updateWallet(found.buyerId, -found.totalPrice);
             });
         });
+
     }
 }
