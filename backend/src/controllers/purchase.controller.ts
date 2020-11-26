@@ -23,4 +23,12 @@ purchaseController.get('/:id', verifyToken,
     }
 );
 
+purchaseController.get('/confirm/:id', verifyToken,
+    (req: Request, res: Response) => {
+        purchaseService.confirmTransaction(parseInt(req.params.id, 10))
+            .then(() => res.status(200).send())
+            .catch(err => res.status(500).send(err));
+    }
+);
+
 export const PurchaseController: Router = purchaseController;
