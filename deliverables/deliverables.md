@@ -7,7 +7,6 @@ Team 1
 The user visits the web platform.
 The system shows products.
 The user can view detailed product information.
-The user can add the product into the cart but for the checkout is required to register or login. 
 * **An unregistered user register on the web platform**
 The user clicks the registration button.
 The system requires the input of username/email and password.
@@ -41,6 +40,10 @@ The system shows all product informations.
 The admin decides to approve or decline the product.
 → if admin approves, the product will be displayd on the website.
 → if admin declines, the product will not be displayed an the user gets an message.
+* **A user will buy a product**
+The user clicks the shop now button for a product in the catalogue.
+The user must enter the address and confirm.
+The seller gets a notification.
 
 ## Use Case Diagram
 
@@ -50,11 +53,12 @@ The admin decides to approve or decline the product.
 
 ## User Stories
 
-As an unregistered user, I want to register, so I can login to the web platform.
-As a registered user, I want to log in, so I can make full use of the web platform.
-As an unregistered user, I want to browse the catalogue, so that I can see the products before I must register.
-As a registered user, I want to buy and sell products.
-As an administrator, I want to approve/disappear products by users, so I can check before they get posted.
+* As an unregistered user, I want to register, so I can login to the web platform.
+* As a registered user, I want to log in, so I can make full use of the web platform.
+* As an unregistered user, I want to browse the catalogue, so that I can see the products before I must register.
+* As a registered user, I want to buy and sell products.
+* As an administrator, I want to approve/disappear products by users, so I can check before they get posted.
+* As an registered user, I want to buy products.
 
 
 ## List of Functional and Non-Functional Requirements
