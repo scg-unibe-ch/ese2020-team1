@@ -3,6 +3,7 @@ import { ProductAttributes, Product } from '../models/product.model';
 import { TransactionAttributes, Transaction } from '../models/transaction.model';
 import { TodoItem } from '../models/todoitem.model';
 import { UserNotificationAttributes, UserNotification } from '../models/usernotification.model';
+import { PurchaseRequest, PurchaseRequestAttributes } from '../models/purchaserequest.model';
 
 
 export class PurchaseService {
@@ -13,7 +14,9 @@ export class PurchaseService {
 
 
         return this.createTransaction(transaction)
-            .then(created => {
+            .then((created) => {
+                transaction = created;
+
                 if (transaction.confirmed) {
                     return this.createNotification(created.transactionId, created.sellerId);
                 } else {
@@ -37,8 +40,21 @@ export class PurchaseService {
             .then(() => {
                 return this.updateProductStatus(transaction.productId);
             })
+            .then(() => {
+                if (!transaction.confirmed) {
+                    return this.createPurchaseRequest(transaction);
+                    console.log('purchase request created');
+                } else {
+                    return Promise.resolve();
+                }
+            })
             .catch(err => Promise.reject(err));
 
+    }
+    private createPurchaseRequest(transaction: TransactionAttributes): Promise<void> {
+        return PurchaseRequest.create({transactionId: transaction.transactionId, sellerId: transaction.sellerId})
+            .then(() => Promise.resolve())
+            .catch(() => Promise.reject());
     }
 
     private createTransaction(transaction: TransactionAttributes): Promise<TransactionAttributes> {

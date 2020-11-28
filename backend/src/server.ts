@@ -16,6 +16,7 @@ import { Transaction } from './models/transaction.model';
 import { UserNotification } from './models/usernotification.model';
 
 import cors from 'cors';
+import { PurchaseRequest } from './models/purchaserequest.model';
 
 export class Server {
     private server: Application;
@@ -37,6 +38,7 @@ export class Server {
         Transaction.initialize(this.sequelize);
         Transaction.createAssociations();
         UserNotification.initialize(this.sequelize);
+        PurchaseRequest.initialize(this.sequelize);
 
         this.sequelize.sync().then(() => {                           // create connection to the database
             this.server.listen(this.port, () => {                                   // start server on specified port

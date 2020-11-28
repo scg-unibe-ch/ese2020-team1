@@ -8,8 +8,9 @@ export interface PurchaseRequestAttributes {
 
 export interface PurchaseRequestCreationAttributes extends Optional<PurchaseRequestAttributes, 'requestId'> { }
 
-export class PurchaseRequest extends Model<PurchaseRequestAttributes, PurchaseRequestCreationAttributes> implements PurchaseRequestAttributes {
-    requestId: number;
+export class PurchaseRequest extends Model<PurchaseRequestAttributes, PurchaseRequestCreationAttributes>
+    implements PurchaseRequestAttributes {
+    requestId!: number;
     transactionId!: number;
     sellerId!: number;
 
@@ -29,7 +30,7 @@ export class PurchaseRequest extends Model<PurchaseRequestAttributes, PurchaseRe
                 type: DataTypes.INTEGER,
                 allowNull: false
             }
-            
+
         },
             {
                 sequelize,
