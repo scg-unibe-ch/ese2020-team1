@@ -77,6 +77,8 @@ The seller gets a notification.
 
 ## CRC Cards for User Stories
 
+![image 3](https://github.com/scg-unibe-ch/ese2020-team1/blob/master/deliverables/CRCCards.png)
+
 * **User**
 Product, Wallet, Transaction, Activity log, User Review, Product Comment
 *knows all user details, modify user details, register/login/logout, add a product, modify/delete a own product, can add product comment, make a transaction, can refill wallet, can give user reviews, knows activity log, can buy/sell products*
