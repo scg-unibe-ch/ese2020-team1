@@ -15,15 +15,7 @@ purchaseController.post('/', verifyToken, // purchase can only be called by logg
     }
 );
 
-purchaseController.get('/:id', verifyToken,
-    (req: Request, res: Response) => {
-        Transaction.findByPk(req.params.id).then(found => {
-            res.send(found);
-        }).catch(err => res.status(403).send(err));
-    }
-);
-
-purchaseController.get('/confirm/:id', verifyToken,
+purchaseController.get('/confirm/:id', verifyToken, // confirm a transaction
     (req: Request, res: Response) => {
         purchaseService.confirmTransaction(parseInt(req.params.id, 10))
             .then(() => res.status(200).send())

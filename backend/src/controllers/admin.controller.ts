@@ -15,7 +15,6 @@ adminController.post('/register',
 );
 
 adminController.delete('/:id', (req: Request, res: Response) => {
-    // Delete Admin only in the admin table, can continue to live as a user
     adminService.deleteAdmin(req.params.id).then(item => res.status(200).send({ deleted: item })).catch(err => res.status(403).send(err));
 
 });

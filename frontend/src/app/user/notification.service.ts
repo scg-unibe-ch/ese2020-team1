@@ -19,8 +19,8 @@ export class NotificationService {
     return this.httpClient.delete(environment.endpointURL + 'notification/notification/' + notificationId);
   }
 
-  getTransactions(notificationId: number): Observable<any> {
-    return this.httpClient.get(environment.endpointURL + 'notification/transactions/' + notificationId);
+  getTransactions(transactionId: number): Observable<any> {
+    return this.httpClient.get(environment.endpointURL + 'notification/transaction/' + transactionId);
   }
 
 

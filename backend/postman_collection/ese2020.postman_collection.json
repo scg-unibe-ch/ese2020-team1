@@ -26,35 +26,6 @@
 			"response": []
 		},
 		{
-			"name": "secured endpoint",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6IkpvbmF0aGFuIiwidXNlcklkIjoyLCJpYXQiOjE1OTk0NzgwMTYsImV4cCI6MTU5OTQ4NTIxNn0.Jr97kF4fFvM0cAujHBsXL3m1BNRXV2jS4lwzlUIljME",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:3000/secured",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"secured"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "user login",
 			"request": {
 				"method": "POST",
@@ -115,10 +86,20 @@
 		{
 			"name": "user list",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6Im1hbnUyMDAwIiwidXNlcklkIjoyMCwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNjA3MDA5NTc5LCJleHAiOjE2MDcwMTY3Nzl9.C2VRWOBxuZDuXyNCPxUrAGg16afmBlojuzKx0Yvxa4o",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/user/",
+					"raw": "http://localhost:3000/user/all",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -126,122 +107,7 @@
 					"port": "3000",
 					"path": [
 						"user",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "todolist list",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:3000/todolist",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"todolist"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "todolist add",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"name\":\"ESE-2020\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:3000/todolist",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"todolist"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "todoitem delete",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:3000/todoitem/7",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"todoitem",
-						"7"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "todolist delete",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:3000/todolist/4",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"todolist",
-						"4"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "todoitem add",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"name\":\"welcome\",\r\n    \"done\":\"false\",\r\n    \"todoListId\":\"2\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:3000/todoitem",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"todoitem"
+						"all"
 					]
 				}
 			},
@@ -301,7 +167,38 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": ""
+					"raw": "http://localhost:3000/user/is-username-free/Nora",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"is-username-free",
+						"Nora"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user is email free",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/user/is-email-free/test123@testmail.com",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"is-email-free",
+						"test123@testmail.com"
+					]
 				}
 			},
 			"response": []
@@ -336,17 +233,6 @@
 			"response": []
 		},
 		{
-			"name": "user delete",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": ""
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "Product registration",
 			"request": {
 				"auth": {
@@ -354,7 +240,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6IkpvbmF0aGFuIiwidXNlcklkIjoyLCJpYXQiOjE2MDQ4NjA1NzAsImV4cCI6MTYwNDg2Nzc3MH0.5ISAYdVOsZUyTynuw8OhY8Sgs7CtWFK7xVYpHHXcOvk",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6Ik5vcmEiLCJ1c2VySWQiOjEsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2MDcwMTAwMDMsImV4cCI6MTYwNzAxNzIwM30.gHrJBa7EFlIR14nxnjaIof81S-hoKfQhQEwpqSQryEM",
 							"type": "string"
 						}
 					]
@@ -393,7 +279,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6Ik5vcmEiLCJ1c2VySWQiOjEsImlhdCI6MTYwNDg2MDEzMSwiZXhwIjoxNjA0ODY3MzMxfQ.pNo2M4vPjmamuV3xYYS60wKwMGXqfEJARDWfCcVMtTE",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6Ik5vcmEiLCJ1c2VySWQiOjEsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2MDcwMTAwMDMsImV4cCI6MTYwNzAxNzIwM30.gHrJBa7EFlIR14nxnjaIof81S-hoKfQhQEwpqSQryEM",
 							"type": "string"
 						}
 					]
@@ -401,7 +287,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/product/delete/3",
+					"raw": "http://localhost:3000/product/delete/9",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -410,7 +296,7 @@
 					"path": [
 						"product",
 						"delete",
-						"3"
+						"9"
 					]
 				}
 			},
@@ -442,7 +328,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/product/5",
+					"raw": "http://localhost:3000/product/by-product/1",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -450,7 +336,8 @@
 					"port": "3000",
 					"path": [
 						"product",
-						"5"
+						"by-product",
+						"1"
 					]
 				}
 			},
@@ -463,7 +350,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"userName\":\"manu2000\",\r\n    \"password\":\"$ecurePW123\",\r\n    \"email\":\"manu@testmail.com\",\r\n    \"firstName\":\"Manuela\",\r\n    \"lastName\":\"Muster\",\r\n    \"birthday\":\"2020-11-10T23:00:00.000Z\",\r\n    \"gender\":\"Female\",\r\n    \"street\":\"Musterstrasse\",\r\n    \"zip\":\"3000\",\r\n    \"city\":\"Bern\",\r\n    \"country\":\"Schweiz\",\r\n    \"phone\":\"031 300 00 00\",\r\n    \"isAdmin\": \"true\"\r\n    }",
+					"raw": "{\r\n    \"userName\":\"pascale_admin\",\r\n    \"password\":\"$ecurePW123\",\r\n    \"email\":\"manu@testmail.com\",\r\n    \"firstName\":\"Manuela\",\r\n    \"lastName\":\"Muster\",\r\n    \"birthday\":\"2020-11-10T23:00:00.000Z\",\r\n    \"gender\":\"Female\",\r\n    \"street\":\"Musterstrasse\",\r\n    \"zip\":\"3000\",\r\n    \"city\":\"Bern\",\r\n    \"country\":\"Schweiz\",\r\n    \"phone\":\"031 300 00 00\",\r\n    \"isAdmin\": \"true\"\r\n    }",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -491,7 +378,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/admin/1",
+					"raw": "http://localhost:3000/admin/21",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -499,38 +386,7 @@
 					"port": "3000",
 					"path": [
 						"admin",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "verify is admin",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6Ik5vcmEiLCJ1c2VySWQiOjEsImlhdCI6MTYwNDg2OTM3OCwiZXhwIjoxNjA0ODc2NTc4fQ.FmKD_uQVODjP3qoyXrF1twWnnyodFpGQTyNLpRftDVs",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:3000/user/is-admin/pasci9",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"user",
-						"is-admin",
-						"pasci9"
+						"21"
 					]
 				}
 			},
@@ -544,7 +400,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6Ik5vcmEiLCJ1c2VySWQiOjEsImlzQWRtaW4iOnt9LCJpYXQiOjE2MDQ5MDgyOTEsImV4cCI6MTYwNDkxNTQ5MX0.mCSSF_cXbIYDYAT-h6pvBODZW9ucdODBJHgC4uimP-s",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6Im1hbnUyMDAwIiwidXNlcklkIjoyMCwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNjA3MDA5MTUwLCJleHAiOjE2MDcwMTYzNTB9.0OsIro9WxNqs8Y0ewUfWySYljwHeaA_2pgqkbzYwDD8",
 							"type": "string"
 						}
 					]
@@ -561,6 +417,37 @@
 					"path": [
 						"admin",
 						"approve-product",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "disapprove product",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6Im1hbnUyMDAwIiwidXNlcklkIjoyMCwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNjA3MDA5MTUwLCJleHAiOjE2MDcwMTYzNTB9.0OsIro9WxNqs8Y0ewUfWySYljwHeaA_2pgqkbzYwDD8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/admin/disapprove-product/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"admin",
+						"disapprove-product",
 						"4"
 					]
 				}
@@ -599,6 +486,16 @@
 		{
 			"name": "Get product by user",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6Ik5vcmEiLCJ1c2VySWQiOjEsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2MDcwMTAwMDMsImV4cCI6MTYwNzAxNzIwM30.gHrJBa7EFlIR14nxnjaIof81S-hoKfQhQEwpqSQryEM",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"url": {
@@ -611,6 +508,427 @@
 					"path": [
 						"product",
 						"by-user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Purchase a Product",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6Ik5vcmEiLCJ1c2VySWQiOjEsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2MDcwMTAwMDMsImV4cCI6MTYwNzAxNzIwM30.gHrJBa7EFlIR14nxnjaIof81S-hoKfQhQEwpqSQryEM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"productId\": \"1\",\r\n    \"sellerId\":  \"5\",\r\n    \"buyerId\": \"5\",\r\n    \"buyerUserName\": \"manu2000\",\r\n    \"productTitle\": \"Ski\",\r\n    \"productType\": \"Product (lend)\",\r\n    \"buyerFirstName\": \"Nora\",\r\n    \"buyerLastName\": \"Muster\",\r\n    \"buyerStreet\": \"Musterstrasse 5\",\r\n    \"buyerZip\": \"3000\",\r\n    \"buyerCity\": \"Bern\",\r\n    \"time\": \"1\",\r\n    \"buyerCountry\": \"Schweiz\",\r\n    \"totalPrice\": \"50\",\r\n    \"messageToSeller\": \"Hallo Test\",\r\n    \"delivery\": \"true\",\r\n    \"payFreq\": \"Daily\",\r\n    \"confirmed\": \"false\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/purchase",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"purchase"
+					]
+				},
+				"description": "A user wants to buy a product. The backend verifies the token, creates a new transaction with the product, the buyer and the seller and updates the wallets of user/seller and sends back the shipping information."
+			},
+			"response": []
+		},
+		{
+			"name": "confirm transaction",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6Ik5vcmEiLCJ1c2VySWQiOjEsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2MDY1NjIwNzMsImV4cCI6MTYwNjU2OTI3M30.HBbFg8iT1PIjvnK8ll4NocWQI3VvzbGl6Lvq2eXN5Y4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/purchase/confirm/6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"purchase",
+						"confirm",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "verify admin",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6Im1hbnUyMDAwIiwidXNlcklkIjoyMCwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNjA3MDA5MTUwLCJleHAiOjE2MDcwMTYzNTB9.0OsIro9WxNqs8Y0ewUfWySYljwHeaA_2pgqkbzYwDD8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/admin/verify-admin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"admin",
+						"verify-admin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete user",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/user/6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user details for logged in users",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6Ik5vcmEiLCJ1c2VySWQiOjEsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2MDcwMTAwMDMsImV4cCI6MTYwNzAxNzIwM30.gHrJBa7EFlIR14nxnjaIof81S-hoKfQhQEwpqSQryEM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/user/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "transaction by id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6Ik5vcmEiLCJ1c2VySWQiOjEsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2MDcwMTAwMDMsImV4cCI6MTYwNzAxNzIwM30.gHrJBa7EFlIR14nxnjaIof81S-hoKfQhQEwpqSQryEM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/notification/transaction/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"notification",
+						"transaction",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "modify product",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6Ik5vcmEiLCJ1c2VySWQiOjEsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2MDcwMTAwMDMsImV4cCI6MTYwNzAxNzIwM30.gHrJBa7EFlIR14nxnjaIof81S-hoKfQhQEwpqSQryEM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"isApproved\": \"pending\",\r\n    \"productId\": 9,\r\n    \"userName\": \"Nora\",\r\n    \"productType\": \"Product (lend)\",\r\n    \"title\": \"Ski\",\r\n    \"price\": 200,\r\n    \"payFreq\": \"Daily\",\r\n    \"description\": \"I lend my skis (HEAD, 168 cm) on a daily basis\",\r\n    \"location\": \"Bern\",\r\n    \"delivery\": true,\r\n    \"userId\": 1,\r\n    \"updatedAt\": \"2020-12-03T15:45:41.721Z\",\r\n    \"createdAt\": \"2020-12-03T15:45:41.721Z\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/product/modify/9",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"product",
+						"modify",
+						"9"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get pending products",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6Ik5vcmEiLCJ1c2VySWQiOjEsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2MDcwMTAwMDMsImV4cCI6MTYwNzAxNzIwM30.gHrJBa7EFlIR14nxnjaIof81S-hoKfQhQEwpqSQryEM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/product/pending",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"product",
+						"pending"
+					]
+				},
+				"description": "only possible for admin"
+			},
+			"response": []
+		},
+		{
+			"name": "get approved products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/product/approved",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"product",
+						"approved"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get approved products with search string",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/product/approved/:Ski",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"product",
+						"approved",
+						":Ski"
+					],
+					"variable": [
+						{
+							"key": "Ski",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get user notifications",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6Ik5vcmEiLCJ1c2VySWQiOjEsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2MDcwMTAwMDMsImV4cCI6MTYwNzAxNzIwM30.gHrJBa7EFlIR14nxnjaIof81S-hoKfQhQEwpqSQryEM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/notification/notifications",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"notification",
+						"notifications"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get purchase requests",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6Ik5vcmEiLCJ1c2VySWQiOjEsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2MDcwMTAwMDMsImV4cCI6MTYwNzAxNzIwM30.gHrJBa7EFlIR14nxnjaIof81S-hoKfQhQEwpqSQryEM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/notification/requests",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"notification",
+						"requests"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete notification",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6Ik5vcmEiLCJ1c2VySWQiOjEsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2MDcwMTAwMDMsImV4cCI6MTYwNzAxNzIwM30.gHrJBa7EFlIR14nxnjaIof81S-hoKfQhQEwpqSQryEM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/notification/notification/9",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"notification",
+						"notification",
+						"9"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete purchase request",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6Ik5vcmEiLCJ1c2VySWQiOjEsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2MDcwMTAwMDMsImV4cCI6MTYwNzAxNzIwM30.gHrJBa7EFlIR14nxnjaIof81S-hoKfQhQEwpqSQryEM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/notification/request/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"notification",
+						"request",
+						"1"
 					]
 				}
 			},

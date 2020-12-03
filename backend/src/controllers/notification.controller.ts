@@ -24,7 +24,7 @@ notificationController.get('/requests', verifyToken,
             .catch(err => res.status(400).send(err));
     });
 
-notificationController.get('/transactions/:id', verifyToken, (req: Request, res: Response) => {
+notificationController.get('/transaction/:id', verifyToken, (req: Request, res: Response) => {
     notificationService.getTransactions(req.params.id)
         .then((transaction: TransactionAttributes) => res.status(200).send(transaction))
         .catch(err => res.status(400).send(err));
