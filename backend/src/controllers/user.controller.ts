@@ -5,6 +5,7 @@ import { verifyToken, verifyAdmin } from '../middlewares/checkAuth';
 import { UserNotificationAttributes } from '../models/usernotification.model';
 import { TransactionAttributes } from '../models/transaction.model';
 import { read } from 'fs';
+import { PurchaseRequestAttributes } from '../models/purchaserequest.model';
 
 const userController: Router = express.Router();
 const userService = new UserService();
@@ -55,6 +56,13 @@ userController.get('/notifications', verifyToken, (req: Request, res: Response) 
         .catch(err => res.status(400).send(err));
 });
 
+userController.get('/requests', verifyToken,
+    (req: Request, res: Response) => {
+        userService.getRequests(req.body.tokenPayload.userId)
+            .then((requests: Array<PurchaseRequestAttributes>) => res.status(200).send(requests))
+            .catch(err => res.status(400).send(err));
+    });
+
 userController.get('/transactions/:id', verifyToken, (req: Request, res: Response) => {
     userService.getTransactions(req.params.id)
         .then((transaction: TransactionAttributes) => res.status(200).send(transaction))
@@ -65,6 +73,12 @@ userController.delete('/notification/:id', verifyToken, (req: Request, res: Resp
     userService.deleteNotification(req.params.id)
         .then(item => res.status(200).send({ deleted: item })).catch(err => res.status(403).send(err));
 });
+
+userController.delete('/request/:id', verifyToken, (req: Request, res: Response) => {
+    userService.deleteRequest(req.params.id)
+        .then(item => res.status(200).send({ deleted: item })).catch(err => res.status(403).send(err));
+}
+    );
 
 
 export const UserController: Router = userController;
