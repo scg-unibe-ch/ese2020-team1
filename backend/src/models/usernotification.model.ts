@@ -1,6 +1,4 @@
-import { TodoItem, TodoItemAttributes, TodoItemCreationAttributes } from './todoitem.model';
 import { Optional, Model, Sequelize, DataTypes } from 'sequelize';
-import { Product } from './product.model';
 
 export interface UserNotificationAttributes {
     notificationId: number;

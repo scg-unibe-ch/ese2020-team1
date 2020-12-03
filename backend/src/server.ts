@@ -1,16 +1,11 @@
 import express, { Application , Request, Response } from 'express';
 import morgan from 'morgan';
-import { TodoItemController } from './controllers/todoitem.controller';
-import { TodoListController } from './controllers/todolist.controller';
 import { UserController } from './controllers/user.controller';
-import { SecuredController } from './controllers/secured.controller';
 import { ProductController } from './controllers/product.controller';
 import { PurchaseController } from './controllers/purchase.controller';
 import { AdminController } from './controllers/admin.controller';
 import { NotificationController } from './controllers/notification.controller';
 import { Sequelize } from 'sequelize';
-import { TodoList } from './models/todolist.model';
-import { TodoItem } from './models/todoitem.model';
 import { User } from './models/user.model';
 import { Product } from './models/product.model';
 import { Transaction } from './models/transaction.model';
@@ -28,10 +23,6 @@ export class Server {
         this.server = this.configureServer();
         this.sequelize = this.configureSequelize();
 
-        TodoItem.initialize(this.sequelize); // creates the tables if they dont exist
-        TodoList.initialize(this.sequelize);
-        TodoItem.createAssociations();
-        TodoList.createAssociations();
         User.initialize(this.sequelize);
         Product.initialize(this.sequelize);
         User.createAssociations();
@@ -68,10 +59,7 @@ export class Server {
             .use(cors())
             .use(express.json())                    // parses an incoming json to an object
             .use(morgan('tiny'))                    // logs incoming requests
-            .use('/todoitem', TodoItemController)   // any request on this path is forwarded to the TodoItemController
-            .use('/todolist', TodoListController)
             .use('/user', UserController)
-            .use('/secured', SecuredController)
             .use('/product', ProductController)
             .use('/admin', AdminController)
             .use('/purchase', PurchaseController)
