@@ -31,4 +31,6 @@ purchaseController.get('/confirm/:id', verifyToken,
     }
 );
 
+
+
 export const PurchaseController: Router = purchaseController;

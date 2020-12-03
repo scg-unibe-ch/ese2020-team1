@@ -1,0 +1,35 @@
+<div *ngFor ="let request of requests">
+    <div class="next-item" role="alert">
+        <h3>{{request.transaction.buyerUserName}} wants to purchase {{request.transaction.productTitle}}!</h3>
+
+      <div *ngIf="!!request.transaction.messageToSeller">
+          <h3>Message from the buyer:</h3>
+          <div class="panel">
+            {{request.transaction.messageToSeller}}
+          </div>
+        
+        <br />
+
+        <div *ngIf="request.transaction.payFreq==='Hourly' || request.transaction.payFreq==='Daily'">
+          Duration: {{request.transaction.time}} {{request.transaction.payFreq==='Hourly' ? 'hours' : 'days' }}
+        </div>
+        
+      
+          <br />
+      </div>
+      <div *ngIf="request.transaction.delivery">
+          <h3 style="padding-top:10px;font-weight:bold">Shipping Info:</h3>
+          <p>{{request.transaction.buyerFirstName}} {{request.transaction.buyerLastName}}<br />
+          {{request.transaction.buyerStreet}} <br />
+          {{request.transaction.buyerZip}} {{request.transaction.buyerCity}} <br />
+          {{request.transaction.buyerCountry}}</p>
+      </div>
+
+        <button  class="submit-btn" color="primary" mat-raised-button type="submit" (click)="onConfirmRequest(request)">
+          Confirm
+        </button>
+        <button  class="submit-btn" color="warn" mat-raised-button type="submit" (click)="onDeleteRequest(request)">
+          Delete
+        </button>
+  </div>
+</div>

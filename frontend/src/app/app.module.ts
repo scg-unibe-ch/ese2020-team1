@@ -40,6 +40,7 @@ import { UserNotificationsComponent } from './user/profile/user-notifications/us
 import { UserInformationComponent } from './user/profile/user-information/user-information.component';
 import { FilterPipe } from './product/browse/filter.pipe';
 import { MatSliderModule } from '@angular/material/slider';
+import { PurchaseRequestsComponent } from './user/profile/purchase-requests/purchase-requests.component';
 
 const appRoutes: Routes = [
   {
@@ -86,7 +87,8 @@ const appRoutes: Routes = [
     ProductPurchaseComponent,
     UserNotificationsComponent,
     UserInformationComponent,
-    FilterPipe
+    FilterPipe,
+    PurchaseRequestsComponent
   ],
   imports: [
     BrowserModule,
