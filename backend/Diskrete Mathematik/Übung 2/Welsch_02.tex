@@ -1,0 +1,152 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{lmodern}
+\usepackage[left=2cm,right=2cm,top=3cm,bottom=2cm]{geometry}
+\usepackage{scrlayer-scrpage}
+\usepackage[shortlabels]{enumitem}
+
+\pagestyle{headings}
+\ihead{Diskrete Mathematik, HS 2020\\Prof. Christian Cachin}
+\ohead{Pascale Welsch\\13-204-821}
+\begin{document}
+\section*{Übung 2}
+\subsection*{2.1 Äquivalenzen}
+\begin{enumerate}[a)]
+\item
+\begin{align*}
+\neg a \land (a \lor b) \rightarrow b~&|~\text{Distributive law} \\
+(\neg a \land a) \lor (\neg a \land b) \rightarrow b~&|~\text{Negation law}\\
+0 \lor (\neg a \land b) \rightarrow b~&|~\text{Commutative law}\\
+(\neg a \land b) \lor 0 \rightarrow b~&|~\text{Identity law}\\
+(\neg a \land b) \rightarrow b~&|~\text{Solving conditional: } p\rightarrow q \equiv \neg p \lor q \\
+\neg (\neg a \land b) \lor b~&|~\text{De Morgan}\\
+(\neg (\neg a) \lor \neg b) \lor b~&|~\text{Double negation}\\
+(a \lor \neg b) \lor b~&|~\text{Associative law}\\
+a \lor (\neg b \lor b)~&|~\text{Negation law}\\
+a \lor 1~&|~\text{Domination law}\\
+1~&|~\text{\textbf{Tautology}}
+\end{align*}
+\item
+\begin{align*}
+p \land q \land (p \leftrightarrow \neg q)~&|~\text{Solving biconditional: } p \leftrightarrow q \equiv (p \land q) \lor (\neg p\land \neg q)\\
+p \land q \land ((p \land \neg q) \lor (\neg p\land q))~&|~\text{Substitution: } a = (p \land \neg q),~b=(\neg p \land q)\\
+p \land q \land (a \lor b)~&|~\text{Associative law}\\
+p \land (q \land (a \lor b))~&|~\text{Distributive law}\\
+p \land ((q \land a) \lor (q \land b))~&|~\text{Back-substitution}\\
+p \land ((q \land (p \land \neg q)) \lor (q \land (\neg p \land q))~&|~\text{Associative, commutative law}\\
+p \land ((q \land \neg q \land p) \lor (q \land q \land \neg p))~&|~\text{Negation, idempotent law}\\
+p \land ((0 \land p)\lor (q \land \neg p))~&|~\text{Commutative, domination law}\\
+p \land (0 \lor (q \land \neg p))~&|~\text{Commutative, identity law}\\
+p \land (q \land \neg p)~&|~\text{Associative, commutative law}\\
+q \land (p \land \neg p)~&|~\text{Negation law}\\
+q \land 0~&|~\text{Domination law}\\
+0~&|~\text{\textbf{Contradiction}}
+\end{align*}
+\item
+\begin{align*}
+(a \lor b) \land (\neg a \lor c) \rightarrow (b \lor c)~&|~\text{Substitution: } x = a \lor b,~y=\neg a \lor c,~z = b\lor c\\
+x \land y \rightarrow z~&|~\text{Solving conditional: } p \rightarrow q \equiv \neg p \lor q\\
+\neg (x \land y) \lor z~&|~\text{De Morgan}\\
+\neg x \lor \neg y \lor z~&|~\text{Back-substitution}\\
+\neg (a \lor b) \lor \neg (\neg a \lor c) \lor (b \lor c)~&|~\text{De Morgan}\\
+(\neg a \land \neg b) \lor (\neg (\neg a) \land \neg c) \lor (b \lor c)~&|~\text{Double negation, associative law}\\
+(\neg a \land \neg b) \lor (a \land \neg c) \lor b \lor c~&|~\text{Commutative, associative law}\\
+(c \lor (a \land \neg c)) \lor (b \lor (\neg a \land \neg b))~&|~\text{Distributive law}\\
+((c \lor a)\land (c \lor \neg c)) \lor ((b \lor \neg a)\land (b\lor \neg b))~&|~\text{Negation law}\\
+((c\lor a)\land 1) \lor ((b \lor \neg a)\land 1)~&|~\text{Identity law}\\
+(c \lor a)\lor (b \lor \neg a)~&|~\text{Associative, commutative law}\\
+(a \lor \neg a) \lor b \lor c~&|~\text{Negation law}\\
+1 \lor b \lor c~&|~\text{Domination law}\\
+1~&|~\text{\textbf{Tautology}}
+\end{align*}
+\end{enumerate}
+\subsection*{2.2 Normalformen}
+DNF: Summe (Disjunktion) der Minterme der einschlägigen Indizes.\\
+CNF: Produkt (Konjunktion) der Maxterme der nicht einschlägigen Indizes.\\
+\\
+Die Minterme und Maxterme können mithilfe der Wahrheitstabelle gefunden werden.\\
+
+\begin{enumerate}[a)]
+\item
+\begin{tabular}{c|c|c|c|c}
+a & b & a$\oplus$b & Minterm & Maxterm\\
+\hline
+0 & 0 & 0 & $m_0 = \neg a \land \neg b$& $M_0 = a \lor b$\\
+0 & 1 & 1 & $m_1 = \neg a \land b$& $M_1 = a \lor \neg b$\\
+1 & 0 & 1 & $m_2 = a \land \neg b$& $M_2 = \neg a \lor b$\\
+1 & 1 & 0 & $m_3 = a \land b$ & $M_3=\neg a \lor \neg b$\\
+\end{tabular}\\
+
+\vspace{10pt}
+
+$\text{DNF}=m_1 \lor m_2 =(\neg a \land b) \lor (a \land \neg b)$\\
+\\
+$\text{CNF} = M_0 \land M_3 =(a \lor b) \land (\neg a \lor \neg b)$\\
+
+\item
+\begin{tabular}{c|c|c|c|c|c}
+a & b & c & (a $\rightarrow$ b) $\rightarrow$ c & Minterm & Maxterm\\
+\hline
+0 & 0 & 0 & 0 & $m_0=\neg a \land \neg b \land \neg c$&$M_0=a \lor b \lor c$\\
+0 & 0 & 1 & 1 & $m_1=\neg a \land \neg b \land c$ & $M_1=a \lor b \lor \neg c$\\
+0 & 1 & 0 & 0 & $m_2=\neg a \land b \land \neg c$ & $M_2=a \lor \neg b \lor c$\\
+0 & 1 & 1 & 1 & $m_3=\neg a \land b \land c$ & $M_3= a \lor \neg b \lor \neg c$\\
+1 & 0 & 0 & 1 & $m_4=a \land \neg b \land \neg c$ & $M_4=\neg a \lor b \lor c$\\
+1 & 0 & 1 & 1 & $m_5=a \land \neg b \land c$ & $M_5=\neg a \lor b \lor \neg c$\\
+1 & 1 & 0 & 0 & $m_6=a \land b \land \neg c$ & $M_6=\neg a \lor \neg b \lor c$\\
+1 & 1 & 1 & 1 & $m_7=a \land b \land c$ & $M_7=\neg a \lor \neg b \lor \neg c$\\
+\end{tabular}\\
+
+\vspace{10pt}
+
+$\text{DNF} = m_1 \lor m_3 \lor m_4 \lor m_5 \lor m_7 = (\neg a \land \neg b \land c)\lor (\neg a \land b \land c)\lor (a \land \neg b \land \neg c)\lor (a \land \neg b \land c)\lor (a \land b \land c)$\\
+\\
+$\text{CNF} = M_0 \land M_2 \land M_6 = (a \lor b \lor c)\land (a \lor \neg b \lor c)\land (\neg a \lor \neg b \lor c)$\\
+\item Diese Aussage ist nur in genau einem Fall falsch und zwar wenn $p = 1,~q = 1,~ r = 0$. Die DNF und die CNF sind, nachdem sie vereinfacht wurden, identisch  ($\neg p \lor \neg q \lor r$).
+\end{enumerate}
+\subsection*{2.3 Bärengraben}
+Die Aussage von Beat  kann mittels Distributivgesetz umgeformt werden zu
+$$P(x) \land (W(x) \lor T(x)) \land B(x).$$
+Diese Aussage unterscheidet sich nur dadurch von der Aussage von Alina, dass eine Konjunktion anstelle einer Implikation verwendet wird.\\
+\\
+\begin{tabular}{c|c|c|c}
+$P(x) \land (W(x)\lor T(x))$ & $B(x)$ & $P(x) \land (W(x) \lor T(x)) \land B(x)$ & $P(x) \land (W(x) \lor T(x)) \rightarrow B(x)$\\
+\hline
+0 & 0 & 0 & 1\\
+0 & 1 & 0 & 1\\
+1 & 0 & 0 & 0 \\
+1 & 1 & 1 & 1\\
+\end{tabular}\\
+\\
+In den beiden letzten Zeilen, also im Falle dass $P(x) \land (W(x) \lor T(x)) $ wahr ist, liefern beide Lösungen dasselbe Ergebnis. Man muss sich also überlegen, welches Ergebnis die Aussage liefern soll, wenn $P(x) \land (W(x) \lor T(x)) $ falsch ist. Falls auch $B(x)$ falsch ist, muss die Aussage wahr sein (eine Person, die nicht in Bern wohnt und auch noch nie als Tourist dort war, hat den Bärengraben nicht besucht). Falls $B(x)$ wahr ist, muss die Aussage auch wahr sein ($x$ kann ein Hund sein, der in Bern wohnt und den Bärengraben besucht hat). Somit ist die Lösung von Alina korrekt und diejenige von Beat falsch.
+
+\subsection*{2.4 Aussagen der Prädikatenlogik}
+Annahme: Das Universum für die folgenden Aufgaben besteht aus allen Personenwagen.
+\begin{enumerate}[a)]
+\item 
+V(x): x hat 4 Räder\\
+S(x): x ist sauber\\
+$\forall x(V(x) \land S(x))$
+\item $\exists x(V(x) \land \neg S(x))$
+\item L(x): x ist ein Lamborghini\\
+$\exists x(L(x) \land S(x)) \land \exists x(V(x) \land \neg S(x))$
+\item $\forall x(S(x) \rightarrow L(x) \lor V(x))$
+\item $\forall x(L(x) \rightarrow V(x))$
+\end{enumerate}
+\subsection*{2.5 Prädikate}
+\begin{enumerate}[a)]
+\item
+P1: Es existiert ein x, sodass $x+4 \ngtr 3x$. Bsp: Wenn $x=3$, dann $7 \ngtr 9$. Dieses Prädikat ist \textbf{wahr}.\\
+\\
+P2: Für alle x gilt, dass $4x < 5x$. Gegenbeispiel: Wenn $x = -1$, dann $-4 \nless -5$. Dieses Prädikat ist \textbf{falsch}.
+\item P1: Es soll ein Universum gefunden werden, sodass P1 \textbf{falsch} ist: $ U = \{0,1\}$\\
+\\
+P2: Es soll ein Universum gefunden werden, sodass P2 \textbf{wahr} ist: $U= \mathbb{N}_{>0}$
+\end{enumerate}
+\end{document}
