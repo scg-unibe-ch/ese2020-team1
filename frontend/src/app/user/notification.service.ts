@@ -12,15 +12,15 @@ export class NotificationService {
   constructor(private httpClient: HttpClient) { }
 
   public getNotifications(): Observable<any>{
-    return this.httpClient.get(environment.endpointURL + 'user/notifications');
+    return this.httpClient.get(environment.endpointURL + 'notification/notifications');
   }
 
   public deleteNotification(notificationId: number): Observable<any> {
-    return this.httpClient.delete(environment.endpointURL + 'user/notification/' + notificationId);
+    return this.httpClient.delete(environment.endpointURL + 'notification/notification/' + notificationId);
   }
 
-  getTransactions(notificationId: number): Observable<any> {
-    return this.httpClient.get(environment.endpointURL + 'user/transactions/' + notificationId);
+  getTransactions(transactionId: number): Observable<any> {
+    return this.httpClient.get(environment.endpointURL + 'notification/transaction/' + transactionId);
   }
 
 
@@ -29,10 +29,10 @@ export class NotificationService {
   }
 
   deleteRequest(requestId: number): Observable<any> {
-    return this.httpClient.delete(environment.endpointURL + 'user/request/' + requestId);
+    return this.httpClient.delete(environment.endpointURL + 'notification/request/' + requestId);
   }
   getRequests(): Observable<any> {
-    return this.httpClient.get(environment.endpointURL + 'user/requests');
+    return this.httpClient.get(environment.endpointURL + 'notification/requests');
   }
 
 

@@ -30,13 +30,6 @@ export class ProductService {
          .then(found => found.destroy()
          .then(() => Promise.resolve(found))
          .catch(err => Promise.reject(err)));
-        // const product: Promise<Product> = Product.findOne({
-        //    where: { productId: productId }
-        // });
-        // Product.destroy({
-        //    where: { productId: productId }
-        // });
-        // return product;
     }
 
     public modify(productId: number, product: ProductAttributes): Promise<ProductAttributes> {

@@ -25,7 +25,7 @@ productController.put('/modify/:id', verifyToken, (req: Request, res: Response) 
 productController.delete('/delete/:id', verifyToken, (req: Request, res: Response) => {
     const productId = parseInt(req.params.id, 10);
     productService.delete(productId)
-        .then(() => res.status(200).send())
+        .then((item) => res.status(200).send({ deleted: item.productId }))
         .catch(err => res.status(500).send(err));
 });
 
@@ -53,12 +53,6 @@ productController.get('/approved', (req: Request, res: Response) => {
         .catch(err => res.status(500).send(err));
 });
 
-productController.get('/disapproved', (req: Request, res: Response) => {
-    productService.getDisapproved()
-        .then((product: Array<ProductAttributes>) => res.status(200).send(product))
-        .catch(err => res.status(500).send(err));
-});
-
 productController.get('/by-product/:id', (req: Request, res: Response) => {
     productService.getById(req.params.id)
         .then((product: ProductAttributes) => res.status(200).send(product))
@@ -70,11 +64,5 @@ productController.get('/by-product/:id', (req: Request, res: Response) => {
         .then((product: Array<ProductAttributes>) => res.status(200).send(product))
         .catch(err => res.status(500).send(err));
  });
-
-// productController.get('/category/:category', (req: Request, res: Response) => {
-//    productService.getByCategory(req.params.category)
-//        .then((product) => res.status(200).send(product))
-//        .catch(err => res.status(500).send(err));
-// });
 
 export const ProductController: Router = productController;

@@ -1,7 +1,6 @@
 import { UserAttributes, User } from '../models/user.model';
 import { ProductAttributes, Product } from '../models/product.model';
 import { TransactionAttributes, Transaction } from '../models/transaction.model';
-import { TodoItem } from '../models/todoitem.model';
 import { UserNotificationAttributes, UserNotification } from '../models/usernotification.model';
 import { PurchaseRequest, PurchaseRequestAttributes } from '../models/purchaserequest.model';
 
