@@ -141,4 +141,8 @@ The detailed overview can be found on this link: https://www.notion.so/invite/f5
 
 ## UML class diagram
 
-![image 7](https://github.com/scg-unibe-ch/ese2020-team1/blob/master/deliverables/UMLclass.png)
+![image 7](https://github.com/scg-unibe-ch/ese2020-team1/blob/master/deliverables/uml_class.jpg)
+
+##Activity Diagram for "Add comment" Use Case
+
+![image 8](https://github.com/scg-unibe-ch/ese2020-team1/blob/master/deliverables/activity_diagram.jpg)

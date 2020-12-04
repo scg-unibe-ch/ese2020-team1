@@ -2,15 +2,16 @@
   "ExpandedNodes": [
     "",
     "\\backend",
-    "\\backend\\src",
-    "\\backend\\src\\controllers",
-    "\\backend\\src\\services",
+    "\\backend\\postman_collection",
+    "\\frontend",
     "\\frontend\\src",
     "\\frontend\\src\\app",
+    "\\frontend\\src\\app\\models",
     "\\frontend\\src\\app\\product",
-    "\\frontend\\src\\app\\product\\product-purchase",
-    "\\frontend\\src\\app\\user"
+    "\\frontend\\src\\app\\product\\product-modification",
+    "\\frontend\\src\\app\\user",
+    "\\frontend\\src\\app\\user\\profile"
   ],
-  "SelectedNode": "\\backend\\src\\controllers\\purchase.controller.ts",
+  "SelectedNode": "\\frontend\\src\\app\\user\\profile\\profile.component.html",
   "PreviewInSolutionExplorer": false
 }
