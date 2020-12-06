@@ -1,0 +1,11 @@
+<h1>Sold</h1>
+<mat-card *ngFor="let item of sold">
+  {{item.productTitle}} was sold to {{item.buyerUserName}}.<br />
+  Total price: {{item.totalPrice}}<br />
+
+</mat-card>
+<h1>Bought</h1>
+<mat-card *ngFor="let item of bought">
+  You bought {{item.productTitle}}.<br />
+  Total price: {{item.totalPrice}}
+</mat-card>

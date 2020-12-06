@@ -41,6 +41,8 @@ import { UserInformationComponent } from './user/profile/user-information/user-i
 import { FilterPipe } from './product/browse/filter.pipe';
 import { MatSliderModule } from '@angular/material/slider';
 import { PurchaseRequestsComponent } from './user/profile/purchase-requests/purchase-requests.component';
+import { ActivityLogComponent } from './user/profile/activity-log/activity-log.component';
+import { DatePipe } from '@angular/common';
 
 const appRoutes: Routes = [
   {
@@ -88,7 +90,8 @@ const appRoutes: Routes = [
     UserNotificationsComponent,
     UserInformationComponent,
     FilterPipe,
-    PurchaseRequestsComponent
+    PurchaseRequestsComponent,
+    ActivityLogComponent
   ],
   imports: [
     BrowserModule,
@@ -118,7 +121,8 @@ const appRoutes: Routes = [
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true,
-    }
+    },
+    DatePipe
   ],
   bootstrap: [
     AppComponent

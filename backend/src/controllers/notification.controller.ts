@@ -38,8 +38,21 @@ notificationController.delete('/notification/:id', verifyToken, (req: Request, r
 notificationController.delete('/request/:id', verifyToken, (req: Request, res: Response) => {
     notificationService.deleteRequest(req.params.id)
         .then(item => res.status(200).send({ deleted: item })).catch(err => res.status(403).send(err));
-}
-);
+});
+
+notificationController.get('/transactions-buyer', verifyToken,
+    (req: Request, res: Response) => {
+        notificationService.getTransactionsBuyer(req.body.tokenPayload.userId)
+            .then((transactions: Array<TransactionAttributes>) => res.status(200).send(transactions))
+            .catch(err => res.status(400).send(err));
+    });
+
+notificationController.get('/transactions-seller', verifyToken,
+    (req: Request, res: Response) => {
+        notificationService.getTransactionsSeller(req.body.tokenPayload.userId)
+            .then((transactions: Array<TransactionAttributes>) => res.status(200).send(transactions))
+            .catch(err => res.status(400).send(err));
+    });
 
 
 export const NotificationController: Router = notificationController;

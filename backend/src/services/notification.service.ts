@@ -52,4 +52,28 @@ export class NotificationService {
         return Transaction.findByPk(parseInt(transactionId, 10)).then(found => Promise.resolve(found))
             .catch(err => Promise.reject(err));
     }
+
+    public getTransactionsBuyer(id: number): Promise<Transaction[]> {
+        console.log('get transactions buyer called');
+        return Transaction.findAll({
+            where: {
+                buyerId: id
+            }
+        }).then(found => Promise.resolve(found))
+            .catch((err) => {
+                return Promise.reject(err);
+            });
+    }
+
+    public getTransactionsSeller(id: number): Promise<Transaction[]> {
+        console.log('get transactions seller called');
+        return Transaction.findAll({
+            where: {
+                sellerId: id
+            }
+        }).then(found => Promise.resolve(found))
+            .catch((err) => {
+                return Promise.reject(err);
+            });
+    }
 }

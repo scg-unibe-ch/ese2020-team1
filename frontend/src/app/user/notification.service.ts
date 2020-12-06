@@ -36,4 +36,14 @@ export class NotificationService {
   }
 
 
+  getTransactionsBuyer(): Observable<any> {
+    return this.httpClient.get(environment.endpointURL + 'notification/transactions-buyer');
+  }
+
+  getTransactionsSeller(): Observable<any> {
+    return this.httpClient.get(environment.endpointURL + 'notification/transactions-seller');
+  }
+
+
+
 }
