@@ -18,6 +18,9 @@ export class ProductService {
     return this.httpClient.get(environment.endpointURL + 'product/approved');
   }
 
+  getCommentById(id: number): Observable<any>{
+    return this.httpClient.get(environment.endpointURL + 'comment/get-comment/' + id);
+  }
 
   getProductListSearch(searchString: string): Observable<any> {
     return this.httpClient.get(environment.endpointURL + 'product/approved/' + searchString);

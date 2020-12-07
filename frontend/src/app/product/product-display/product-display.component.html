@@ -10,11 +10,22 @@
             <p>{{product.description}}</p>
         </div>
         <hr>
+       
         <div class="question">
-            <p><b>Questions and answers:</b></p>
-            <input type="text" id="fname" name="question" class="input-question">
-            <span class="post-question"><button type="submit" class="btn btn-outline-dark">Post question</button></span>
+            <p><b>Comments:</b></p>
+            <form [formGroup="commentAdditionForm"] (ngSubmit)="onSubmitCommentDetails(commentAdditionForm.value)">
+            <input matInput type="text" id="fname" placeholder="Comment" name="comments" [(ngModel)]="comment" class="input-comments" formControlName="comment">
+            <span class="post-comment"><button type="submit" class="btn btn-outline-dark">Post a comment</button></span>
             <hr>
+            <div class="card next-item" *ngFor="let comment of listOfComments">
+                <div class="comment">
+                    <p class="comment-content">
+                        {{listOfComments.comment}}
+                    </p>
+                </div>
+            </div>
+            <hr>
+            </form>
         </div>
         <div class="other-info">
             <p><b>More information:</b></p>
