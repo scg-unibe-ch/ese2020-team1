@@ -1,5 +1,6 @@
 import { Optional, Model, Sequelize, DataTypes } from 'sequelize';
 import { User } from './user.model';
+import { Comment } from './comment.model';
 
 export interface ProductAttributes {
     productId: number;
@@ -94,6 +95,7 @@ export class Product extends Model<ProductAttributes, ProductCreationAttributes>
             onDelete: 'cascade',
             foreignKey: 'userId'
         });
+
      }
 
 }

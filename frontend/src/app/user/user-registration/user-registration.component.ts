@@ -173,7 +173,7 @@ export class UserRegistrationComponent implements OnInit {
       this.userDetailsForm.disable();
     });
     setTimeout(() => {
-      this.router.navigateByUrl("/user-login");
+      this.router.navigateByUrl("/user/user-login");
     }, 5000);
   }
   }
