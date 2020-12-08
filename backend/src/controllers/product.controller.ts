@@ -11,7 +11,7 @@ productController.post('/add', verifyToken, (req: Request, res: Response) => {
     const userId: number = req.body.tokenPayload.userId;
     const userName: string = req.body.tokenPayload.userName;
     productService.create(req.body, userId, userName)
-        .then(added => res.send(added))
+        .then(added => res.status(200).send(added))
         .catch(err => res.status(500).send(err));
 });
 

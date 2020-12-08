@@ -10,12 +10,16 @@ const userService = new UserService();
 
 adminController.post('/register',
     (req: Request, res: Response) => {
-        adminService.register(req.body).then(registered => res.send(registered)).catch(err => res.status(403).send(err));
+        adminService.register(req.body)
+            .then(registered => res.status(200).send(registered))
+            .catch(err => res.status(403).send(err));
     }
 );
 
 adminController.delete('/:id', (req: Request, res: Response) => {
-    adminService.deleteAdmin(req.params.id).then(item => res.status(200).send({ deleted: item })).catch(err => res.status(403).send(err));
+    adminService.deleteAdmin(req.params.id)
+        .then(item => res.status(200).send({ deleted: item }))
+        .catch(err => res.status(403).send(err));
 
 });
 

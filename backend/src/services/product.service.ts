@@ -10,9 +10,7 @@ export class ProductService {
     // return Product.findByPk(productId).
     public getById(id: string): Promise<Product> {
         return Product.findByPk(parseInt(id, 10))
-            .then(found => {
-                return Promise.resolve(found);
-            })
+            .then(found => Promise.resolve(found))
             .catch(err => Promise.reject({ message: err }));
     }
 
@@ -35,13 +33,14 @@ export class ProductService {
 
     public modify(productId: number, product: ProductAttributes): Promise<ProductAttributes> {
         return Product.findByPk(productId).then(found => found.update(product)
-            .then(() => {
-                return Promise.resolve(found);
-            }).catch(err => Promise.reject(err)));
+            .then(() => Promise.resolve(found))
+            .catch(err => Promise.reject(err)));
     }
 
     public getAll(): Promise<Product[]> {
-        return Product.findAll().then(found => Promise.resolve(found)).catch(err => Promise.reject(err));
+        return Product.findAll()
+            .then(found => Promise.resolve(found))
+            .catch(err => Promise.reject(err));
     }
 
     public getPending(): Promise<Product[]> {
@@ -49,7 +48,8 @@ export class ProductService {
             where: {
                 isApproved: 'pending'
             },
-        }).then(found => Promise.resolve(found)).catch(err => Promise.reject(err));
+        }).then(found => Promise.resolve(found))
+            .catch(err => Promise.reject(err));
     }
 
     public getApproved(): Promise<Product[]> {
@@ -83,7 +83,8 @@ export class ProductService {
             where: {
                 isApproved: 'disapproved'
             },
-        }).then(found => Promise.resolve(found)).catch(err => Promise.reject(err));
+        }).then(found => Promise.resolve(found))
+            .catch(err => Promise.reject(err));
     }
 
      public getByUser(userId: string): Promise<Product[]> {
@@ -94,14 +95,4 @@ export class ProductService {
          }).then(found => Promise.resolve(found))
             .catch(err => Promise.reject(err));
      }
-
-    // public getByCateogry(cateogry: string): Promise<Product[]> {
-    //    return Product.findAll({
-    //        where: {
-    //            category: cateogry
-    //        },
-    // }).catch (err => Promise.reject(err));
-    // }
-
-
 }

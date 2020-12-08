@@ -49,7 +49,8 @@ export class NotificationService {
     }
 
     public getTransactions(transactionId: string): Promise<Transaction> {
-        return Transaction.findByPk(parseInt(transactionId, 10)).then(found => Promise.resolve(found))
+        return Transaction.findByPk(parseInt(transactionId, 10))
+            .then(found => Promise.resolve(found))
             .catch(err => Promise.reject(err));
     }
 
@@ -60,9 +61,7 @@ export class NotificationService {
                 buyerId: id
             }
         }).then(found => Promise.resolve(found))
-            .catch((err) => {
-                return Promise.reject(err);
-            });
+            .catch((err) => Promise.reject(err));
     }
 
     public getTransactionsSeller(id: number): Promise<Transaction[]> {
@@ -72,8 +71,6 @@ export class NotificationService {
                 sellerId: id
             }
         }).then(found => Promise.resolve(found))
-            .catch((err) => {
-                return Promise.reject(err);
-            });
+            .catch((err) => Promise.reject(err));
     }
 }

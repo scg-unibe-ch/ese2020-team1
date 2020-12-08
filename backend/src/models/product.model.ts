@@ -3,13 +3,12 @@ import { User } from './user.model';
 
 export interface ProductAttributes {
     productId: number;
-    isApproved: string;
+    isApproved: Enumerator;
     userName: string;
-    productType: string;
+    productType: Enumerator;
     title: string;
     price: number;
-    payFreq: string;
-    // category: category;
+    payFreq: Enumerator;
     description: string;
     location: string;
     delivery: boolean;
@@ -22,13 +21,12 @@ export interface ProductCreationAttributes extends Optional<ProductAttributes, '
 
 export class Product extends Model<ProductAttributes, ProductCreationAttributes> implements ProductAttributes {
     productId!: number;
-    isApproved!: string; // pending (default), approved, disapproved, sold
+    isApproved!: Enumerator;
     userName!: string;
-    productType!: string;
+    productType!: Enumerator;
     title!: string;
     price!: number;
-    payFreq!: string;
-    // category: category;
+    payFreq!: Enumerator;
     description!: string;
     location!: string;
     delivery!: boolean;
@@ -43,7 +41,7 @@ export class Product extends Model<ProductAttributes, ProductCreationAttributes>
                 primaryKey: true
             },
             isApproved: {
-                type: DataTypes.STRING,
+                type: DataTypes.ENUM('pending', 'approved', 'disapproved', 'sold'),
                 defaultValue: 'pending',
                 allowNull: false
             },
@@ -52,7 +50,7 @@ export class Product extends Model<ProductAttributes, ProductCreationAttributes>
                 allowNull: false
             },
             productType: {
-                type: DataTypes.STRING,
+                type: DataTypes.ENUM('Product (sell)', 'Product (lend)', 'Service (onetime)', 'Service (time-based)'),
                 allowNull: false
             },
             title: {
@@ -64,13 +62,9 @@ export class Product extends Model<ProductAttributes, ProductCreationAttributes>
                 allowNull: false
             },
             payFreq: {
-                type: DataTypes.STRING,
+                type: DataTypes.ENUM('Unique', 'Hourly', 'Daily'),
                 allowNull: false
             },
-            // category: {
-            //    type: DataTypes.STRING,
-            //    allowNull: false
-            // },
             description: {
                 type: DataTypes.STRING,
                 allowNull: false

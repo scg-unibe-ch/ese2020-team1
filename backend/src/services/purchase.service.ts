@@ -36,9 +36,7 @@ export class PurchaseService {
                     return Promise.resolve();
                 }
             })
-            .then(() => {
-                return this.updateProductStatus(transaction.productId);
-            })
+            .then(() => this.updateProductStatus(transaction.productId))
             .then(() => {
                 if (!transaction.confirmed) {
                     return this.createPurchaseRequest(transaction);
@@ -57,9 +55,8 @@ export class PurchaseService {
     }
 
     private createTransaction(transaction: TransactionAttributes): Promise<TransactionAttributes> {
-        return Transaction.create(transaction).then((created) => {
-            return Promise.resolve(created);
-        })
+        return Transaction.create(transaction)
+            .then((created) => Promise.resolve(created))
             .catch(err => Promise.reject(err));
     }
 
@@ -69,7 +66,8 @@ export class PurchaseService {
             transactionId: transId,
             sellerId: userId
 
-        }).then(() => Promise.resolve()).catch(err => Promise.reject(err));
+        }).then(() => Promise.resolve())
+            .catch(err => Promise.reject(err));
     }
 
     private updateWallet(userId: number, amount: number): Promise<void> {
@@ -77,25 +75,20 @@ export class PurchaseService {
         return User.findByPk(userId).then((found) => {
             return found.update({
                 wallet: found.wallet + amount // The saldo is checked in the frontend
-            }).then((updated) => {
-                return Promise.resolve();
-            });
-        }).then(promise => {
-            return promise;
-        });
+            }).then((updated) => Promise.resolve());
+        }).then(promise => promise)
+            .catch(err => Promise.reject(err));
     }
 
     private updateProductStatus(productId: number): Promise<void> {
         return Product.findByPk(productId).then((found) => {
-            if (found.productType === 'Product (sell)') {
+            if (found.productType.valueOf() === 'Product (sell)') {
                 return found.update({
                     isApproved: 'sold'
-                }).then(() => {
-                    return Promise.resolve();
-                });
+                }).then(() => Promise.resolve());
             } else { return Promise.resolve(); }
-
-        });
+        })
+            .catch(err => Promise.reject(err));
     }
 
     public confirmTransaction(transactionId: number): Promise<void> {
@@ -103,19 +96,11 @@ export class PurchaseService {
             return found.update({
                 confirmed: true
             })
-            .then(() => {
-                return Promise.resolve();
-            })
-            .then(() => {
-                return this.createNotification(found.transactionId, found.sellerId);
-            })
-            .then(() => {
-                return this.updateWallet(found.sellerId, +found.totalPrice);
-            })
-            .then(() => {
-                return this.updateWallet(found.buyerId, -found.totalPrice);
-            });
-        });
+            .then(() => Promise.resolve())
+            .then(() => this.createNotification(found.transactionId, found.sellerId))
+            .then(() => this.updateWallet(found.sellerId, +found.totalPrice))
+            .then(() => this.updateWallet(found.buyerId, -found.totalPrice));
+        }).catch(err => Promise.reject(err));
 
     }
 }
