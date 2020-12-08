@@ -30,6 +30,8 @@ export class ProductPurchaseComponent implements OnInit {
 
   totalPrice: number;
   time: number = 1;
+  purchaseFailed: boolean = false;
+  purchaseSuccessful: boolean = false;
 
   //specificationForm: FormGroup; //In case of timebased product/service, the buyer indicates the total hours/days
   checkoutForm: FormGroup; //The transaction is confirmed and the user enters the necessary details for the transaction
@@ -129,6 +131,14 @@ export class ProductPurchaseComponent implements OnInit {
       delivery: this.product.delivery,
       payFreq: this.product.payFreq,
       confirmed: (this.product.productType === "Product (sell)") //If product is for sale then no confirmation of the transaction is needed
-    }).subscribe();
+    }).subscribe((res: any) => {
+      this.purchaseSuccessful = true;
+      this.purchaseFailed = false;
+
+    }, (err) => {
+        console.log("Purchase failed");
+        this.purchaseSuccessful = false;
+        this.purchaseFailed = true;
+    });
   }
 }

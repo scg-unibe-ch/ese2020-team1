@@ -72,7 +72,12 @@
   </mat-step>
   <mat-step>
     <ng-template matStepLabel>Done</ng-template>
-    <p>You are now done.</p>
+          <div *ngIf="purchaseSuccessful" class="alert alert-success alert-dismissible fade show" role="alert">
+        You successfully purchased {{product.title}} :-)
+      </div>
+      <div *ngIf="purchaseFailed" class="alert alert-danger alert-dismissible fade show" role="alert">
+        Oops, something went wrong :-(
+      </div>
     <div>
       <a routerLink="../browse"><button mat-button mat-raised-button color="primary" >Continue Shopping</button></a>
       <a routerLink="../user/user-login"><button mat-button mat-raised-button color="primary" >Logout</button></a>
