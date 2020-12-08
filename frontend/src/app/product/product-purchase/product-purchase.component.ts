@@ -29,8 +29,10 @@ export class ProductPurchaseComponent implements OnInit {
   daily: boolean = false; //Set to true if product/service is paid daily
 
   totalPrice: number;
+  time: number = 1;
+  purchaseFailed: boolean = false;
+  purchaseSuccessful: boolean = false;
 
-  specificationForm: FormGroup; //In case of timebased product/service, the buyer indicates the total hours/days
   checkoutForm: FormGroup; //The transaction is confirmed and the user enters the necessary details for the transaction
 
   constructor(
@@ -69,9 +71,6 @@ export class ProductPurchaseComponent implements OnInit {
 
           //Create the forms
           this.createForms();
-
-          this.onChanges(); //Called if input values change
-
         });
       });
     });
@@ -83,38 +82,15 @@ export class ProductPurchaseComponent implements OnInit {
 
   }
 
-  onChanges(): void {
-
-    this.specificationForm.valueChanges.subscribe(val => {
-      this.totalPrice = val.time * this.totalPrice;
-    });
-
-    if (this.totalPrice > this.buyer.wallet) {
-      this.purchaseDenied = true;
-    } else {
-      this.purchaseDenied = false;
-    }
-
-    
-  }
 
 
   //Create the inputform for the 
   createForms(): void {
 
     //Reactive Forms with validation
-    this.createSpecificationForm();
     this.createCheckoutForm();
   }
 
-  createSpecificationForm(): void {
-      this.specificationForm = this.fb.group({
-        time: new FormControl(1, Validators.compose([
-          Validators.pattern(/^[0-9]\d*$/),
-          Validators.required
-        ]))
-      });
-  }
 
   createCheckoutForm(): void {
     this.checkoutForm = this.fb.group({
@@ -132,7 +108,7 @@ export class ProductPurchaseComponent implements OnInit {
   }
 
   uponConfirmOrder(): void {
-
+    this.totalPrice = this.time * this.product.price;
 
     this.httpClient.post(environment.endpointURL + 'purchase', {
       productId: this.product.productId,
@@ -147,12 +123,20 @@ export class ProductPurchaseComponent implements OnInit {
       buyerZip: this.checkoutForm.get('zip').value,
       buyerCity: this.checkoutForm.get('city').value,
       buyerCountry: this.checkoutForm.get('country').value,
-      time: this.specificationForm.get('time').value,
+      time: this.totalPrice,
       totalPrice: this.totalPrice,
       messageToSeller: this.checkoutForm.get('message').value,
       delivery: this.product.delivery,
       payFreq: this.product.payFreq,
       confirmed: (this.product.productType === "Product (sell)") //If product is for sale then no confirmation of the transaction is needed
-    }).subscribe();
+    }).subscribe((res: any) => {
+      this.purchaseSuccessful = true;
+      this.purchaseFailed = false;
+
+    }, (err) => {
+        console.log("Purchase failed");
+        this.purchaseSuccessful = false;
+        this.purchaseFailed = true;
+    });
   }
 }

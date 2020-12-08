@@ -114,7 +114,8 @@ export class User extends Model<UserAttributes, UserCreationAttributes> implemen
     public static createAssociations() {
         User.hasMany(Product, {
             as: 'product',
-            foreignKey: 'productId'
+            foreignKey: 'productId',
+            onDelete: 'CASCADE'
         });
     }
 }
