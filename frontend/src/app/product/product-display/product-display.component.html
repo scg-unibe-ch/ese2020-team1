@@ -13,19 +13,21 @@
        
         <div class="question">
             <p><b>Comments:</b></p>
-            <form [formGroup="commentAdditionForm"] (ngSubmit)="onSubmitCommentDetails(commentAdditionForm.value)">
-            <input matInput type="text" id="fname" placeholder="Comment" name="comments" [(ngModel)]="comment" class="input-comments" formControlName="comment">
-            <span class="post-comment"><button type="submit" class="btn btn-outline-dark">Post a comment</button></span>
-            <hr>
-            <div class="card next-item" *ngFor="let comment of listOfComments">
-                <div class="comment">
+            <!--<form [formGroup]="commentAdditionForm" (ngSubmit)="onSubmitCommentDetails(commentAdditionForm.value)">-->
+          <mat-form-field>
+            <input matInput placeholder="Comment" name="comment" [(ngModel)]="comment">
+          </mat-form-field>
+              
+              <span class="post-comment"><button type="submit" class="btn btn-outline-dark" (click)="onSubmitCommentDetails()">Post a comment</button></span>
+            
+        <hr />
+            <div class="comment next-item" *ngFor="let comment of listOfComments">
                     <p class="comment-content">
-                        {{listOfComments.comment}}
+                        {{comment.comment}}
                     </p>
-                </div>
             </div>
             <hr>
-            </form>
+            <!--</form>-->
         </div>
         <div class="other-info">
             <p><b>More information:</b></p>

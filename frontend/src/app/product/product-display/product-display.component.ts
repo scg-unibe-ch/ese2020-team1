@@ -19,7 +19,7 @@ export class ProductDisplayComponent implements OnInit {
   product: Product;
   shipping: string;
   listOfComments: Comment[];
-  comment: string;
+  comment: string = "";
 
   commentAdditionForm: FormGroup;
 
@@ -37,22 +37,25 @@ export class ProductDisplayComponent implements OnInit {
       this.productId = params['id'];
       this.productService.getProductById(this.productId).subscribe(result => {
         this.product = result;
-        //this.productService.getCommentById(this.productId).subscribe((result)=>this.listOfComments=result)
+        this.productService.getCommentById(this.productId).subscribe((result)=>this.listOfComments=result)
         if (this.product.delivery == true) {
           this.shipping = "Shipping possible"
         } else {
           this.shipping = "Shipping not possible"
         }
-        //this.listOfComments = this.productService.getComments()
       });
-    }); 
+    });
   }
 
-  onSubmitCommentDetails(value): void{
-    this.httpClient.put(environment.endpointURL + 'comment/addComment' + this.product.productId, {
-      comment: this.commentAdditionForm.get('comment').value
-    } ).subscribe((res: any)=> {
-      this.comment = res;
+  onSubmitCommentDetails(): void{
+
+    console.log(this.comment);
+    this.httpClient.post(environment.endpointURL + 'comment/add-comment/' + this.product.productId, {
+      comment: this.comment
+
+    }).subscribe((res: any) => {
+      this.productService.getCommentById(this.productId).subscribe((result) => this.listOfComments = result);
+      this.comment = '';
     });
   }
 }
