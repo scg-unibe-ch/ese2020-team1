@@ -1,4 +1,5 @@
 import { ProductAttributes, Product } from '../models/product.model';
+import { Comment } from '../models/comment.model';
 import { User } from '../models/user.model';
 
 const { Op } = require('sequelize');

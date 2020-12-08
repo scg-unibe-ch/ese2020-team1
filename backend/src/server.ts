@@ -10,6 +10,8 @@ import { User } from './models/user.model';
 import { Product } from './models/product.model';
 import { Transaction } from './models/transaction.model';
 import { UserNotification } from './models/usernotification.model';
+import { CommentController } from './controllers/comment.controller';
+import { Comment } from './models/comment.model';
 
 import cors from 'cors';
 import { PurchaseRequest } from './models/purchaserequest.model';
@@ -31,6 +33,10 @@ export class Server {
         Transaction.createAssociations();
         UserNotification.initialize(this.sequelize);
         PurchaseRequest.initialize(this.sequelize);
+        Comment.initialize(this.sequelize);
+        Comment.createAssociations();
+
+
 
         this.sequelize.sync().then(() => {                           // create connection to the database
             this.server.listen(this.port, () => {                                   // start server on specified port
@@ -64,6 +70,7 @@ export class Server {
             .use('/admin', AdminController)
             .use('/purchase', PurchaseController)
             .use('/notification', NotificationController)
+            .use('/comment', CommentController)
             .options('*', cors(options))
             .use(express.static('./src/public'))
             // this is the message you get if you open http://localhost:3000/ when the server is running

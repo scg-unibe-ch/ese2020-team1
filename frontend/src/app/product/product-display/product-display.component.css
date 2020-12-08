@@ -17,6 +17,15 @@ padding-left: 25px;
 padding-top: 15px;
 }
 
-.post-question{
+.post-comment{
     padding-left: 20px;
+   
+}
+
+.next-item{
+    clear: both;
+}
+
+.comment{
+    width: 95%;
 }
