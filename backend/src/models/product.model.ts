@@ -89,12 +89,12 @@ export class Product extends Model<ProductAttributes, ProductCreationAttributes>
 
     }
      public static createAssociations() {
-        Product.belongsTo(User, {
+         Product.belongsTo(User, {
             targetKey: 'userId',
             as: 'user',
             onDelete: 'cascade',
             foreignKey: 'userId'
-        });
+         });
 
      }
 

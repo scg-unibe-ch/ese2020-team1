@@ -34,11 +34,11 @@ export class Comment extends Model <CommentAttributes> implements CommentAttribu
     }
 
     public static createAssociations() {
-        Comment.belongsTo(Product, {
+         Comment.belongsTo(Product, {
             targetKey: 'productId',
             as: 'product',
             onDelete: 'cascade',
             foreignKey: 'productId'
-        });
+         });
     }
 }
