@@ -1,3 +1,4 @@
+<div *ngIf="notifications.length==0">No notifications currently!</div>
 <div *ngFor ="let notification of notifications">
     <div class="next-item" role="alert">
         <h3>{{notification.transaction.productTitle}} was sold to {{notification.transaction.buyerUserName}}!</h3>

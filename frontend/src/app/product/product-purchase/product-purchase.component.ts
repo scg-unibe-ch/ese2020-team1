@@ -33,7 +33,6 @@ export class ProductPurchaseComponent implements OnInit {
   purchaseFailed: boolean = false;
   purchaseSuccessful: boolean = false;
 
-  //specificationForm: FormGroup; //In case of timebased product/service, the buyer indicates the total hours/days
   checkoutForm: FormGroup; //The transaction is confirmed and the user enters the necessary details for the transaction
 
   constructor(
@@ -89,7 +88,6 @@ export class ProductPurchaseComponent implements OnInit {
   createForms(): void {
 
     //Reactive Forms with validation
-    //this.createSpecificationForm();
     this.createCheckoutForm();
   }
 

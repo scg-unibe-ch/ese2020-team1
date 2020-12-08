@@ -1,7 +1,7 @@
 <div class="container">
   
 <!--<h1>Admin Panel</h1>-->
-
+    <div *ngIf="listOfProducts.length==0">No products for approval!</div>
   <div class="card next-item" *ngFor="let product of listOfProducts">
 <div class="card-header">
       <p class="product_title">       
