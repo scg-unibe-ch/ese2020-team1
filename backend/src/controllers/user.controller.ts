@@ -8,41 +8,55 @@ const userService = new UserService();
 
 userController.post('/register',
     (req: Request, res: Response) => {
-        userService.register(req.body).then(registered => res.send(registered)).catch(err => res.status(403).send(err));
+        userService.register(req.body)
+            .then(registered => res.status(200).send(registered))
+            .catch(err => res.status(403).send(err));
     }
 );
 
 userController.post('/login',
     (req: Request, res: Response) => {
-        userService.login(req.body).then(login => res.send(login)).catch(err => res.status(401).send(err));
+        userService.login(req.body)
+            .then(login => res.status(200).send(login))
+            .catch(err => res.status(401).send(err));
     }
 );
 
 userController.get('/all', verifyToken, verifyAdmin, // you can add middleware on specific requests like that
     (req: Request, res: Response) => {
-        userService.getAll().then(users => res.send(users)).catch(err => res.status(402).send(err));
+        userService.getAll()
+            .then(users => res.status(200).send(users))
+            .catch(err => res.status(402).send(err));
     }
 );
 
 userController.get('/user', verifyToken, (req: Request, res: Response) => {
-    userService.getUserById(req.body.tokenPayload.userId).then(found => res.send(found)).catch(err => res.status(402));
+    userService.getUserById(req.body.tokenPayload.userId)
+        .then(found => res.status(200).send(found))
+        .catch(err => res.status(402));
 });
 
 
 userController.delete('/:id', (req: Request, res: Response) => {
-    userService.deleteUser(req.params.id).then(item => res.status(200).send({ deleted: item })).catch(err => res.status(403).send(err));
+    userService.deleteUser(req.params.id)
+        .then(item => res.status(200).send({ deleted: item }))
+        .catch(err => res.status(403).send(err));
 
 });
 
 userController.get('/is-username-free/:username',
     (req: Request, res: Response) => {
-        userService.isUsernameFree(req.params.username).then(free => res.send(free)).catch(err => res.status(400).send(err));
+        userService.isUsernameFree(req.params.username)
+            .then(free => res.status(200).send(free))
+            .catch(err => res.status(400).send(err));
     }
 );
 
 userController.get('/is-email-free/:email',
     (req: Request, res: Response) => {
-        userService.isEmailFree(req.params.email).then(free => res.send(free)).catch(err => res.status(400).send(err));
+        userService.isEmailFree(req.params.email)
+            .then(free => res.status(200).send(free))
+            .catch(err => res.status(400).send(err));
     }
 );
 

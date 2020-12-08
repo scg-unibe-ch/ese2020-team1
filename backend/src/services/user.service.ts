@@ -47,8 +47,8 @@ export class UserService {
 
     public getUserById(id: number): Promise<User> {
         return User.findByPk(id)
-            .then((found) => Promise.resolve(found))
-            .catch((err) => Promise.reject(err));
+            .then(found => Promise.resolve(found))
+            .catch(err => Promise.reject(err));
     }
 
     public isUsernameFree(userName: string): Promise<boolean> {
@@ -57,12 +57,8 @@ export class UserService {
                 userName: userName
             }
         })
-            .then(user => {
-                return Promise.resolve(user === null);
-            })
-            .catch(err => {
-                return Promise.reject({ message: err });
-            });
+            .then(user => Promise.resolve(user === null))
+            .catch(err => Promise.reject({ message: err }));
     }
 
 
@@ -72,9 +68,8 @@ export class UserService {
                 email: email
             }
         })
-            .then(user => {
-                return Promise.resolve(user === null);
-            });
+            .then(user => Promise.resolve(user === null))
+            .catch(err => Promise.reject(err));
 
     }
 

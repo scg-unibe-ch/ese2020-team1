@@ -32,12 +32,14 @@ notificationController.get('/transaction/:id', verifyToken, (req: Request, res: 
 
 notificationController.delete('/notification/:id', verifyToken, (req: Request, res: Response) => {
     notificationService.deleteNotification(req.params.id)
-        .then(item => res.status(200).send({ deleted: item })).catch(err => res.status(403).send(err));
+        .then(item => res.status(200).send({ deleted: item }))
+        .catch(err => res.status(400).send(err));
 });
 
 notificationController.delete('/request/:id', verifyToken, (req: Request, res: Response) => {
     notificationService.deleteRequest(req.params.id)
-        .then(item => res.status(200).send({ deleted: item })).catch(err => res.status(403).send(err));
+        .then(item => res.status(200).send({ deleted: item }))
+        .catch(err => res.status(400).send(err));
 });
 
 notificationController.get('/transactions-buyer', verifyToken,

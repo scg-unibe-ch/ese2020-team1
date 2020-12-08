@@ -9,7 +9,9 @@ export class AdminService {
         const saltRounds = 12;
         admin.isAdmin = true;
         admin.password = bcrypt.hashSync(admin.password, saltRounds); // hashes the password, never store passwords as plaintext
-        return User.create(admin).then(inserted => Promise.resolve(inserted)).catch(err => Promise.reject(err));
+        return User.create(admin)
+            .then(inserted => Promise.resolve(inserted))
+            .catch(err => Promise.reject(err));
     }
 
     public deleteAdmin(id: string): Promise<number> {
@@ -29,11 +31,8 @@ export class AdminService {
         return User.findAll({
             where:
                 { isAdmin: true }
-        }).then(found => {
-            return Promise.resolve(found);
-        }).catch(err => {
-            return Promise.reject({ message: err });
-        });
+        }).then(found => Promise.resolve(found))
+            .catch(err => Promise.reject({ message: err }));
     }
 
     public approveProduct(id: string): Promise<Product> {
