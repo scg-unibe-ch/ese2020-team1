@@ -1,34 +1,32 @@
 <mat-horizontal-stepper [linear]="true" #stepper>
-  <mat-step [stepControl]="specificationForm">
-    <form [formGroup]="specificationForm">
+  <mat-step>
       <ng-template matStepLabel>Order details</ng-template>
       <div  *ngIf ="timeBased">
         <h3>For how many {{hourly ? 'hours' : 'days' }} do you want to book the {{product.productType}}?</h3>
         
       <mat-form-field>
         <mat-label>Duration</mat-label>
-        <input matInput type="number" placeholder="0" formControlName="time" required>
+        <input matInput type="number" name="time" [(ngModel)]="time" min="1" max="1000">
       </mat-form-field>
       </div>
       <br>
       <h3>
-        Total Price: {{ totalPrice }}
+        Total Price: {{ this.product.price*time }}
       </h3>
       <div>
         Your current saldo: {{buyer.wallet}}
         <br />
         <br />
       </div>
-      <div *ngIf="purchaseDenied" class="alert alert-danger alert-dismissible fade show" role="alert">
+      <div *ngIf="this.product.price*time > buyer.wallet" class="alert alert-danger alert-dismissible fade show" role="alert">
         Your saldo is too small!
         <button (click)="closeAlert()" type="button" class="close" data-dismiss="alert" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div>
-        <button color="primary" mat-raised-button matStepperNext [disabled]="purchaseDenied">Purchase Product</button>
+        <button color="primary" mat-raised-button matStepperNext [disabled]="this.product.price*time > buyer.wallet" >Purchase Product</button>
       </div>
-    </form>
   </mat-step>
   <mat-step [stepControl]="checkoutForm" label="Fill in your address">
     <form [formGroup]="checkoutForm">
