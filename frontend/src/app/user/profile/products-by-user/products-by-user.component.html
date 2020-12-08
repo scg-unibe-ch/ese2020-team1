@@ -1,5 +1,5 @@
 <div class="collection_page">
-    <div *ngIf="listOfProducts.length==0">You haven't registered any products yet!</div>
+
 <ng-container class="container" *ngFor="let product of listOfProducts" >
   <a [routerLink]="['../../product/display']" [queryParams]="{id: product.productId}">
   <section class="next-item" >

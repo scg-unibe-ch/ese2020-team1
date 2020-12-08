@@ -1,17 +1,11 @@
 <h1>Sold</h1>
-<div *ngIf="sold.length==0">No items sold!</div>
 <mat-card *ngFor="let item of sold">
   {{item.productTitle}} was sold to {{item.buyerUserName}}.<br />
   Total price: {{item.totalPrice}}<br />
-  {{item.confirmed ? 'confirmed' : 'not confirmed'}}
 
 </mat-card>
 <h1>Bought</h1>
-<div *ngIf="bought.length==0">No items bought!</div>
 <mat-card *ngFor="let item of bought">
-  
   You bought {{item.productTitle}}.<br />
-  Total price: {{item.totalPrice}}<br />
-  {{item.confirmed ? 'confirmed' : 'not confirmed'}}
-
+  Total price: {{item.totalPrice}}
 </mat-card>

@@ -16,12 +16,14 @@ export class NavbarComponent implements OnInit {
 
     this.loggedInCheckerService.loggedIn.subscribe(value => {
       this.loggedIn = value;
+      console.log(this.loggedIn);
     });
   }
 
   ngOnInit(): void {
     this.loggedInCheckerService.loggedIn.subscribe(value => {
       this.loggedIn = value;
+      console.log(this.loggedIn);
     })
   }
 
