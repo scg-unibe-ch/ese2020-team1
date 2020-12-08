@@ -87,7 +87,7 @@ export class PurchaseService {
 
     private updateProductStatus(productId: number): Promise<void> {
         return Product.findByPk(productId).then((found) => {
-            if (found.productType === 'Product (sell)') {
+            if (found.productType.valueOf() === 'Product (sell)') {
                 return found.update({
                     isApproved: 'sold'
                 }).then(() => {
