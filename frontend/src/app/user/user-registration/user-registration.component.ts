@@ -170,7 +170,7 @@ export class UserRegistrationComponent implements OnInit {
 
     }).subscribe((res: any) => {
       this.alert = true;
-      this.userDetailsForm.reset({});
+      this.userDetailsForm.disable();
     });
     setTimeout(() => {
       this.router.navigateByUrl("/user-login");
